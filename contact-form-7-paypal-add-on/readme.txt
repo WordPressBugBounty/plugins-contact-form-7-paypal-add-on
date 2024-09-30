@@ -6,7 +6,7 @@ Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.6
 Requires PHP: 5.5
-Stable tag: 2.3
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,10 @@ Here is a short video of how the Pro version works:
 
 
 == Changelog ==
+
+= 2.3.1 =
+* 9/27/24
+* Fix - Small security issue fixed.
 
 = 2.3 =
 * 8/22/24

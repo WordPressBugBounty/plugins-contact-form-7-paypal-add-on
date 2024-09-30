@@ -67,7 +67,7 @@ function cf7pp_admin_after_additional_settings( $cf7 ) {
 	$admin_table_output .= "<tr><td>Item ID / SKU: </td>";
 	$admin_table_output .= "<td><input type='text' name='cf7pp_id' value='$id'> </td><td> (Optional)</td></tr>";
 	
-	$admin_table_output .= "<input type='hidden' name='cf7pp_post' value='$post_id'>";
+	$admin_table_output .= "<input type='hidden' name='cf7pp_post' value='" . esc_attr($post_id) . "'>";
 
 	$admin_table_output .= "</td></tr></table>";
 
