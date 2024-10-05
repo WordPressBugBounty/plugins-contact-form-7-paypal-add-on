@@ -1,7 +1,7 @@
 === Contact Form 7 - PayPal & Stripe Add-on ===
 Contributors: scottpaterson,wp-plugin
 Donate link: https://wpplugin.org/donate/
-Tags: paypal, contact form 7, stripe, contact form, ecommerce
+Tags: paypal, stripe, paypal payments
 Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.6
@@ -10,7 +10,7 @@ Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Integrates PayPal & Stripe with Contact Form 7. Start selling with PayPal and / or Stripe today. Developed by an Official PayPal Partner.
+Seamlessly integrate PayPal and Stripe with Contact Form 7. Official PayPal and Stripe Partner.
 
 == Description ==
 = Overview =
@@ -29,7 +29,7 @@ Each contact form can have its own PayPal & Stripe settings. When a contact form
 
 If you have any problems, questions, or issues about this plugin then please create a support request and we will get back to you quickly.
 
-WP Plugin is an offical PayPal Partner based in Boulder, Colorado. You can visit WP Plugins website at [wpplugin.org](https://wpplugin.org). Various trademarks held by their respective owners.
+WP Plugin is an offical PayPal & Stripe Partner based in Boulder, Colorado. You can visit the WP Plugin website at [wpplugin.org](https://wpplugin.org). Various trademarks held by their respective owners.
 
 Note: This PayPal & Stripe plugin works with both the old and new Contact Form 7 interface. A PayPal account, which is free, is required to use PayPal. A Stripe account, which is also free, is required to use Stripe. You can use the plugin with only PayPal enabled, only Stripe or PayPal and Stripe at the same time.
 
@@ -50,7 +50,7 @@ Here is a short video of how the Pro version works:
 [youtube https://www.youtube.com/watch?v=aS9bxBDgpqY]
 
 * Only send Contact Form 7 email if PayPal or Stripe payment is successful.
-* No 2% Stripe per transaction application fee (only pay normal Stripe fees).
+* No 2% per transaction application fee (only pay normal PayPal & Stripe fees).
 * Link a form item to quantity - A form item can be a textbox, dropdown, radio button, etc. anything that is a number.<br />
 * Link a form item to price - The price field can be linked to any form item. Pipes are supported to allow for dropdown text options for each price.<br />
 * Link up to 5 different price elements per form <br />
@@ -59,15 +59,12 @@ Here is a short video of how the Pro version works:
 * Skip redirecting based upon form elements<br />
 * Amazing plugin support agents from California and Colorado<br />
 * Choose a success / cancel  payment URL per contact form<br />
-* Accept recurring payments with our [Recurring Add-on](https://wpplugin.org/downloads/contact-form-7-recurring-payments-pro/)<br />
 
 [Get the Pro Version](https://wpplugin.org/downloads/contact-form-7-paypal-add-on/)
 
 
 = Our other Contact Form 7 plugins =
 > [Contact Form 7 Redirect & Thank You Page](https://wordpress.org/plugins/cf7-redirect-thank-you-page)
-> [Contact Form 7 - Recurring Payments Pro](https://wpplugin.org/downloads/contact-form-7-recurring-payments-pro/)
-
 
 
 == Installation ==
@@ -79,6 +76,22 @@ Here is a short video of how the Pro version works:
 > 4. That's it. You are now ready to start accepting PayPal payment on your website through your contact form.
 
 == Frequently Asked Questions ==
+
+= Where can I find complete documentation? =
+Full searchable docs for Contact Form 7 - PayPal & Stripe Add-on can be found here: [https://wpplugin.org/documentation/](https://wpplugin.org/documentation/)
+
+= How do I see a list of my sales? =
+when you install the app, in the "Contact" menu, you will see an option for "PayPal & Stripe Payments".
+
+= Can I let the user choose how they want to pay, either using PayPal or Stripe? =
+Yes, you can let the user choose how they want to pay. Documentation for this feature can be found here: [https://wpplugin.org/documentation/paypal-stripe-gateway-code/](https://wpplugin.org/documentation/paypal-stripe-gateway-code/)
+
+= Do I have to use PayPal & Stripe at the same time? =
+No, you don't have to. You can use one or both payment gateways at the same time.
+
+= Can I only send the email after a successful PayPal or Stripe payment? =
+Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact-form-7-paypal-add-on/](https://wpplugin.org/downloads/contact-form-7-paypal-add-on/)
+
 
 == Screenshots ==
 
