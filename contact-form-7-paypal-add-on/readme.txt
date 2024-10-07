@@ -1,7 +1,7 @@
 === Contact Form 7 - PayPal & Stripe Add-on ===
 Contributors: scottpaterson,wp-plugin
 Donate link: https://wpplugin.org/donate/
-Tags: paypal, stripe, paypal payments
+Tags: paypal, stripe, paypal payments, credit cards
 Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.6
@@ -18,6 +18,9 @@ Seamlessly integrate PayPal and Stripe with Contact Form 7. Official PayPal and 
 This PayPal plugin seamlessly integrates PayPal & Stripe with Contact Form 7.
 
 Official PayPal & Stripe Partner.
+
+= If you have any questions or problems at all, we're happy to help you right away! = 
+Please create a new post in the [support forum](https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/)
 
 Watch this short video of how the plugin works:
 
