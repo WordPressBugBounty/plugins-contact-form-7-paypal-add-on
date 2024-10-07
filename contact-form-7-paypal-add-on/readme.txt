@@ -1,7 +1,7 @@
 === Contact Form 7 - PayPal & Stripe Add-on ===
 Contributors: scottpaterson,wp-plugin
 Donate link: https://wpplugin.org/donate/
-Tags: paypal, stripe, paypal payments, credit cards
+Tags: paypal, stripe, payments, credit card, ecommerce
 Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.6
@@ -10,44 +10,40 @@ Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Seamlessly integrate PayPal and Stripe with Contact Form 7. Official PayPal and Stripe Partner.
+Easily add PayPal and Stripe to Contact Form 7. Accept credit card payments with Stripe & PayPal on your site today. Offical PayPal & Stripe Partner.
 
 == Description ==
-= Overview =
 
-This PayPal plugin seamlessly integrates PayPal & Stripe with Contact Form 7.
+###  This plugin seamlessly integrates PayPal & Stripe with Contact Form 7
 
-Official PayPal & Stripe Partner.
+Do you use Contact Form 7 and want to accept PayPal & Stripe payments easily? This plugin can do just that. It's easy to setup and use. On top of that we're an official PayPal and Stripe partner.
 
-= If you have any questions or problems at all, we're happy to help you right away! = 
-Please create a new post in the [support forum](https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/)
+###  Do you have questions or problems?
+We're here to help! Please create a support post in the [support forum](https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/) and we'll get back to you right away!
 
-Watch this short video of how the plugin works:
+###  Watch this short video to see how the plugin works:
 
 [youtube https://www.youtube.com/watch?v=GZ_lYEAJgsQ]
 
-Each contact form can have its own PayPal & Stripe settings. When a contact form is enabled with PayPal, and the user submits the form it will send the email as usual, then auto redirect to PayPal.  When a contact form is enabled with Stripe, and the user submits the form it will send the email as usual, then auto redirect to a Stripe payment page.
+Each contact form can have its own PayPal & Stripe settings. When a contact form is enabled to use PayPal or Stripe, and the user submits the form it will send the email as usual, then auto redirect. 
 
->**[Check out our demos & Pro version](https://wpplugin.org/downloads/contact-form-7-paypal-add-on/)**
+Note: This plugin works with both the old and new Contact Form 7 interface. A PayPal account, which is free, is required to use PayPal. A Stripe account, which is also free, is required to use Stripe. You can use the plugin with only PayPal enabled, only Stripe or PayPal and Stripe at the same time.
 
-If you have any problems, questions, or issues about this plugin then please create a support request and we will get back to you quickly.
+###   Plugin Features
 
-WP Plugin is an offical PayPal & Stripe Partner based in Boulder, Colorado. You can visit the WP Plugin website at [wpplugin.org](https://wpplugin.org). Various trademarks held by their respective owners.
-
-Note: This PayPal & Stripe plugin works with both the old and new Contact Form 7 interface. A PayPal account, which is free, is required to use PayPal. A Stripe account, which is also free, is required to use Stripe. You can use the plugin with only PayPal enabled, only Stripe or PayPal and Stripe at the same time.
-
-= Contact Form 7 - PayPal & Stripe Integration Add-on Features =
-
-*	Payments history for PayPal & Stripe
+*	View payments history for PayPal & Stripe
 *	Set items name, price, SKU/ID per contact form
 *   Built in support for 18 languages (PayPal currently supports 18 languages)
 *   Built in support 25 currencies (PayPal currently supports 25 currencies)
 *	PayPal testing through SandBox
 *	Choose a cancel payment URL
-*	Choose a succesful payment URL
+*	Choose a successful payment URL
+*  Supports PayPal Express
 
-= Contact Form 7 - PayPal & Stripe Add-on Pro =
-We offer a Pro version of this PayPal plugin for business owners who need more features.<br />
+###   Pro Version
+We offer a Pro version of this PayPal plugin for business owners who need more features.
+
+>**[Learn more about the Pro version](https://wpplugin.org/downloads/contact-form-7-paypal-add-on/)**
 
 Here is a short video of how the Pro version works:
 [youtube https://www.youtube.com/watch?v=aS9bxBDgpqY]
@@ -63,12 +59,13 @@ Here is a short video of how the Pro version works:
 * Amazing plugin support agents from California and Colorado<br />
 * Choose a success / cancel  payment URL per contact form<br />
 
-[Get the Pro Version](https://wpplugin.org/downloads/contact-form-7-paypal-add-on/)
+>**[Upgrade to the Pro Version Today!](https://wpplugin.org/downloads/contact-form-7-paypal-add-on/)**
 
-
-= Our other Contact Form 7 plugins =
+###   Our other Contact Form 7 plugins
 > [Contact Form 7 Redirect & Thank You Page](https://wordpress.org/plugins/cf7-redirect-thank-you-page)
 
+###   About Us
+WP Plugin is based in Boulder, Colorado. You can visit the WP Plugin website at [wpplugin.org](https://wpplugin.org). Various trademarks held by their respective owners.
 
 == Installation ==
 
