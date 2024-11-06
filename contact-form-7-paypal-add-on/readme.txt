@@ -4,9 +4,9 @@ Donate link: https://wpplugin.org/donate/
 Tags: paypal, stripe, payments, credit card, ecommerce
 Author URI: https://wpplugin.org
 Requires at least: 3.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 5.5
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,10 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.3.2 =
+* 11/5/24
+* Fix - Small security issue fixed reported by Wordfence.
 
 = 2.3.1 =
 * 9/27/24
