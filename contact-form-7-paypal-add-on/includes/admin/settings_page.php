@@ -17,11 +17,13 @@ function cf7pp_admin_table() {
 
 	// save and update options
 	if (isset($_POST['update'])) {
-
+		
+		$error = false;
+		
 		if ( empty( $_POST['cf7pp_nonce_field'] ) || !wp_verify_nonce( $_POST['cf7pp_nonce_field'], 'cf7pp_save_settings') ) {
 			wp_die( __( "You do not have sufficient permissions to access this page." ) );
 		}
-
+		
 		$options['currency'] = 					sanitize_text_field($_POST['currency']);
 		if (empty($options['currency'])) { 		$options['currency'] = ''; }
 
@@ -57,10 +59,30 @@ function cf7pp_admin_table() {
 		
 		$options['failed'] = 					sanitize_text_field($_POST['failed']);
 		if (empty($options['failed'])) { 		$options['failed'] = 'Payment Failed'; }
-
-		cf7pp_free_options_update( $options );
-
-		echo "<br /><div class='updated'><p><strong>"; _e("Settings Updated."); echo "</strong></p></div>";
+		
+		
+		if (
+			(!empty($options['cancel']) && !filter_var($options['cancel'], FILTER_VALIDATE_URL)) ||
+			(!empty($options['stripe_return']) && !filter_var($options['stripe_return'], FILTER_VALIDATE_URL)) ||
+			(!empty($options['return']) && !filter_var($options['return'], FILTER_VALIDATE_URL))
+		) {
+			?>
+			<script>
+				window.location.replace("?page=cf7pp_admin_table&tab=6&err=1");
+			</script>
+			<?php
+			$error = true;
+		}
+		
+		
+		if ($error == false) { 
+			cf7pp_free_options_update( $options );
+			?>
+			<script>
+				window.location.replace("?page=cf7pp_admin_table");
+			</script>
+			<?php
+		}
 
 	}
 
@@ -81,6 +103,16 @@ function cf7pp_admin_table() {
 
 
 <form method='post'>
+
+
+		<?php
+		if (isset($_GET['err']) && sanitize_text_field($_GET['err'])) {
+			echo "<br /><div class='error'><p><strong>"; _e(" Error: PayPal and Stripe \"Cancel\" and \"Return\" options must be full URLs that start with http:// or https://"); echo "</strong></p></div>";
+			$error = true;
+		} else {
+			echo "<br /><div class='updated'><p><strong>"; _e("Settings Updated"); echo "</strong></p></div>";
+		}
+		?>
 
 	<table width='70%'><tr><td>
 	<div class='wrap'><h2>Contact Form 7 - PayPal & Stripe Settings</h2></div><br /></td><td><br />
