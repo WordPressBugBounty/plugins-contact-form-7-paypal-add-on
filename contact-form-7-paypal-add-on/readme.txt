@@ -6,7 +6,7 @@ Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.7
 Requires PHP: 5.5
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,10 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.3.4 =
+* 3/10/25
+* Fix - On the settings page, the saved noticed was showing all the time.
 
 = 2.3.3 =
 * 3/7/25

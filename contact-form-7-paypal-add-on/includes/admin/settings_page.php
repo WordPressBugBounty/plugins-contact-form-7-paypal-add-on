@@ -79,7 +79,7 @@ function cf7pp_admin_table() {
 			cf7pp_free_options_update( $options );
 			?>
 			<script>
-				window.location.replace("?page=cf7pp_admin_table");
+				window.location.replace("?page=cf7pp_admin_table&saved=1");
 			</script>
 			<?php
 		}
@@ -109,7 +109,9 @@ function cf7pp_admin_table() {
 		if (isset($_GET['err']) && sanitize_text_field($_GET['err'])) {
 			echo "<br /><div class='error'><p><strong>"; _e(" Error: PayPal and Stripe \"Cancel\" and \"Return\" options must be full URLs that start with http:// or https://"); echo "</strong></p></div>";
 			$error = true;
-		} else {
+		}
+
+		if (isset($_GET['saved']) && sanitize_text_field($_GET['saved'])) {
 			echo "<br /><div class='updated'><p><strong>"; _e("Settings Updated"); echo "</strong></p></div>";
 		}
 		?>
