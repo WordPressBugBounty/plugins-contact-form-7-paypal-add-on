@@ -4,9 +4,9 @@ Donate link: https://wpplugin.org/donate/
 Tags: paypal, stripe, payments, credit card, ecommerce
 Author URI: https://wpplugin.org
 Requires at least: 3.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 2.3.4
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,13 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.4 =
+* 4/21/25
+* New - The code is now correctly setup for plugin translation into different languages.
+* New - Added deactivation survey.
+* Fix - Fixed small security issue.
+* Fix - Improved switching between Live / Sandbox mode on settings page.
 
 = 2.3.4 =
 * 3/10/25

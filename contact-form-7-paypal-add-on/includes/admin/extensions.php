@@ -16,7 +16,7 @@ function cf7pp_extensions_page()	{
 		<h3>
 			<?php _e( 'You may be interested in our other popular WordPress plugins:', 'cf7pp' ); ?>
 		</h3>
-			Make your site <i><b> do more </b></i> today.
+			<?php _e('Make your site do more today.', 'cf7pp'); ?>
 		
 		<div class="cf7pp-extension-wrapper grid3">
 			<?php foreach ( $extensions as $key => $extension ) :

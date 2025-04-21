@@ -17,6 +17,27 @@ function newtab(id) {
 	document.getElementById('hidden_tab_value').value=x;
 }
 
+// Add an event listener to ensure tab state is preserved when the form is submitted
+jQuery(document).ready(function($) {
+    // Store the current tab in the hidden field when the save button is clicked
+    $('input[type="submit"]').on('click', function() {
+        // Get the active tab
+        var activeTab = $('.nav-tab-active').attr('id').replace('id', '');
+        // Update the hidden field
+        $('#hidden_tab_value').val(activeTab);
+    });
+    
+    // Auto-save when PayPal or Stripe mode is changed
+    $('input[name="mode"], input[name="mode_stripe"]').on('change', function() {
+        // Get the active tab
+        var activeTab = $('.nav-tab-active').attr('id').replace('id', '');
+        // Update the hidden field
+        $('#hidden_tab_value').val(activeTab);
+        // Submit the form
+        $(this).closest('form').submit();
+    });
+});
+
 (function( $ ) {
     'use strict';
     $( function() {

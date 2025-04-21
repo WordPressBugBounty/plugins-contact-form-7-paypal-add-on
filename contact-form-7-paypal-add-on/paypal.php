@@ -7,8 +7,10 @@ Description: Integrates PayPal & Stripe with Contact Form 7
 Author: Scott Paterson
 Author URI: https://wpplugin.org/downloads/contact-form-7-paypal-add-on/
 License: GPL2
-Version: 2.3.4
+Version: 2.4
 Requires Plugins: contact-form-7
+Text Domain: cf7pp
+Domain Path: /languages
 */
 
 /*  Copyright 2014-2025 WPPlugin LLC / Scott Paterson
@@ -43,7 +45,7 @@ if (function_exists('cf7pp_pro')) {
 	deactivate_plugins('contact-form-7-paypal-add-on-pro/paypal.php');
 
 } else {
-	define('CF7PP_VERSION_NUM', 	'2.3.4');
+	define('CF7PP_VERSION_NUM', 	'2.4');
 
 	define( 'CF7PP_STRIPE_CONNECT_ENDPOINT', 'https://wpplugin.org/stripe/connect.php' );
 	define( 'CF7PP_FREE_PPCP_API', 'https://wpplugin.org/ppcp-cf7pp/' );
@@ -63,8 +65,8 @@ if (function_exists('cf7pp_pro')) {
 			'redirect' => '1',
 			'request_method' => '1',
 			'session' => '1',
-			'success' => 'Payment Successful',
-			'failed' => 'Payment Failed',
+			'success' => __('Payment Successful', 'cf7pp'),
+			'failed' => __('Payment Failed', 'cf7pp'),
 			'stripe_return' => '',
 			'mode_stripe' => '2',
 			'acct_id_test' => '',
@@ -116,6 +118,14 @@ if (function_exists('cf7pp_pro')) {
 		}
 	}
 	add_action( 'init', 'cf7pp_enable_cf7_ajax' );
+
+
+	// Load the plugin's text domain for translation
+	function cf7pp_load_textdomain() {
+	    load_plugin_textdomain( 'cf7pp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+	add_action( 'plugins_loaded', 'cf7pp_load_textdomain' );
+
 
 
 	// check to make sure contact form 7 is installed and active
@@ -183,13 +193,44 @@ if (function_exists('cf7pp_pro')) {
 		function cf7pp_my_admin_notice() {
 			?>
 			<div class="error">
-				<p><?php _e( '<b>Contact Form 7 - PayPal & Stripe Add-on:</b> Contact Form 7 is not installed and / or active! Please install <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a>.', 'cf7pp' ); ?></p>
+				<p><b><?php _e( 'Contact Form 7 - PayPal & Stripe Add-on:', 'cf7pp' ); ?></b> <?php _e( 'Contact Form 7 is not installed and / or active! Please install', 'cf7pp' ); ?> <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/"><?php _e( 'Contact Form 7', 'cf7pp' ); ?></a>.</p>
 			</div>
 			<?php
 		}
 		add_action( 'admin_notices', 'cf7pp_my_admin_notice' );
 		
 	}
+
+	// Add deactivation survey
+	function cf7pp_enqueue_deactivation_survey() {
+		if (get_current_screen() && get_current_screen()->id === 'plugins') {
+			wp_enqueue_script('cf7pp-deactivation-survey', plugins_url('assets/js/deactivation-survey.js', __FILE__), array('jquery'), CF7PP_VERSION_NUM, true);
+			wp_localize_script('cf7pp-deactivation-survey', 'cf7ppDeactivationSurvey', array(
+				'pluginVersion' => CF7PP_VERSION_NUM,
+				'deactivationOptions' => array(
+					'upgraded_to_pro' => __('I upgraded to the Pro version', 'cf7pp'),
+					'no_longer_needed' => __('I no longer need the plugin', 'cf7pp'),
+					'found_better' => __('I found a better plugin', 'cf7pp'),
+					'not_working' => __('The plugin is not working', 'cf7pp'),
+					'fees_expensive' => __('The fees are too high', 'cf7pp'),
+					'temporary' => __('It\'s a temporary deactivation', 'cf7pp'),
+					'other' => __('Other', 'cf7pp')
+				),
+				'strings' => array(
+					'title' => __('Contact Form 7 PayPal & Stripe Add-on Deactivation', 'cf7pp'),
+					'description' => __('If you have a moment, please let us know why you are deactivating. All submissions are anonymous and we only use this feedback to improve this plugin.', 'cf7pp'),
+					'otherPlaceholder' => __('Please tell us more...', 'cf7pp'),
+					'skipButton' => __('Skip & Deactivate', 'cf7pp'),
+					'submitButton' => __('Submit & Deactivate', 'cf7pp'),
+					'cancelButton' => __('Cancel', 'cf7pp'),
+					'betterPluginQuestion' => __('What is the name of the plugin?', 'cf7pp'),
+					'notWorkingQuestion' => __('We\'re sorry to hear that. Can you describe the issue?', 'cf7pp'),
+					'errorRequired' => __('Error: Please complete the required field.', 'cf7pp')
+				)
+			));
+		}
+	}
+	add_action('admin_enqueue_scripts', 'cf7pp_enqueue_deactivation_survey');
 }
 
 

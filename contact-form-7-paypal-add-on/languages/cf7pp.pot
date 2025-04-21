@@ -1,0 +1,1031 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Contact Form 7 – PayPal & Stripe Add-on\n"
+"POT-Creation-Date: 2025-04-21 14:14-0700\n"
+"PO-Revision-Date: 2025-04-09 15:44-0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;_n_noop;_nx_noop;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;translate_nooped_plural\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/extensions.php:17
+msgid "You may be interested in our other popular WordPress plugins:"
+msgstr ""
+
+#: includes/admin/extensions.php:19
+msgid "Make your site do more today."
+msgstr ""
+
+#: includes/admin/extensions.php:54
+msgid "Learn More"
+msgstr ""
+
+#: includes/admin/menu_links.php:8 includes/admin/tabs_page.php:40
+msgid "PayPal & Stripe Settings"
+msgstr ""
+
+#: includes/admin/menu_links.php:18
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/menu_links.php:19
+msgid "Pro Version"
+msgstr ""
+
+#: includes/admin/notices.php:47
+msgid "We noticed you've been using Contact Form 7 - PayPal & Stripe for a while!"
+msgstr ""
+
+#: includes/admin/notices.php:73
+msgid "Hello -"
+msgstr ""
+
+#: includes/admin/notices.php:78
+msgid "If you like this plugin, please consider leaving a positive review to spread the word. Or if you have any issues or questions, please leave a support message"
+msgstr ""
+
+#: includes/admin/notices.php:78 includes/admin/settings_page.php:178 includes/admin/settings_page.php:182 includes/admin/settings_page.php:186
+#: includes/admin/tabs_page.php:53
+msgid "here"
+msgstr ""
+
+#: includes/admin/notices.php:88
+msgid "- Thank you so much!"
+msgstr ""
+
+#: includes/admin/notices.php:91
+msgid "Okay, you deserve it"
+msgstr ""
+
+#: includes/admin/notices.php:93
+msgid "Maybe later"
+msgstr ""
+
+#: includes/admin/notices.php:95
+msgid "Never"
+msgstr ""
+
+#: includes/admin/notices.php:161 includes/admin/notices.php:248
+msgid "Important"
+msgstr ""
+
+#: includes/admin/notices.php:162
+msgid "'Contact Form 7 - PayPal & Stripe Add-on' now uses Stripe Connect."
+msgstr ""
+
+#: includes/admin/notices.php:163
+msgid "If you use Stripe, please use Stripe Connect."
+msgstr ""
+
+#: includes/admin/notices.php:164
+msgid "Have questions: see the"
+msgstr ""
+
+#: includes/admin/notices.php:164
+msgid "documentation"
+msgstr ""
+
+#: includes/admin/notices.php:168
+msgid "WPPlugin LLC is an official Stripe Partner. Pay as you go pricing: 2% per-transaction fee + Stripe fees."
+msgstr ""
+
+#: includes/admin/notices.php:209
+msgid "Get Started"
+msgstr ""
+
+#: includes/admin/notices.php:224
+msgid "An error occurred while interacting with our Stripe Connect interface."
+msgstr ""
+
+#: includes/admin/notices.php:249
+msgid "'Contact Form 7 - PayPal & Stripe Add-on' now uses the PayPal Commerce Platform."
+msgstr ""
+
+#: includes/admin/notices.php:250
+msgid "PayPal Standard is now a Legacy product."
+msgstr ""
+
+#: includes/admin/notices.php:251
+msgid "If you use PayPal, please update to PayPal Commerce Platform."
+msgstr ""
+
+#: includes/admin/notices.php:255
+msgid "WPPlugin LLC is an official PayPal Partner. Pay as you go pricing: 2% per-transaction fee + PayPal fees."
+msgstr ""
+
+#: includes/admin/settings_page.php:13 includes/admin/settings_page.php:24
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: includes/admin/settings_page.php:58 paypal.php:68
+msgid "Payment Successful"
+msgstr ""
+
+#: includes/admin/settings_page.php:61 paypal.php:69
+msgid "Payment Failed"
+msgstr ""
+
+#: includes/admin/settings_page.php:110
+msgid " Error: PayPal and Stripe \"Cancel\" and \"Return\" options must be full URLs that start with http:// or https://"
+msgstr ""
+
+#: includes/admin/settings_page.php:115
+msgid "Settings Updated"
+msgstr ""
+
+#: includes/admin/settings_page.php:120
+msgid "Contact Form 7 - PayPal & Stripe Settings"
+msgstr ""
+
+#: includes/admin/settings_page.php:121
+msgid "Save Settings"
+msgstr ""
+
+#: includes/admin/settings_page.php:130 includes/admin/settings_page.php:154
+msgid "Getting Started"
+msgstr ""
+
+#: includes/admin/settings_page.php:131 includes/admin/settings_page.php:197
+msgid "Language & Currency"
+msgstr ""
+
+#: includes/admin/settings_page.php:132
+msgid "PayPal"
+msgstr ""
+
+#: includes/admin/settings_page.php:133
+msgid "Stripe"
+msgstr ""
+
+#: includes/admin/settings_page.php:134 paypal.php:217
+msgid "Other"
+msgstr ""
+
+#: includes/admin/settings_page.php:135 includes/admin/settings_page.php:435
+msgid "Extensions"
+msgstr ""
+
+#: includes/admin/settings_page.php:158
+msgid "Important - If your form has trouble redirecting - try"
+msgstr ""
+
+#: includes/admin/settings_page.php:158
+msgid "changing these settings"
+msgstr ""
+
+#: includes/admin/settings_page.php:158
+msgid "This will fix most issues easily."
+msgstr ""
+
+#: includes/admin/settings_page.php:162
+msgid "This plugin allows you to accept payments through your Contact Form 7 forms."
+msgstr ""
+
+#: includes/admin/settings_page.php:166
+msgid "On this page, you can setup your general PayPal & Stripe settings which will be used for all of your"
+msgstr ""
+
+#: includes/admin/settings_page.php:166
+msgid "Contact Form 7 forms"
+msgstr ""
+
+#: includes/admin/settings_page.php:170
+msgid ""
+"When you go to your list of contact forms, make a new form or edit an existing form, you will see a new tab called 'PayPal & Stripe'. Here you can set individual "
+"settings for that specific contact form."
+msgstr ""
+
+#: includes/admin/settings_page.php:174
+msgid "Once you have PayPal or Stripe enabled on a form, you will receive an email as soon as the customer submits the form. You can view the payment status on the"
+msgstr ""
+
+#: includes/admin/settings_page.php:174
+msgid "PayPal & Stripe Payments page"
+msgstr ""
+
+#: includes/admin/settings_page.php:178
+msgid "You can view documentation for this plugin"
+msgstr ""
+
+#: includes/admin/settings_page.php:182
+msgid "If you need support, please post your question"
+msgstr ""
+
+#: includes/admin/settings_page.php:186
+msgid "A lot of work went into building this plugin. If you enjoy it, please leave a 5 star review"
+msgstr ""
+
+#: includes/admin/settings_page.php:204
+msgid "Language:"
+msgstr ""
+
+#: includes/admin/settings_page.php:207
+msgid "Danish"
+msgstr ""
+
+#: includes/admin/settings_page.php:208
+msgid "Dutch"
+msgstr ""
+
+#: includes/admin/settings_page.php:209
+msgid "English"
+msgstr ""
+
+#: includes/admin/settings_page.php:210
+msgid "English - UK"
+msgstr ""
+
+#: includes/admin/settings_page.php:211
+msgid "French"
+msgstr ""
+
+#: includes/admin/settings_page.php:212
+msgid "German"
+msgstr ""
+
+#: includes/admin/settings_page.php:213
+msgid "Hebrew"
+msgstr ""
+
+#: includes/admin/settings_page.php:214
+msgid "Italian"
+msgstr ""
+
+#: includes/admin/settings_page.php:215
+msgid "Japanese"
+msgstr ""
+
+#: includes/admin/settings_page.php:216
+msgid "Norwgian"
+msgstr ""
+
+#: includes/admin/settings_page.php:217
+msgid "Polish"
+msgstr ""
+
+#: includes/admin/settings_page.php:218
+msgid "Portuguese"
+msgstr ""
+
+#: includes/admin/settings_page.php:219
+msgid "Russian"
+msgstr ""
+
+#: includes/admin/settings_page.php:220
+msgid "Spanish"
+msgstr ""
+
+#: includes/admin/settings_page.php:221
+msgid "Swedish"
+msgstr ""
+
+#: includes/admin/settings_page.php:222
+msgid "Simplified Chinese -China only"
+msgstr ""
+
+#: includes/admin/settings_page.php:223
+msgid "Traditional Chinese - Hong Kong only"
+msgstr ""
+
+#: includes/admin/settings_page.php:224
+msgid "Traditional Chinese - Taiwan only"
+msgstr ""
+
+#: includes/admin/settings_page.php:225
+msgid "Turkish"
+msgstr ""
+
+#: includes/admin/settings_page.php:226
+msgid "Thai"
+msgstr ""
+
+#: includes/admin/settings_page.php:234
+msgid "Currency:"
+msgstr ""
+
+#: includes/admin/settings_page.php:236
+msgid "Australian Dollar - AUD"
+msgstr ""
+
+#: includes/admin/settings_page.php:237
+msgid "Brazilian Real - BRL"
+msgstr ""
+
+#: includes/admin/settings_page.php:238
+msgid "Canadian Dollar - CAD"
+msgstr ""
+
+#: includes/admin/settings_page.php:239
+msgid "Czech Koruna - CZK"
+msgstr ""
+
+#: includes/admin/settings_page.php:240
+msgid "Danish Krone - DKK"
+msgstr ""
+
+#: includes/admin/settings_page.php:241
+msgid "Euro - EUR"
+msgstr ""
+
+#: includes/admin/settings_page.php:242
+msgid "Hong Kong Dollar - HKD"
+msgstr ""
+
+#: includes/admin/settings_page.php:243
+msgid "Hungarian Forint - HUF"
+msgstr ""
+
+#: includes/admin/settings_page.php:244
+msgid "Israeli New Sheqel - ILS"
+msgstr ""
+
+#: includes/admin/settings_page.php:245
+msgid "Japanese Yen - JPY"
+msgstr ""
+
+#: includes/admin/settings_page.php:246
+msgid "Malaysian Ringgit - MYR"
+msgstr ""
+
+#: includes/admin/settings_page.php:247
+msgid "Mexican Peso - MXN"
+msgstr ""
+
+#: includes/admin/settings_page.php:248
+msgid "Norwegian Krone - NOK"
+msgstr ""
+
+#: includes/admin/settings_page.php:249
+msgid "New Zealand Dollar - NZD"
+msgstr ""
+
+#: includes/admin/settings_page.php:250
+msgid "Philippine Peso - PHP"
+msgstr ""
+
+#: includes/admin/settings_page.php:251
+msgid "Polish Zloty - PLN"
+msgstr ""
+
+#: includes/admin/settings_page.php:252
+msgid "Pound Sterling - GBP"
+msgstr ""
+
+#: includes/admin/settings_page.php:253
+msgid "Romanian Leu - RON (Stripe Only)"
+msgstr ""
+
+#: includes/admin/settings_page.php:254
+msgid "Russian Ruble - RUB"
+msgstr ""
+
+#: includes/admin/settings_page.php:255
+msgid "Singapore Dollar - SGD"
+msgstr ""
+
+#: includes/admin/settings_page.php:256
+msgid "Swedish Krona - SEK"
+msgstr ""
+
+#: includes/admin/settings_page.php:257
+msgid "Swiss Franc - CHF"
+msgstr ""
+
+#: includes/admin/settings_page.php:258
+msgid "Taiwan New Dollar - TWD"
+msgstr ""
+
+#: includes/admin/settings_page.php:259
+msgid "Thai Baht - THB"
+msgstr ""
+
+#: includes/admin/settings_page.php:260
+msgid "Turkish Lira - TRY"
+msgstr ""
+
+#: includes/admin/settings_page.php:261
+msgid "U.S. Dollar - USD"
+msgstr ""
+
+#: includes/admin/settings_page.php:326
+msgid "Stripe Account"
+msgstr ""
+
+#: includes/admin/settings_page.php:331 includes/admin/settings_page.php:538
+msgid "Connection status:"
+msgstr ""
+
+#: includes/admin/settings_page.php:336
+msgid "Live Publishable Key:"
+msgstr ""
+
+#: includes/admin/settings_page.php:337
+msgid "Live Secret Key:"
+msgstr ""
+
+#: includes/admin/settings_page.php:342
+msgid "Test Publishable Key:"
+msgstr ""
+
+#: includes/admin/settings_page.php:343
+msgid "Test Secret Key:"
+msgstr ""
+
+#: includes/admin/settings_page.php:347
+msgid "Sandbox Mode:"
+msgstr ""
+
+#: includes/admin/settings_page.php:349
+msgid "On (Sandbox mode)"
+msgstr ""
+
+#: includes/admin/settings_page.php:350
+msgid "Off (Live mode)"
+msgstr ""
+
+#: includes/admin/settings_page.php:357
+msgid "Default Text:"
+msgstr ""
+
+#: includes/admin/settings_page.php:358
+msgid "Payment Successful:"
+msgstr ""
+
+#: includes/admin/settings_page.php:359
+msgid "Payment Failed:"
+msgstr ""
+
+#: includes/admin/settings_page.php:369
+msgid "Other Settings"
+msgstr ""
+
+#: includes/admin/settings_page.php:375
+msgid "PayPal Cancel URL:"
+msgstr ""
+
+#: includes/admin/settings_page.php:375 includes/admin/settings_page.php:382 includes/admin/settings_page.php:389 includes/admin/tabs_page.php:62
+#: includes/admin/tabs_page.php:68
+msgid "Optional"
+msgstr ""
+
+#: includes/admin/settings_page.php:376
+msgid "If the customer goes to PayPal and clicks the cancel button, where do they go. Example: http://example.com/cancel. Max length: 1,024. "
+msgstr ""
+
+#: includes/admin/settings_page.php:382
+msgid "PayPal Return URL:"
+msgstr ""
+
+#: includes/admin/settings_page.php:383
+msgid "If the customer goes to PayPal and successfully pays, where are they redirected to after. Example: http://example.com/thankyou. Max length: 1,024. "
+msgstr ""
+
+#: includes/admin/settings_page.php:389
+msgid "Stripe Return URL:"
+msgstr ""
+
+#: includes/admin/settings_page.php:390
+msgid "If the customer successfully pays with Stripe, where are they redirected to after. Example: http://example.com/thankyou. "
+msgstr ""
+
+#: includes/admin/settings_page.php:401 includes/admin/settings_page.php:413
+msgid "Method 1 recommend unless the form has problems redirecting."
+msgstr ""
+
+#: includes/admin/settings_page.php:410
+msgid "1 (Admin Ajax)"
+msgstr ""
+
+#: includes/admin/settings_page.php:411
+msgid "2 (Rest API)"
+msgstr ""
+
+#: includes/admin/settings_page.php:422
+msgid "Cookies"
+msgstr ""
+
+#: includes/admin/settings_page.php:423
+msgid "Sessions"
+msgstr ""
+
+#: includes/admin/settings_page.php:425
+msgid "Cookies are recommend unless the form has problems."
+msgstr ""
+
+#: includes/admin/settings_page.php:477
+msgid "Pro Version Features"
+msgstr ""
+
+#: includes/admin/settings_page.php:483
+msgid "We offer a Pro version of our plugins for those who want more features."
+msgstr ""
+
+#: includes/admin/settings_page.php:487
+msgid "Only send email if PayPal / Stripe payment is successful"
+msgstr ""
+
+#: includes/admin/settings_page.php:488
+msgid "No 2% PayPal per transaction application fee"
+msgstr ""
+
+#: includes/admin/settings_page.php:489
+msgid "No 2% Stripe per transaction application fee"
+msgstr ""
+
+#: includes/admin/settings_page.php:490
+msgid "Link any form item to price, quantity, or description"
+msgstr ""
+
+#: includes/admin/settings_page.php:491
+msgid "Sell up to 5 items per form"
+msgstr ""
+
+#: includes/admin/settings_page.php:492
+msgid "Charge tax and shipping"
+msgstr ""
+
+#: includes/admin/settings_page.php:493
+msgid "Separate PayPal & Stripe account per form"
+msgstr ""
+
+#: includes/admin/settings_page.php:494
+msgid "Skip redirecting based upon form elements"
+msgstr ""
+
+#: includes/admin/settings_page.php:495
+msgid "Accept recurring payments with our"
+msgstr ""
+
+#: includes/admin/settings_page.php:495
+msgid "Recurring Add-on"
+msgstr ""
+
+#: includes/admin/settings_page.php:496
+msgid "Amazing plugin support agents from USA"
+msgstr ""
+
+#: includes/admin/settings_page.php:497
+msgid "No risk, 30 day return policy"
+msgstr ""
+
+#: includes/admin/settings_page.php:498
+msgid "Many more features!"
+msgstr ""
+
+#: includes/admin/settings_page.php:501
+msgid "Over 4,200 happy Pro version customers"
+msgstr ""
+
+#: includes/admin/settings_page.php:504
+msgid "Get the Pro Version"
+msgstr ""
+
+#: includes/admin/settings_page.php:547
+msgid "Administrator (Owner)"
+msgstr ""
+
+#: includes/admin/settings_page.php:548
+msgid "Pay as you go pricing: 2% per-transaction fee + PayPal fees."
+msgstr ""
+
+#: includes/admin/settings_page.php:552
+msgid "Your PayPal account is connected in"
+msgstr ""
+
+#: includes/admin/settings_page.php:552
+msgid "mode."
+msgstr ""
+
+#: includes/admin/settings_page.php:567
+msgid "Connect in"
+msgstr ""
+
+#: includes/admin/settings_page.php:567
+msgid "mode"
+msgstr ""
+
+#: includes/admin/settings_page.php:567
+msgid "or"
+msgstr ""
+
+#: includes/admin/settings_page.php:567
+msgid "disconnect this account"
+msgstr ""
+
+#: includes/admin/settings_page.php:572
+msgid "There were errors connecting your PayPal account. Resolve them in your account settings, by contacting support or by reconnecting your PayPal account."
+msgstr ""
+
+#: includes/admin/settings_page.php:575
+msgid "See below for more details."
+msgstr ""
+
+#: includes/admin/settings_page.php:586
+msgid "PayPal account settings"
+msgstr ""
+
+#: includes/admin/settings_page.php:587
+msgid "PayPal support"
+msgstr ""
+
+#: includes/admin/settings_page.php:613
+msgid "PayPal: The all-in-one checkout solution"
+msgstr ""
+
+#: includes/admin/settings_page.php:615
+msgid "Help drive conversion by offering customers a seamless checkout experience"
+msgstr ""
+
+#: includes/admin/settings_page.php:616
+msgid "Securely accepts all major credit/debit cards and local payment methods with the strength of the PayPal network"
+msgstr ""
+
+#: includes/admin/settings_page.php:617
+msgid "You only pay the standard PayPal fees + 2%."
+msgstr ""
+
+#: includes/admin/settings_page.php:639
+msgid "Get started"
+msgstr ""
+
+#: includes/admin/settings_page.php:642
+msgid "View our simple and transparent pricing"
+msgstr ""
+
+#: includes/admin/settings_page.php:652 includes/ppcp.php:120 includes/ppcp_frontend.php:70
+msgid "The request has not been authenticated. Please reload the page and try again."
+msgstr ""
+
+#: includes/admin/settings_page.php:654
+msgid "The request ended with an error. Please reload the page and try again."
+msgstr ""
+
+#: includes/admin/tabs_page.php:11
+msgid "PayPal & Stripe"
+msgstr ""
+
+#: includes/admin/tabs_page.php:46
+msgid "Enable PayPal on this form:"
+msgstr ""
+
+#: includes/admin/tabs_page.php:49
+msgid "Enable Stripe on this form"
+msgstr ""
+
+#: includes/admin/tabs_page.php:52
+msgid "Gateway Code:"
+msgstr ""
+
+#: includes/admin/tabs_page.php:53
+msgid "Required to use both Gateways at the same time. Documentation"
+msgstr ""
+
+#: includes/admin/tabs_page.php:53
+msgid "Example: menu-231"
+msgstr ""
+
+#: includes/admin/tabs_page.php:55
+msgid "Email Code:"
+msgstr ""
+
+#: includes/admin/tabs_page.php:56
+msgid "Optional. Pass email to Stripe. Example: text-105"
+msgstr ""
+
+#: includes/admin/tabs_page.php:61
+msgid "Item Description:"
+msgstr ""
+
+#: includes/admin/tabs_page.php:64
+msgid "Item Price:"
+msgstr ""
+
+#: includes/admin/tabs_page.php:65
+msgid "Format: for $2.99, enter 2.99"
+msgstr ""
+
+#: includes/admin/tabs_page.php:67
+msgid "Item ID / SKU:"
+msgstr ""
+
+#: includes/functions.php:32
+msgid "Thank you for using software from"
+msgstr ""
+
+#: includes/functions.php:32
+msgid "WP Plugin"
+msgstr ""
+
+#: includes/functions.php:33
+msgid "Please"
+msgstr ""
+
+#: includes/functions.php:33
+msgid "rate us on WordPress.org"
+msgstr ""
+
+#: includes/payments/cpt.php:12 includes/payments/cpt.php:23
+msgid "Payments"
+msgstr ""
+
+#: includes/payments/cpt.php:13
+msgid "Payment"
+msgstr ""
+
+#: includes/payments/cpt.php:14
+msgid "Add New"
+msgstr ""
+
+#: includes/payments/cpt.php:15
+msgid "Add New Payment"
+msgstr ""
+
+#: includes/payments/cpt.php:16
+msgid "Edit Payment"
+msgstr ""
+
+#: includes/payments/cpt.php:17
+msgid "New Payment"
+msgstr ""
+
+#: includes/payments/cpt.php:18
+msgid "View Payment"
+msgstr ""
+
+#: includes/payments/cpt.php:19
+msgid "Search Payments"
+msgstr ""
+
+#: includes/payments/cpt.php:20
+msgid "No payments found."
+msgstr ""
+
+#: includes/payments/cpt.php:21
+msgid "No payments found in Trash."
+msgstr ""
+
+#: includes/payments/cpt.php:22
+msgid "Parent Payments:"
+msgstr ""
+
+#: includes/payments/cpt.php:46
+msgid "Payment:"
+msgstr ""
+
+#: includes/payments/cpt.php:66
+msgid "Payment actions"
+msgstr ""
+
+#: includes/payments/cpt.php:85
+msgid "Status:"
+msgstr ""
+
+#: includes/payments/cpt.php:87 includes/payments/cpt.php:123
+msgid "Edit"
+msgstr ""
+
+#: includes/payments/cpt.php:87
+msgid "Edit status"
+msgstr ""
+
+#: includes/payments/cpt.php:90
+msgid "Set status"
+msgstr ""
+
+#: includes/payments/cpt.php:101
+msgid "OK"
+msgstr ""
+
+#: includes/payments/cpt.php:102 paypal.php:225
+msgid "Cancel"
+msgstr ""
+
+#: includes/payments/cpt.php:108
+msgid "at"
+msgstr ""
+
+#: includes/payments/cpt.php:109
+msgid "M j, Y"
+msgstr ""
+
+#: includes/payments/cpt.php:110
+msgid "H:i"
+msgstr ""
+
+#: includes/payments/cpt.php:120
+#, php-format
+msgid "Made on: %s"
+msgstr ""
+
+#: includes/payments/cpt.php:124
+msgid "Edit date and time"
+msgstr ""
+
+#: includes/payments/cpt.php:127
+msgid "Date and time"
+msgstr ""
+
+#: includes/payments/cpt.php:140
+msgid "Delete permanently"
+msgstr ""
+
+#: includes/payments/cpt.php:142
+msgid "Move to Trash"
+msgstr ""
+
+#: includes/payments/cpt.php:153 includes/payments/cpt.php:154
+msgid "Update"
+msgstr ""
+
+#: includes/payments/cpt.php:182
+msgid "Pending"
+msgstr ""
+
+#: includes/payments/cpt.php:183
+#, php-format
+msgid "Pending %s"
+msgstr ""
+
+#: includes/payments/cpt.php:186
+msgid "Completed"
+msgstr ""
+
+#: includes/payments/cpt.php:187
+#, php-format
+msgid "Completed %s"
+msgstr ""
+
+#: includes/payments/cpt.php:190
+msgid "Failed"
+msgstr ""
+
+#: includes/payments/cpt.php:191
+#, php-format
+msgid "Failed %s"
+msgstr ""
+
+#: includes/payments/cpt.php:194
+msgid "Abandoned"
+msgstr ""
+
+#: includes/payments/cpt.php:195
+#, php-format
+msgid "Abandoned %s"
+msgstr ""
+
+#: includes/payments/cpt.php:277
+msgid "Payment #"
+msgstr ""
+
+#: includes/payments/cpt.php:278
+msgid "Details"
+msgstr ""
+
+#: includes/payments/cpt.php:279
+msgid "Date"
+msgstr ""
+
+#: includes/payments/cpt.php:280
+msgid "Amount"
+msgstr ""
+
+#: includes/payments/cpt.php:281
+msgid "Transaction Type"
+msgstr ""
+
+#: includes/payments/cpt.php:282
+msgid "Payment status"
+msgstr ""
+
+#: includes/payments/functions.php:11
+msgid "Order made on "
+msgstr ""
+
+#: includes/payments/functions.php:182
+msgid ""
+"Your website appears to be a testing website / a localhost environment - Please note that PayPal & Stripe \"payment status\" will not change to \"completed\" "
+"unless your site is public on the internet. "
+msgstr ""
+
+#: includes/ppcp.php:131 includes/ppcp.php:153
+msgid "An error occurred while processing your account disconnection request. Please contact our support service."
+msgstr ""
+
+#: includes/ppcp_frontend.php:6
+msgid "An error occurred."
+msgstr ""
+
+#: includes/ppcp_frontend.php:10
+msgid "Price can't be empty."
+msgstr ""
+
+#: includes/ppcp_frontend.php:55
+msgid "Can't create an order."
+msgstr ""
+
+#: includes/ppcp_frontend.php:119
+msgid "Transaction completed!"
+msgstr ""
+
+#: includes/ppcp_frontend.php:121
+msgid "An unknown error occurred while completing the order. Please reload the page and try again."
+msgstr ""
+
+#: includes/ppcp_frontend.php:123
+msgid "The payment was canceled on the PayPal side."
+msgstr ""
+
+#: includes/redirect_paypal.php:34 includes/redirect_stripe.php:107
+msgid "(No item name)"
+msgstr ""
+
+#: includes/redirect_stripe.php:98 includes/redirect_stripe.php:103
+msgid "Website admin: Success or Return URL is not valid."
+msgstr ""
+
+#: includes/redirect_stripe.php:111
+msgid "Website Admin: Please connect your Stripe account on the settings page (Contact -> PayPal & Stripe Settings -> Stripe)"
+msgstr ""
+
+#: includes/redirect_stripe.php:149
+msgid "Website Admin: Price cannot be set to 0.00."
+msgstr ""
+
+#: includes/redirect_stripe.php:174 includes/redirect_stripe.php:206
+msgid "An unexpected error occurred. Please try again."
+msgstr ""
+
+#: paypal.php:196
+msgid "Contact Form 7 - PayPal & Stripe Add-on:"
+msgstr ""
+
+#: paypal.php:196
+msgid "Contact Form 7 is not installed and / or active! Please install"
+msgstr ""
+
+#: paypal.php:196
+msgid "Contact Form 7"
+msgstr ""
+
+#: paypal.php:211
+msgid "I upgraded to the Pro version"
+msgstr ""
+
+#: paypal.php:212
+msgid "I no longer need the plugin"
+msgstr ""
+
+#: paypal.php:213
+msgid "I found a better plugin"
+msgstr ""
+
+#: paypal.php:214
+msgid "The plugin is not working"
+msgstr ""
+
+#: paypal.php:215
+msgid "The fees are too high"
+msgstr ""
+
+#: paypal.php:216
+msgid "It's a temporary deactivation"
+msgstr ""
+
+#: paypal.php:220
+msgid "Contact Form 7 PayPal & Stripe Add-on Deactivation"
+msgstr ""
+
+#: paypal.php:221
+msgid "If you have a moment, please let us know why you are deactivating. All submissions are anonymous and we only use this feedback to improve this plugin."
+msgstr ""
+
+#: paypal.php:222
+msgid "Please tell us more..."
+msgstr ""
+
+#: paypal.php:223
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: paypal.php:224
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: paypal.php:226
+msgid "What is the name of the plugin?"
+msgstr ""
+
+#: paypal.php:227
+msgid "We're sorry to hear that. Can you describe the issue?"
+msgstr ""
+
+#: paypal.php:228
+msgid "Error: Please complete the required field."
+msgstr ""

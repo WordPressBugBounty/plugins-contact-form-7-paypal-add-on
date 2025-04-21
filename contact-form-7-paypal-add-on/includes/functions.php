@@ -28,7 +28,9 @@ function cf7pp_admin_rate_us( $footer_text ) {
 
 	if ($screen->base == 'contact_page_cf7pp_admin_table') {
 		
-		$rate_text = sprintf( __( 'Thank you for using software from <a href="%1$s" target="_blank">WP Plugin</a>! Please <a href="%2$s" target="_blank">rate us on WordPress.org</a>', '' ),
+		$rate_text = sprintf( 
+			__('Thank you for using software from', 'cf7pp') . ' <a href="%1$s" target="_blank">' . __('WP Plugin', 'cf7pp') . '</a>! ' . 
+			__('Please', 'cf7pp') . ' <a href="%2$s" target="_blank">' . __('rate us on WordPress.org', 'cf7pp') . '</a>',
 			'https://wpplugin.org',
 			'https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/?filter=5'
 		);

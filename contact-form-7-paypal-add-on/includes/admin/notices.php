@@ -44,7 +44,7 @@ function cf7pp_admin_earnings_notice(){
     $cf7pp_show_earnings_notice = get_option('cf7pp_show_earnings_notice');
     if ( $cf7pp_show_earnings_notice == '-1' || (time() < $cf7pp_show_earnings_notice + DAY_IN_SECONDS * 14) ) return;
 
-    $msg = __('We noticed you\'ve been using Contact Form 7 - PayPal & Stripe for a while!', 'contact-form-7');
+    $msg = __('We noticed you\'ve been using Contact Form 7 - PayPal & Stripe for a while!', 'cf7pp');
 
     if (empty($msg)) return;
 
@@ -70,12 +70,12 @@ function cf7pp_admin_earnings_notice(){
                 <a class="button button-secondary" href="%s">%s</a>
             </p>
         </div>',
-        esc_html__('Hello -', 'contact-form-7'),
+        esc_html__('Hello -', 'cf7pp'),
         esc_html($msg),
         wp_kses(
             sprintf(
                 /* translators: %s: URL to support page */
-                __('If you like this plugin, please consider leaving a positive review to spread the word. Or if you have any issues or questions, please leave a support message <a href="%s" target="_blank">here</a>.', 'contact-form-7'),
+                __('If you like this plugin, please consider leaving a positive review to spread the word. Or if you have any issues or questions, please leave a support message', 'cf7pp') . ' <a href="%s" target="_blank">' . __('here', 'cf7pp') . '</a>.',
                 esc_url('https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/')
             ),
             array(
@@ -85,14 +85,14 @@ function cf7pp_admin_earnings_notice(){
                 ),
             )
         ),
-        esc_html__('- Thank you so much!', 'contact-form-7'),
+        esc_html__('- Thank you so much!', 'cf7pp'),
         esc_url($redirect_url),
         esc_url($dismiss_and_redirect_url),
-        esc_html__('Okay, you deserve it', 'contact-form-7'),
+        esc_html__('Okay, you deserve it', 'cf7pp'),
         esc_url($later_url),
-        esc_html__('Maybe later', 'contact-form-7'),
+        esc_html__('Maybe later', 'cf7pp'),
         esc_url($never_url),
-        esc_html__('Never', 'contact-form-7')
+        esc_html__('Never', 'cf7pp')
     );
 }
 
@@ -158,13 +158,14 @@ function cf7pp_admin_stripe_connect_notice() {
         </div>',
         $dismiss_url,
         wp_kses(
-            __('<b>Important</b> - \'Contact Form 7 - PayPal & Stripe Add-on\' now uses Stripe Connect.
-            Stripe Connect improves security and allows for easier setup. <br /><br />If you use Stripe, please use Stripe Connect.
-            Have questions: see the <a target="_blank" href="https://wpplugin.org/documentation/stripe-connect/">documentation</a>.', 'contact-form-7'),
+            '<b>' . __('Important', 'cf7pp') . '</b> - ' . 
+            __('\'Contact Form 7 - PayPal & Stripe Add-on\' now uses Stripe Connect.', 'cf7pp') . '<br /><br />' .
+            __('If you use Stripe, please use Stripe Connect.', 'cf7pp') . ' ' .
+            __('Have questions: see the', 'cf7pp') . ' <a target="_blank" href="https://wpplugin.org/documentation/stripe-connect/">' . __('documentation', 'cf7pp') . '</a>.',
             cf7pp_allowed_html()
         ),
         esc_url(cf7pp_stripe_connect_url()),
-        esc_html__('WPPlugin LLC is an official Stripe Partner. Pay as you go pricing: 2% per-transaction fee + Stripe fees.', 'contact-form-7')
+        esc_html__('WPPlugin LLC is an official Stripe Partner. Pay as you go pricing: 2% per-transaction fee + Stripe fees.', 'cf7pp')
     );
 }
 
@@ -205,7 +206,7 @@ function cf7pp_paypal_commerce_onboarding_url() {
         data-paypal-button="true"
         href="'. esc_url(add_query_arg( $query_args, admin_url( 'admin-ajax.php' )) ) .'"
         target="PPFrame"
-    > <img class="cf7pp-ppcp-paypal-logo" style="max-height:25px" src="'. esc_url(CF7PP_FREE_URL.'imgs/paypal-logo.png') .'" alt="paypal-logo" /><br />'. esc_html__('Get Started', 'contact-form-7') .'</a>';
+    > <img class="cf7pp-ppcp-paypal-logo" style="max-height:25px" src="'. esc_url(CF7PP_FREE_URL.'imgs/paypal-logo.png') .'" alt="paypal-logo" /><br />'. esc_html__('Get Started', 'cf7pp') .'</a>';
 }
 
 /**
@@ -220,7 +221,7 @@ function cf7pp_admin_stripe_connect_error_notice() {
         '<div class="notice notice-error is-dismissible">
             <p>%s</p>
         </div>',
-        esc_html__('An error occurred while interacting with our Stripe Connect interface.', 'contact-form-7')
+        esc_html__('An error occurred while interacting with our Stripe Connect interface.', 'cf7pp')
     );
 }
 
@@ -244,12 +245,14 @@ function cf7pp_ppcp_admin_notice() {
         </div>',
         esc_url(add_query_arg( 'cf7pp_admin_ppcp_notice_dismiss', 1, admin_url() )),
         wp_kses(
-            __('<b>Important</b> - \'Contact Form 7 - PayPal & Stripe Add-on\' now uses the PayPal Commerce Platform.
-            <u><b>PayPal Standard is now a Legacy product.</b></u> <br /><br /> <b><u>If you use PayPal, please update to PayPal Commerce Platform.</u></b>', 'contact-form-7'),
+            '<b>' . __('Important', 'cf7pp') . '</b> - ' . 
+            __('\'Contact Form 7 - PayPal & Stripe Add-on\' now uses the PayPal Commerce Platform.', 'cf7pp') . '<br /><br />' .
+            '<u><b>' . __('PayPal Standard is now a Legacy product.', 'cf7pp') . '</b></u><br /><br />' .
+            '<b><u>' . __('If you use PayPal, please update to PayPal Commerce Platform.', 'cf7pp') . '</u></b>',
             cf7pp_allowed_html()
         ),
         cf7pp_paypal_commerce_onboarding_url(),
-        esc_html__('WPPlugin LLC is an official PayPal Partner. Pay as you go pricing: 2% per-transaction fee + PayPal fees.', 'contact-form-7')
+        esc_html__('WPPlugin LLC is an official PayPal Partner. Pay as you go pricing: 2% per-transaction fee + PayPal fees.', 'cf7pp')
     );
 }
 

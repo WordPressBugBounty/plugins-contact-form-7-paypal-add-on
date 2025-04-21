@@ -30,6 +30,10 @@ function cf7pp_paypal_redirect($post_id, $payment_id) {
 			$path = "paypal";
 		}
 
+		if (empty($name)) {
+			$name = __("(No item name)", 'cf7pp');
+		}
+
 		$array = array(
 			'business'			=> $account,
 			'currency_code'		=> $currency,

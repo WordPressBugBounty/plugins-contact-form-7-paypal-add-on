@@ -3,11 +3,11 @@ if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function cf7pp_free_ppcp_order_create( $ppcp_status, $name, $price, $id, $currency, $payment_id, $return_url, $cancel_url ) {
 	if ( empty( $ppcp_status['seller_id'] ) ) {
-		die( __( 'An error occurred.' ) );
+		die( __( 'An error occurred.', 'cf7pp' ) );
 	}
 
 	if ( empty( $price ) ) {
-		die( __( 'Price can\'t be empty.' ) );
+		die( __( 'Price can\'t be empty.', 'cf7pp' ) );
 	}
 
 	$return_url_args = [
@@ -52,7 +52,7 @@ function cf7pp_free_ppcp_order_create( $ppcp_status, $name, $price, $id, $curren
 	$response = json_decode( $body, true );
 
 	if ( empty( $response['success'] ) || empty( $response['payer_action_url'] ) ) {
-		die( !empty( $response['message'] ) ? $response['message'] : __( "Can't create an order." ) );
+		die( !empty( $response['message'] ) ? $response['message'] : __( "Can't create an order.", 'cf7pp' ) );
 	}
 
 	update_post_meta( $payment_id, '_cf7pp_ppcp_order_id', $response['order_id'] );
@@ -67,7 +67,7 @@ function cf7pp_free_ppcp_order_finalize() {
 		global $wpdb;
 
 		if ( !wp_verify_nonce( $_GET['nonce'], 'cf7pp-free-frontend-request' ) ) {
-			die( __( 'The request has not been authenticated. Please reload the page and try again.' ) );
+			die( __( 'The request has not been authenticated. Please reload the page and try again.', 'cf7pp' ) );
 		}
 
 		$paypal_order_id = sanitize_text_field( $_GET['token'] );
@@ -116,11 +116,11 @@ function cf7pp_free_ppcp_message( $output ) {
 		$ppcp_message .= '.wpcf7-form .cf7pp-ppcp-message-cancel{border-color:#ffb900}';
 		$ppcp_message .= '</style>';
 		if ( $_GET['ppcp'] === 'success' ) {
-			$ppcp_message .= '<div class="cf7pp-ppcp-message cf7pp-ppcp-message-success">' . __( 'Transaction completed!' ) . '</div>';
+			$ppcp_message .= '<div class="cf7pp-ppcp-message cf7pp-ppcp-message-success">' . __( 'Transaction completed!', 'cf7pp' ) . '</div>';
 		} elseif ( $_GET['ppcp'] === 'fail' ) {
-			$ppcp_message .= '<div class="cf7pp-ppcp-message cf7pp-ppcp-message-fail">' . __( 'An unknown error occurred while completing the order. Please reload the page and try again.' ) . '</div>';
+			$ppcp_message .= '<div class="cf7pp-ppcp-message cf7pp-ppcp-message-fail">' . __( 'An unknown error occurred while completing the order. Please reload the page and try again.', 'cf7pp' ) . '</div>';
 		} elseif ( $_GET['ppcp'] === 'cancel' ) {
-			$ppcp_message .= '<div class="cf7pp-ppcp-message cf7pp-ppcp-message-cancel">' . __( 'The payment was canceled on the PayPal side.' ) . '</div>';
+			$ppcp_message .= '<div class="cf7pp-ppcp-message cf7pp-ppcp-message-cancel">' . __( 'The payment was canceled on the PayPal side.', 'cf7pp' ) . '</div>';
 		}
 	}
 

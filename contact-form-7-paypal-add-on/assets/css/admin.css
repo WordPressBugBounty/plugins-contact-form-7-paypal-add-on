@@ -331,3 +331,49 @@
     cursor: wait;
 }
 /* PPCP end */
+
+/* Deactivation Survey Styles */
+#cf7pp-deactivation-survey {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100000;
+}
+
+.cf7pp-survey-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.cf7pp-survey-options {
+    margin: 20px 0;
+}
+
+.cf7pp-survey-options label {
+    display: block;
+    margin: 10px 0;
+}
+
+#cf7pp-other-reason textarea {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.cf7pp-survey-buttons {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.cf7pp-survey-buttons button {
+    margin-left: 10px;
+}

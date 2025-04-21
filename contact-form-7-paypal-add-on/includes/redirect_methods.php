@@ -113,7 +113,7 @@ function cf7pp_get_form_stripe_success_callback() {
 	$request_method = isset($options['request_method']) ? $options['request_method'] : 1; // Default to 1 if not set
     
     $html_success = "
-        ".$options['success']."
+        ".esc_html($options['success'])."
         <br />
     ";
     
