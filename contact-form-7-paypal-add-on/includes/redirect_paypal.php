@@ -31,7 +31,7 @@ function cf7pp_paypal_redirect($post_id, $payment_id) {
 		}
 
 		if (empty($name)) {
-			$name = __("(No item name)", 'cf7pp');
+			$name = __("(No item name)", 'contact-form-7-paypal-add-on');
 		}
 
 		$array = array(

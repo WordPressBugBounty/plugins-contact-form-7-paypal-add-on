@@ -14,9 +14,9 @@ function cf7pp_extensions_page()	{
 	?>
 	<div class="wrap about-wrap cf7pp-about-wrapp">
 		<h3>
-			<?php _e( 'You may be interested in our other popular WordPress plugins:', 'cf7pp' ); ?>
+			<?php _e( 'You may be interested in our other popular WordPress plugins:', 'contact-form-7-paypal-add-on' ); ?>
 		</h3>
-			<?php _e('Make your site do more today.', 'cf7pp'); ?>
+			<?php _e('Make your site do more today.', 'contact-form-7-paypal-add-on'); ?>
 		
 		<div class="cf7pp-extension-wrapper grid3">
 			<?php foreach ( $extensions as $key => $extension ) :
@@ -51,7 +51,7 @@ function cf7pp_extensions_page()	{
                             	<p><?php echo $the_excerpt; ?></p>
                             </div>
                             <div class="cf7pp-extension-buy-now">
-                                    <a href="<?php echo $link; ?>" class="button-primary" target="_blank"><?php echo __( 'Learn More', 'cf7pp' ); ?></a>
+                                    <a href="<?php echo $link; ?>" class="button-primary" target="_blank"><?php echo __( 'Learn More', 'contact-form-7-paypal-add-on' ); ?></a>
                             </div>
                         </div>
                     </div>

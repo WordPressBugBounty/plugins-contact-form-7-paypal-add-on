@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
  */
 function cf7pp_insert_payment($gateway, $mode, $amount, $form_id, $status='cf7pp-pending') {
 	$payment_id = wp_insert_post( array(
-		'post_title' => __( 'Order made on ', 'cf7pp') . date('H:i:s M d, Y'),
+		'post_title' => __( 'Order made on ', 'contact-form-7-paypal-add-on') . date('H:i:s M d, Y'),
 		'post_status'   => $status,
 		'post_type'     => 'cf7pp_payments',
 		'meta_input'    => array(
@@ -179,7 +179,7 @@ function cf7pp_show_cf7pp_payments_localhost_notice () {
 			function cf7pp_show_cf7pp_payments_localhost_admin_notice() {
 				?>
 				<div class="notice notice-info">
-				<p><?php _e( 'Your website appears to be a testing website / a localhost environment - Please note that PayPal & Stripe "payment status" will not change to "completed" unless your site is public on the internet. ', 'cf7pp' ); ?></p>
+				<p><?php _e( 'Your website appears to be a testing website / a localhost environment - Please note that PayPal & Stripe "payment status" will not change to "completed" unless your site is public on the internet. ', 'contact-form-7-paypal-add-on' ); ?></p>
 				</div>
 				<?php
 			}

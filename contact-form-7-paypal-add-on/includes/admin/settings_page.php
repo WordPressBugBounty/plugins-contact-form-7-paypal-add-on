@@ -10,7 +10,7 @@ function cf7pp_admin_table() {
 	$options = cf7pp_free_options();
 
 	if ( !current_user_can( "manage_options" ) )  {
-	wp_die( __( "You do not have sufficient permissions to access this page.", 'cf7pp' ) );
+	wp_die( __( "You do not have sufficient permissions to access this page.", 'contact-form-7-paypal-add-on' ) );
 	}
 
 
@@ -21,7 +21,7 @@ function cf7pp_admin_table() {
 		$error = false;
 		
 		if ( empty( $_POST['cf7pp_nonce_field'] ) || !wp_verify_nonce( $_POST['cf7pp_nonce_field'], 'cf7pp_save_settings') ) {
-			wp_die( __( "You do not have sufficient permissions to access this page.", 'cf7pp' ) );
+			wp_die( __( "You do not have sufficient permissions to access this page.", 'contact-form-7-paypal-add-on' ) );
 		}
 		
 		$options['currency'] = 					sanitize_text_field($_POST['currency']);
@@ -55,10 +55,10 @@ function cf7pp_admin_table() {
 		if (empty($options['stripe_return'])) { $options['stripe_return'] = ''; }
 		
 		$options['success'] = 					sanitize_text_field($_POST['success']);
-		if (empty($options['success'])) { 		$options['success'] = __('Payment Successful', 'cf7pp'); }
+		if (empty($options['success'])) { 		$options['success'] = __('Payment Successful', 'contact-form-7-paypal-add-on'); }
 		
 		$options['failed'] = 					sanitize_text_field($_POST['failed']);
-		if (empty($options['failed'])) { 		$options['failed'] = __('Payment Failed', 'cf7pp'); }
+		if (empty($options['failed'])) { 		$options['failed'] = __('Payment Failed', 'contact-form-7-paypal-add-on'); }
 		
 		
 		if (
@@ -107,18 +107,18 @@ function cf7pp_admin_table() {
 
 		<?php
 		if (isset($_GET['err']) && sanitize_text_field($_GET['err'])) {
-			echo "<br /><div class='error'><p><strong>"; _e(" Error: PayPal and Stripe \"Cancel\" and \"Return\" options must be full URLs that start with http:// or https://", 'cf7pp'); echo "</strong></p></div>";
+			echo "<br /><div class='error'><p><strong>"; _e(" Error: PayPal and Stripe \"Cancel\" and \"Return\" options must be full URLs that start with http:// or https://", 'contact-form-7-paypal-add-on'); echo "</strong></p></div>";
 			$error = true;
 		}
 
 		if (isset($_GET['saved']) && sanitize_text_field($_GET['saved'])) {
-			echo "<br /><div class='updated'><p><strong>"; _e("Settings Updated", 'cf7pp'); echo "</strong></p></div>";
+			echo "<br /><div class='updated'><p><strong>"; _e("Settings Updated", 'contact-form-7-paypal-add-on'); echo "</strong></p></div>";
 		}
 		?>
 
 	<table width='70%'><tr><td>
-	<div class='wrap'><h2><?php _e('Contact Form 7 - PayPal & Stripe Settings', 'cf7pp'); ?></h2></div><br /></td><td><br />
-	<input type='submit' name='btn2' class='button-primary' style='font-size: 17px;line-height: 28px;height: 32px;float: right;' value='<?php _e('Save Settings', 'cf7pp'); ?>'>
+	<div class='wrap'><h2><?php _e('Contact Form 7 - PayPal & Stripe Settings', 'contact-form-7-paypal-add-on'); ?></h2></div><br /></td><td><br />
+	<input type='submit' name='btn2' class='button-primary' style='font-size: 17px;line-height: 28px;height: 32px;float: right;' value='<?php _e('Save Settings', 'contact-form-7-paypal-add-on'); ?>'>
 	</td></tr></table>
 
 	<table width='100%'><tr><td width='70%' valign='top'>
@@ -127,12 +127,12 @@ function cf7pp_admin_table() {
 
 
 		<h2 class="nav-tab-wrapper">
-			<a onclick='closetabs("1,3,4,5,6,7");newtab("1");' href="#" id="id1" class="nav-tab <?php echo $active_tab == '1' ? 'nav-tab-active' : ''; ?>"><?php _e('Getting Started', 'cf7pp'); ?></a>
-			<a onclick='closetabs("1,3,4,5,6,7");newtab("3");' href="#" id="id3" class="nav-tab <?php echo $active_tab == '3' ? 'nav-tab-active' : ''; ?>"><?php _e('Language & Currency', 'cf7pp'); ?></a>
-			<a onclick='closetabs("1,3,4,5,6,7");newtab("4");' href="#" id="id4" class="nav-tab <?php echo $active_tab == '4' ? 'nav-tab-active' : ''; ?>"><?php _e('PayPal', 'cf7pp'); ?></a>
-			<a onclick='closetabs("1,3,4,5,6,7");newtab("5");' href="#" id="id5" class="nav-tab <?php echo $active_tab == '5' ? 'nav-tab-active' : ''; ?>"><?php _e('Stripe', 'cf7pp'); ?></a>
-			<a onclick='closetabs("1,3,4,5,6,7");newtab("6");' href="#" id="id6" class="nav-tab <?php echo $active_tab == '6' ? 'nav-tab-active' : ''; ?>"><?php _e('Other', 'cf7pp'); ?></a>
-			<a onclick='closetabs("1,3,4,5,6,7");newtab("7");' href="#" id="id7" class="nav-tab <?php echo $active_tab == '7' ? 'nav-tab-active' : ''; ?>"><?php _e('Extensions', 'cf7pp'); ?></a>
+			<a onclick='closetabs("1,3,4,5,6,7");newtab("1");' href="#" id="id1" class="nav-tab <?php echo $active_tab == '1' ? 'nav-tab-active' : ''; ?>"><?php _e('Getting Started', 'contact-form-7-paypal-add-on'); ?></a>
+			<a onclick='closetabs("1,3,4,5,6,7");newtab("3");' href="#" id="id3" class="nav-tab <?php echo $active_tab == '3' ? 'nav-tab-active' : ''; ?>"><?php _e('Language & Currency', 'contact-form-7-paypal-add-on'); ?></a>
+			<a onclick='closetabs("1,3,4,5,6,7");newtab("4");' href="#" id="id4" class="nav-tab <?php echo $active_tab == '4' ? 'nav-tab-active' : ''; ?>"><?php _e('PayPal', 'contact-form-7-paypal-add-on'); ?></a>
+			<a onclick='closetabs("1,3,4,5,6,7");newtab("5");' href="#" id="id5" class="nav-tab <?php echo $active_tab == '5' ? 'nav-tab-active' : ''; ?>"><?php _e('Stripe', 'contact-form-7-paypal-add-on'); ?></a>
+			<a onclick='closetabs("1,3,4,5,6,7");newtab("6");' href="#" id="id6" class="nav-tab <?php echo $active_tab == '6' ? 'nav-tab-active' : ''; ?>"><?php _e('Other', 'contact-form-7-paypal-add-on'); ?></a>
+			<a onclick='closetabs("1,3,4,5,6,7");newtab("7");' href="#" id="id7" class="nav-tab <?php echo $active_tab == '7' ? 'nav-tab-active' : ''; ?>"><?php _e('Extensions', 'contact-form-7-paypal-add-on'); ?></a>
 		</h2>
 		<br />
 
@@ -151,39 +151,39 @@ function cf7pp_admin_table() {
 
 	<div id="1" style="display:none;border: 1px solid #CCCCCC;<?php echo $active_tab == '1' ? 'display:block;' : ''; ?>">
 		<div style="background-color:#E4E4E4;padding:8px;color:#000;font-size:15px;color:#464646;font-weight: 700;border-bottom: 1px solid #CCCCCC;">
-			&nbsp; <?php _e('Getting Started', 'cf7pp'); ?>
+			&nbsp; <?php _e('Getting Started', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		<div style="background-color:#fff;padding:8px;">
 		
-			<h3><?php _e('Important - If your form has trouble redirecting - try', 'cf7pp'); ?> <a href='admin.php?page=cf7pp_admin_table&tab=6'><?php _e('changing these settings', 'cf7pp'); ?></a>. <?php _e('This will fix most issues easily.', 'cf7pp'); ?></h3>
+			<h3><?php _e('Important - If your form has trouble redirecting - try', 'contact-form-7-paypal-add-on'); ?> <a href='admin.php?page=cf7pp_admin_table&tab=6'><?php _e('changing these settings', 'contact-form-7-paypal-add-on'); ?></a>. <?php _e('This will fix most issues easily.', 'contact-form-7-paypal-add-on'); ?></h3>
 			
 			<hr>
 			
-			<?php _e('This plugin allows you to accept payments through your Contact Form 7 forms.', 'cf7pp'); ?>
+			<?php _e('This plugin allows you to accept payments through your Contact Form 7 forms.', 'contact-form-7-paypal-add-on'); ?>
 			
 			<br /><br />
 			
-			<?php _e('On this page, you can setup your general PayPal & Stripe settings which will be used for all of your', 'cf7pp'); ?> <a href='admin.php?page=wpcf7'><?php _e('Contact Form 7 forms', 'cf7pp'); ?></a>.
+			<?php _e('On this page, you can setup your general PayPal & Stripe settings which will be used for all of your', 'contact-form-7-paypal-add-on'); ?> <a href='admin.php?page=wpcf7'><?php _e('Contact Form 7 forms', 'contact-form-7-paypal-add-on'); ?></a>.
 			
 			<br /><br />
 			
-			<?php _e('When you go to your list of contact forms, make a new form or edit an existing form, you will see a new tab called \'PayPal & Stripe\'. Here you can set individual settings for that specific contact form.', 'cf7pp'); ?>
+			<?php _e('When you go to your list of contact forms, make a new form or edit an existing form, you will see a new tab called \'PayPal & Stripe\'. Here you can set individual settings for that specific contact form.', 'contact-form-7-paypal-add-on'); ?>
 			
 			<br /><br />
 			
-			<?php _e('Once you have PayPal or Stripe enabled on a form, you will receive an email as soon as the customer submits the form. You can view the payment status on the', 'cf7pp'); ?> <a href='edit.php?post_type=cf7pp_payments'><?php _e('PayPal & Stripe Payments page', 'cf7pp'); ?></a>.
+			<?php _e('Once you have PayPal or Stripe enabled on a form, you will receive an email as soon as the customer submits the form. You can view the payment status on the', 'contact-form-7-paypal-add-on'); ?> <a href='edit.php?post_type=cf7pp_payments'><?php _e('PayPal & Stripe Payments page', 'contact-form-7-paypal-add-on'); ?></a>.
 			
 			<br /><br />
 			
-			<?php _e('You can view documentation for this plugin', 'cf7pp'); ?> <a target='_blank' href='https://wpplugin.org/knowledgebase_category/contact-form-7-paypal-stripe-add-on-free/'><?php _e('here', 'cf7pp'); ?></a>.
+			<?php _e('You can view documentation for this plugin', 'contact-form-7-paypal-add-on'); ?> <a target='_blank' href='https://wpplugin.org/knowledgebase_category/contact-form-7-paypal-stripe-add-on-free/'><?php _e('here', 'contact-form-7-paypal-add-on'); ?></a>.
 			
 			<br /><br />
 			
-			<?php _e('If you need support, please post your question', 'cf7pp'); ?> <a target='_blank' href='https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/'><?php _e('here', 'cf7pp'); ?></a>.
+			<?php _e('If you need support, please post your question', 'contact-form-7-paypal-add-on'); ?> <a target='_blank' href='https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/'><?php _e('here', 'contact-form-7-paypal-add-on'); ?></a>.
 			
 			<br /><br />
 			
-			<?php _e('A lot of work went into building this plugin. If you enjoy it, please leave a 5 star review', 'cf7pp'); ?> <a target='_blank' href='https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/?filter=5#new-post'><?php _e('here', 'cf7pp'); ?></a>.
+			<?php _e('A lot of work went into building this plugin. If you enjoy it, please leave a 5 star review', 'contact-form-7-paypal-add-on'); ?> <a target='_blank' href='https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/?filter=5#new-post'><?php _e('here', 'contact-form-7-paypal-add-on'); ?></a>.
 			
 			<br />
 			
@@ -194,36 +194,36 @@ function cf7pp_admin_table() {
 
 	<div id="3" style="display:none;border: 1px solid #CCCCCC;<?php echo $active_tab == '3' ? 'display:block;' : ''; ?>">
 		<div style="background-color:#E4E4E4;padding:8px;color:#000;font-size:15px;color:#464646;font-weight: 700;border-bottom: 1px solid #CCCCCC;">
-			&nbsp; <?php _e('Language & Currency', 'cf7pp'); ?>
+			&nbsp; <?php _e('Language & Currency', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		<div style="background-color:#fff;padding:8px;">
 
 			<table>
 
 				<tr><td class='cf7pp_width'>
-					<b><?php _e('Language:', 'cf7pp'); ?></b>
+					<b><?php _e('Language:', 'contact-form-7-paypal-add-on'); ?></b>
 				</td><td>
 					<select name="language">
-					<option <?php if ($options['language'] == "1") { echo "SELECTED"; } ?> value="1"><?php _e('Danish', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "2") { echo "SELECTED"; } ?> value="2"><?php _e('Dutch', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "3") { echo "SELECTED"; } ?> value="3"><?php _e('English', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "20") { echo "SELECTED"; } ?> value="20"><?php _e('English - UK', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "4") { echo "SELECTED"; } ?> value="4"><?php _e('French', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "5") { echo "SELECTED"; } ?> value="5"><?php _e('German', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "6") { echo "SELECTED"; } ?> value="6"><?php _e('Hebrew', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "7") { echo "SELECTED"; } ?> value="7"><?php _e('Italian', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "8") { echo "SELECTED"; } ?> value="8"><?php _e('Japanese', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "9") { echo "SELECTED"; } ?> value="9"><?php _e('Norwgian', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "10") { echo "SELECTED"; } ?> value="10"><?php _e('Polish', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "11") { echo "SELECTED"; } ?> value="11"><?php _e('Portuguese', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "12") { echo "SELECTED"; } ?> value="12"><?php _e('Russian', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "13") { echo "SELECTED"; } ?> value="13"><?php _e('Spanish', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "14") { echo "SELECTED"; } ?> value="14"><?php _e('Swedish', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "15") { echo "SELECTED"; } ?> value="15"><?php _e('Simplified Chinese -China only', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "16") { echo "SELECTED"; } ?> value="16"><?php _e('Traditional Chinese - Hong Kong only', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "17") { echo "SELECTED"; } ?> value="17"><?php _e('Traditional Chinese - Taiwan only', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "18") { echo "SELECTED"; } ?> value="18"><?php _e('Turkish', 'cf7pp'); ?></option>
-					<option <?php if ($options['language'] == "19") { echo "SELECTED"; } ?> value="19"><?php _e('Thai', 'cf7pp'); ?></option>
+					<option <?php if ($options['language'] == "1") { echo "SELECTED"; } ?> value="1"><?php _e('Danish', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "2") { echo "SELECTED"; } ?> value="2"><?php _e('Dutch', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "3") { echo "SELECTED"; } ?> value="3"><?php _e('English', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "20") { echo "SELECTED"; } ?> value="20"><?php _e('English - UK', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "4") { echo "SELECTED"; } ?> value="4"><?php _e('French', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "5") { echo "SELECTED"; } ?> value="5"><?php _e('German', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "6") { echo "SELECTED"; } ?> value="6"><?php _e('Hebrew', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "7") { echo "SELECTED"; } ?> value="7"><?php _e('Italian', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "8") { echo "SELECTED"; } ?> value="8"><?php _e('Japanese', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "9") { echo "SELECTED"; } ?> value="9"><?php _e('Norwgian', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "10") { echo "SELECTED"; } ?> value="10"><?php _e('Polish', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "11") { echo "SELECTED"; } ?> value="11"><?php _e('Portuguese', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "12") { echo "SELECTED"; } ?> value="12"><?php _e('Russian', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "13") { echo "SELECTED"; } ?> value="13"><?php _e('Spanish', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "14") { echo "SELECTED"; } ?> value="14"><?php _e('Swedish', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "15") { echo "SELECTED"; } ?> value="15"><?php _e('Simplified Chinese -China only', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "16") { echo "SELECTED"; } ?> value="16"><?php _e('Traditional Chinese - Hong Kong only', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "17") { echo "SELECTED"; } ?> value="17"><?php _e('Traditional Chinese - Taiwan only', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "18") { echo "SELECTED"; } ?> value="18"><?php _e('Turkish', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "19") { echo "SELECTED"; } ?> value="19"><?php _e('Thai', 'contact-form-7-paypal-add-on'); ?></option>
 					</select>
 			</td></tr>
 
@@ -231,34 +231,34 @@ function cf7pp_admin_table() {
 				</td></tr>
 
 				<tr><td class='cf7pp_width'>
-				<b><?php _e('Currency:', 'cf7pp'); ?></b></td><td>
+				<b><?php _e('Currency:', 'contact-form-7-paypal-add-on'); ?></b></td><td>
 				<select name="currency">
-				<option <?php if ($options['currency'] == "1") { echo "SELECTED"; } ?> value="1"><?php _e('Australian Dollar - AUD', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "2") { echo "SELECTED"; } ?> value="2"><?php _e('Brazilian Real - BRL', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "3") { echo "SELECTED"; } ?> value="3"><?php _e('Canadian Dollar - CAD', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "4") { echo "SELECTED"; } ?> value="4"><?php _e('Czech Koruna - CZK', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "5") { echo "SELECTED"; } ?> value="5"><?php _e('Danish Krone - DKK', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "6") { echo "SELECTED"; } ?> value="6"><?php _e('Euro - EUR', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "7") { echo "SELECTED"; } ?> value="7"><?php _e('Hong Kong Dollar - HKD', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "8") { echo "SELECTED"; } ?> value="8"><?php _e('Hungarian Forint - HUF', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "9") { echo "SELECTED"; } ?> value="9"><?php _e('Israeli New Sheqel - ILS', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "10") { echo "SELECTED"; } ?> value="10"><?php _e('Japanese Yen - JPY', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "11") { echo "SELECTED"; } ?> value="11"><?php _e('Malaysian Ringgit - MYR', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "12") { echo "SELECTED"; } ?> value="12"><?php _e('Mexican Peso - MXN', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "13") { echo "SELECTED"; } ?> value="13"><?php _e('Norwegian Krone - NOK', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "14") { echo "SELECTED"; } ?> value="14"><?php _e('New Zealand Dollar - NZD', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "15") { echo "SELECTED"; } ?> value="15"><?php _e('Philippine Peso - PHP', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "16") { echo "SELECTED"; } ?> value="16"><?php _e('Polish Zloty - PLN', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "17") { echo "SELECTED"; } ?> value="17"><?php _e('Pound Sterling - GBP', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "26") { echo "SELECTED"; } ?> value="26"><?php _e('Romanian Leu - RON (Stripe Only)', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "18") { echo "SELECTED"; } ?> value="18"><?php _e('Russian Ruble - RUB', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "19") { echo "SELECTED"; } ?> value="19"><?php _e('Singapore Dollar - SGD', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "20") { echo "SELECTED"; } ?> value="20"><?php _e('Swedish Krona - SEK', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "21") { echo "SELECTED"; } ?> value="21"><?php _e('Swiss Franc - CHF', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "22") { echo "SELECTED"; } ?> value="22"><?php _e('Taiwan New Dollar - TWD', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "23") { echo "SELECTED"; } ?> value="23"><?php _e('Thai Baht - THB', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "24") { echo "SELECTED"; } ?> value="24"><?php _e('Turkish Lira - TRY', 'cf7pp'); ?></option>
-				<option <?php if ($options['currency'] == "25") { echo "SELECTED"; } ?> value="25"><?php _e('U.S. Dollar - USD', 'cf7pp'); ?></option>
+				<option <?php if ($options['currency'] == "1") { echo "SELECTED"; } ?> value="1"><?php _e('Australian Dollar - AUD', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "2") { echo "SELECTED"; } ?> value="2"><?php _e('Brazilian Real - BRL', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "3") { echo "SELECTED"; } ?> value="3"><?php _e('Canadian Dollar - CAD', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "4") { echo "SELECTED"; } ?> value="4"><?php _e('Czech Koruna - CZK', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "5") { echo "SELECTED"; } ?> value="5"><?php _e('Danish Krone - DKK', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "6") { echo "SELECTED"; } ?> value="6"><?php _e('Euro - EUR', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "7") { echo "SELECTED"; } ?> value="7"><?php _e('Hong Kong Dollar - HKD', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "8") { echo "SELECTED"; } ?> value="8"><?php _e('Hungarian Forint - HUF', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "9") { echo "SELECTED"; } ?> value="9"><?php _e('Israeli New Sheqel - ILS', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "10") { echo "SELECTED"; } ?> value="10"><?php _e('Japanese Yen - JPY', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "11") { echo "SELECTED"; } ?> value="11"><?php _e('Malaysian Ringgit - MYR', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "12") { echo "SELECTED"; } ?> value="12"><?php _e('Mexican Peso - MXN', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "13") { echo "SELECTED"; } ?> value="13"><?php _e('Norwegian Krone - NOK', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "14") { echo "SELECTED"; } ?> value="14"><?php _e('New Zealand Dollar - NZD', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "15") { echo "SELECTED"; } ?> value="15"><?php _e('Philippine Peso - PHP', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "16") { echo "SELECTED"; } ?> value="16"><?php _e('Polish Zloty - PLN', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "17") { echo "SELECTED"; } ?> value="17"><?php _e('Pound Sterling - GBP', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "26") { echo "SELECTED"; } ?> value="26"><?php _e('Romanian Leu - RON (Stripe Only)', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "18") { echo "SELECTED"; } ?> value="18"><?php _e('Russian Ruble - RUB', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "19") { echo "SELECTED"; } ?> value="19"><?php _e('Singapore Dollar - SGD', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "20") { echo "SELECTED"; } ?> value="20"><?php _e('Swedish Krona - SEK', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "21") { echo "SELECTED"; } ?> value="21"><?php _e('Swiss Franc - CHF', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "22") { echo "SELECTED"; } ?> value="22"><?php _e('Taiwan New Dollar - TWD', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "23") { echo "SELECTED"; } ?> value="23"><?php _e('Thai Baht - THB', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "24") { echo "SELECTED"; } ?> value="24"><?php _e('Turkish Lira - TRY', 'contact-form-7-paypal-add-on'); ?></option>
+				<option <?php if ($options['currency'] == "25") { echo "SELECTED"; } ?> value="25"><?php _e('U.S. Dollar - USD', 'contact-form-7-paypal-add-on'); ?></option>
 				</select></td></tr>
 
 			</table>
@@ -271,7 +271,7 @@ function cf7pp_admin_table() {
 
 	<div id="4" style="display:none;border: 1px solid #CCCCCC;<?php echo $active_tab == '4' ? 'display:block;' : ''; ?>">
 		<div style="background-color:#E4E4E4;padding:8px;color:#000;font-size:15px;color:#464646;font-weight: 700;border-bottom: 1px solid #CCCCCC;">
-		&nbsp; PayPal Account
+		&nbsp; <?php _e('PayPal Account', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		<div style="background-color:#fff;padding:8px;">
 
@@ -282,35 +282,35 @@ function cf7pp_admin_table() {
 
                 <?php if ( !empty( $options['liveaccount'] ) ) { ?>
 				<tr><td class='cf7pp_width'>
-				<b>Live Account: </b></td><td><input type='text' size=40 name='liveaccount' value='<?php echo $options['liveaccount']; ?>' readonly />
+				<b><?php _e('Live Account: ', 'contact-form-7-paypal-add-on'); ?></b></td><td><input type='text' size=40 name='liveaccount' value='<?php echo $options['liveaccount']; ?>' readonly />
 				</td></tr>
 
 				<tr><td class='cf7pp_width'></td><td>
-				<br />Enter a valid Merchant account ID (strongly recommend) or PayPal account email address. All payments will go to this account.
-				<br /><br />You can find your Merchant account ID in your PayPal account under Profile -> My business info -> Merchant account ID
+				<br /><?php _e('Enter a valid Merchant account ID (strongly recommend) or PayPal account email address. All payments will go to this account.', 'contact-form-7-paypal-add-on'); ?>
+				<br /><br /><?php _e('You can find your Merchant account ID in your PayPal account under Profile -> My business info -> Merchant account ID', 'contact-form-7-paypal-add-on'); ?>
 
-				<br /><br />If you don't have a PayPal account, you can sign up for free at <a target='_blank' href='https://paypal.com'>PayPal</a>. <br /><br />
+				<br /><br /><?php _e('If you don\'t have a PayPal account, you can sign up for free at', 'contact-form-7-paypal-add-on'); ?> <a target='_blank' href='https://paypal.com'><?php _e('PayPal', 'contact-form-7-paypal-add-on'); ?></a>. <br /><br />
 				</td></tr>
                 <?php } ?>
 
 	            <?php if ( !empty( $options['sandboxaccount'] ) ) { ?>
 				<tr><td class='cf7pp_width'>
-				<b>Sandbox Account: </b></td><td><input type='text' size=40 name='sandboxaccount' value='<?php echo $options['sandboxaccount']; ?>' readonly />
+				<b><?php _e('Sandbox Account: ', 'contact-form-7-paypal-add-on'); ?></b></td><td><input type='text' size=40 name='sandboxaccount' value='<?php echo $options['sandboxaccount']; ?>' readonly />
 				</td></tr>
 
 				<tr><td class='cf7pp_width'></td><td>
-				Enter a valid sandbox PayPal account email address. A Sandbox account is a PayPal accont with fake money used for testing. This is useful to make sure your PayPal account and settings are working properly being going live.
-				<br /><br />To create a Sandbox account, you first need a Developer Account. You can sign up for free at the <a target='_blank' href='https://www.paypal.com/webapps/merchantboarding/webflow/unifiedflow?execution=e1s2'>PayPal Developer</a> site. <br /><br />
+				<?php _e('Enter a valid sandbox PayPal account email address. A Sandbox account is a PayPal accont with fake money used for testing. This is useful to make sure your PayPal account and settings are working properly being going live.', 'contact-form-7-paypal-add-on'); ?>
+				<br /><br /><?php _e('To create a Sandbox account, you first need a Developer Account. You can sign up for free at the', 'contact-form-7-paypal-add-on'); ?> <a target='_blank' href='https://www.paypal.com/webapps/merchantboarding/webflow/unifiedflow?execution=e1s2'><?php _e('PayPal Developer', 'contact-form-7-paypal-add-on'); ?></a> <?php _e('site.', 'contact-form-7-paypal-add-on'); ?> <br /><br />
 
-				Once you have made an account, create a Sandbox Business and Personal Account <a target='_blank' href='https://developer.paypal.com/webapps/developer/applications/accounts'>here</a>. Enter the Business acount email on this page and use the Personal account username and password to buy something on your site as a customer.
+				<?php _e('Once you have made an account, create a Sandbox Business and Personal Account', 'contact-form-7-paypal-add-on'); ?> <a target='_blank' href='https://developer.paypal.com/webapps/developer/applications/accounts'><?php _e('here', 'contact-form-7-paypal-add-on'); ?></a>. <?php _e('Enter the Business acount email on this page and use the Personal account username and password to buy something on your site as a customer.', 'contact-form-7-paypal-add-on'); ?>
 				<br /><br />
 				</td></tr>
 	            <?php } ?>
 
 				<tr><td class='cf7pp_width'>
-				<b>Sandbox Mode:</b></td><td>
-				<input <?php if ($options['mode'] == "1") { echo "checked='checked'"; } ?> type='radio' name='mode' value='1'>On (Sandbox mode)
-				<input <?php if ($options['mode'] == "2") { echo "checked='checked'"; } ?> type='radio' name='mode' value='2'>Off (Live mode)
+				<b><?php _e('Sandbox Mode:', 'contact-form-7-paypal-add-on'); ?></b></td><td>
+				<input <?php if ($options['mode'] == "1") { echo "checked='checked'"; } ?> type='radio' name='mode' value='1'><?php _e('On (Sandbox mode)', 'contact-form-7-paypal-add-on'); ?>
+				<input <?php if ($options['mode'] == "2") { echo "checked='checked'"; } ?> type='radio' name='mode' value='2'><?php _e('Off (Live mode)', 'contact-form-7-paypal-add-on'); ?>
 				</td></tr>
 
 			</table>
@@ -323,40 +323,40 @@ function cf7pp_admin_table() {
 
 	<div id="5" style="display:none;border: 1px solid #CCCCCC;<?php echo $active_tab == '5' ? 'display:block;' : ''; ?>">
 		<div style="background-color:#E4E4E4;padding:8px;color:#000;font-size:15px;color:#464646;font-weight: 700;border-bottom: 1px solid #CCCCCC;">
-		&nbsp; <?php _e('Stripe Account', 'cf7pp'); ?>
+		&nbsp; <?php _e('Stripe Account', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		<div style="background-color:#fff;padding:8px;">
 
 			<table width='100%'>
-				<tr><td class='cf7pp_width'><b><?php _e('Connection status:', 'cf7pp'); ?> </b></td><td><?php cf7pp_stripe_connection_status_html(); ?></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Connection status:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><?php cf7pp_stripe_connection_status_html(); ?></td></tr>
 
 				<tr><td colspan="2"><br /></td></tr>
 
 				<?php if ( !empty($options['pub_key_live']) && !empty($options['sec_key_live']) ) { ?>
-				<tr><td class='cf7pp_width'><b><?php _e('Live Publishable Key:', 'cf7pp'); ?> </b></td><td><input type='text' size=40 name='pub_key_live' value='<?php echo $options['pub_key_live']; ?>' disabled="disabled"></td></tr>
-				<tr><td class='cf7pp_width'><b><?php _e('Live Secret Key:', 'cf7pp'); ?> </b></td><td><input type='text' size=40 name='sec_key_live' value='<?php echo $options['sec_key_live']; ?>' disabled="disabled"></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Live Publishable Key:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' size=40 name='pub_key_live' value='<?php echo $options['pub_key_live']; ?>' disabled="disabled"></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Live Secret Key:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' size=40 name='sec_key_live' value='<?php echo $options['sec_key_live']; ?>' disabled="disabled"></td></tr>
 				<tr><td colspan="2"><br /></td></tr>
 				<?php } ?>
 
 				<?php if ( !empty($options['pub_key_test']) && !empty($options['sec_key_test']) ) { ?>
-				<tr><td class='cf7pp_width'><b><?php _e('Test Publishable Key:', 'cf7pp'); ?> </b></td><td><input type='text' size=40 name='pub_key_test' value='<?php echo $options['pub_key_test']; ?>' disabled="disabled"></td></tr>
-				<tr><td class='cf7pp_width'><b><?php _e('Test Secret Key:', 'cf7pp'); ?> </b></td><td><input type='text' size=40 name='sec_key_test' value='<?php echo $options['sec_key_test']; ?>' disabled="disabled"></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Test Publishable Key:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' size=40 name='pub_key_test' value='<?php echo $options['pub_key_test']; ?>' disabled="disabled"></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Test Secret Key:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' size=40 name='sec_key_test' value='<?php echo $options['sec_key_test']; ?>' disabled="disabled"></td></tr>
 				<tr><td colspan="2"><br /></td></tr>
 				<?php } ?>
 
-				<tr><td class='cf7pp_width'><b><?php _e('Sandbox Mode:', 'cf7pp'); ?></b></td><td>
+				<tr><td class='cf7pp_width'><b><?php _e('Sandbox Mode:', 'contact-form-7-paypal-add-on'); ?></b></td><td>
 
-				<input <?php if ($options['mode_stripe'] == "1") { echo "checked='checked'"; } ?> type='radio' name='mode_stripe' value='1'><?php _e('On (Sandbox mode)', 'cf7pp'); ?>
-				<input <?php if ($options['mode_stripe'] == "2") { echo "checked='checked'"; } ?> type='radio' name='mode_stripe' value='2'><?php _e('Off (Live mode)', 'cf7pp'); ?></td></tr>
+				<input <?php if ($options['mode_stripe'] == "1") { echo "checked='checked'"; } ?> type='radio' name='mode_stripe' value='1'><?php _e('On (Sandbox mode)', 'contact-form-7-paypal-add-on'); ?>
+				<input <?php if ($options['mode_stripe'] == "2") { echo "checked='checked'"; } ?> type='radio' name='mode_stripe' value='2'><?php _e('Off (Live mode)', 'contact-form-7-paypal-add-on'); ?></td></tr>
 
 
 				<tr><td>
 				<br />
 				</td></tr>
 
-				<tr><td class='cf7pp_width'><b><?php _e('Default Text:', 'cf7pp'); ?> </b></td><td></td></tr>
-				<tr><td class='cf7pp_width'><b><?php _e('Payment Successful:', 'cf7pp'); ?> </b></td><td><input type='text' size='40' name='success' value='<?php echo esc_attr($options['success']); ?>'></td></tr>
-				<tr><td class='cf7pp_width'><b><?php _e('Payment Failed:', 'cf7pp'); ?> </b></td><td><input type='text' size='40' name='failed' value='<?php echo esc_attr($options['failed']); ?>'></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Default Text:', 'contact-form-7-paypal-add-on'); ?> </b></td><td></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Payment Successful:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' size='40' name='success' value='<?php echo esc_attr($options['success']); ?>'></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('Payment Failed:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' size='40' name='failed' value='<?php echo esc_attr($options['failed']); ?>'></td></tr>
 				
 			</table>
 
@@ -366,51 +366,39 @@ function cf7pp_admin_table() {
 
 	<div id="6" style="display:none;border: 1px solid #CCCCCC;<?php echo $active_tab == '6' ? 'display:block;' : ''; ?>">
 		<div style="background-color:#E4E4E4;padding:8px;font-size:15px;color:#464646;font-weight: 700;border-bottom: 1px solid #CCCCCC;">
-			&nbsp; <?php _e('Other Settings', 'cf7pp'); ?>
+			&nbsp; <?php _e('Other Settings', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		<div style="background-color:#fff;padding:8px;">
 
 			<table style="width: 100%;">
 
-				<tr><td class='cf7pp_width'><b><?php _e('PayPal Cancel URL:', 'cf7pp'); ?> </b></td><td><input type='text' name='cancel' value='<?php echo $options['cancel']; ?>'> <?php _e('Optional', 'cf7pp'); ?> <br /></td></tr>
-				<tr><td class='cf7pp_width'></td><td><?php _e('If the customer goes to PayPal and clicks the cancel button, where do they go. Example: http://example.com/cancel. Max length: 1,024. ', 'cf7pp'); ?></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('PayPal Cancel URL:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' name='cancel' value='<?php echo $options['cancel']; ?>'> <?php _e('Optional', 'contact-form-7-paypal-add-on'); ?> <br /></td></tr>
+				<tr><td class='cf7pp_width'></td><td><?php _e('If the customer goes to PayPal and clicks the cancel button, where do they go. Example: http://example.com/cancel. Max length: 1,024. ', 'contact-form-7-paypal-add-on'); ?></td></tr>
 
 				<tr><td>
 				<br />
 				</td></tr>
 
-				<tr><td class='cf7pp_width'><b><?php _e('PayPal Return URL:', 'cf7pp'); ?> </b></td><td><input type='text' name='return' value='<?php echo $options['return']; ?>'> <?php _e('Optional', 'cf7pp'); ?> <br /></td></tr>
-				<tr><td class='cf7pp_width'></td><td><?php _e('If the customer goes to PayPal and successfully pays, where are they redirected to after. Example: http://example.com/thankyou. Max length: 1,024. ', 'cf7pp'); ?></td></tr>
+				<tr><td class='cf7pp_width'><b><?php _e('PayPal Return URL:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' name='return' value='<?php echo $options['return']; ?>'> <?php _e('Optional', 'contact-form-7-paypal-add-on'); ?> <br /></td></tr>
+				<tr><td class='cf7pp_width'></td><td><?php _e('If the customer goes to PayPal and successfully pays, where are they redirected to after. Example: http://example.com/thankyou. Max length: 1,024. ', 'contact-form-7-paypal-add-on'); ?></td></tr>
 				
 				<tr><td>
 				<br />
 				</td></tr>
 				
-				<tr><td class='cf7pp_width'><b><?php _e('Stripe Return URL:', 'cf7pp'); ?> </b></td><td><input type='text' name='stripe_return' value='<?php echo $options['stripe_return']; ?>'> <?php _e('Optional', 'cf7pp'); ?> <br /></td></tr>
-				<tr><td class='cf7pp_width'></td><td><?php _e('If the customer successfully pays with Stripe, where are they redirected to after. Example: http://example.com/thankyou. ', 'cf7pp'); ?></td></tr>
-				
-				<tr><td>
-				<br />
-				</td></tr>
-				
-				<tr><td class='cf7pp_width'>
-				<b>Redirect Method:</b></td><td>
-				<input <?php if ($options['redirect'] == "1") { echo "checked='checked'"; } ?> type='radio' name='redirect' value='1'>1 (DOM wpcf7mailsent event listener)
-				<input <?php if ($options['redirect'] == "2") { echo "checked='checked'"; } ?> type='radio' name='redirect' value='2'>2 (Form sent class listener)
-				</td></tr>
-				<tr><td class='cf7pp_width'></td><td><?php _e('Method 1 recommend unless the form has problems redirecting.', 'cf7pp'); ?></td></tr>
-				
+				<tr><td class='cf7pp_width'><b><?php _e('Stripe Return URL:', 'contact-form-7-paypal-add-on'); ?> </b></td><td><input type='text' name='stripe_return' value='<?php echo $options['stripe_return']; ?>'> <?php _e('Optional', 'contact-form-7-paypal-add-on'); ?> <br /></td></tr>
+				<tr><td class='cf7pp_width'></td><td><?php _e('If the customer successfully pays with Stripe, where are they redirected to after. Example: http://example.com/thankyou. ', 'contact-form-7-paypal-add-on'); ?></td></tr>
 				
 				<tr><td>
 				<br />
 				</td></tr>
 				
 				<tr><td class='cf7pp_width'>
-				<b>Request Method:</b></td><td>
-				<input <?php if ($options['request_method'] == "1") { echo "checked='checked'"; } ?> type='radio' name='request_method' value='1'><?php _e('1 (Admin Ajax)', 'cf7pp'); ?>
-				<input <?php if ($options['request_method'] == "2") { echo "checked='checked'"; } ?> type='radio' name='request_method' value='2'><?php _e('2 (Rest API)', 'cf7pp'); ?>
+				<b><?php _e('Redirect Method:', 'contact-form-7-paypal-add-on'); ?></b></td><td>
+				<input <?php if ($options['redirect'] == "1") { echo "checked='checked'"; } ?> type='radio' name='redirect' value='1'><?php _e('1 (DOM wpcf7mailsent event listener)', 'contact-form-7-paypal-add-on'); ?>
+				<input <?php if ($options['redirect'] == "2") { echo "checked='checked'"; } ?> type='radio' name='redirect' value='2'><?php _e('2 (Form sent class listener)', 'contact-form-7-paypal-add-on'); ?>
 				</td></tr>
-				<tr><td class='cf7pp_width'></td><td><?php _e('Method 1 recommend unless the form has problems redirecting.', 'cf7pp'); ?></td></tr>
+				<tr><td class='cf7pp_width'></td><td><?php _e('Method 1 recommend unless the form has problems redirecting.', 'contact-form-7-paypal-add-on'); ?></td></tr>
 				
 				
 				<tr><td>
@@ -418,11 +406,23 @@ function cf7pp_admin_table() {
 				</td></tr>
 				
 				<tr><td class='cf7pp_width'>
-				<b>Temporary Storage Method:</b></td><td>
-				<input <?php if ($options['session'] == "1") { echo "checked='checked'"; } ?> type='radio' name='session' value='1'><?php _e('Cookies', 'cf7pp'); ?>
-				<input <?php if ($options['session'] == "2") { echo "checked='checked'"; } ?> type='radio' name='session' value='2'><?php _e('Sessions', 'cf7pp'); ?>
+				<b><?php _e('Request Method:', 'contact-form-7-paypal-add-on'); ?></b></td><td>
+				<input <?php if ($options['request_method'] == "1") { echo "checked='checked'"; } ?> type='radio' name='request_method' value='1'><?php _e('1 (Admin Ajax)', 'contact-form-7-paypal-add-on'); ?>
+				<input <?php if ($options['request_method'] == "2") { echo "checked='checked'"; } ?> type='radio' name='request_method' value='2'><?php _e('2 (Rest API)', 'contact-form-7-paypal-add-on'); ?>
 				</td></tr>
-				<tr><td class='cf7pp_width'></td><td><?php _e('Cookies are recommend unless the form has problems.', 'cf7pp'); ?></td></tr>
+				<tr><td class='cf7pp_width'></td><td><?php _e('Method 1 recommend unless the form has problems redirecting.', 'contact-form-7-paypal-add-on'); ?></td></tr>
+				
+				
+				<tr><td>
+				<br />
+				</td></tr>
+				
+				<tr><td class='cf7pp_width'>
+				<b><?php _e('Temporary Storage Method:', 'contact-form-7-paypal-add-on'); ?></b></td><td>
+				<input <?php if ($options['session'] == "1") { echo "checked='checked'"; } ?> type='radio' name='session' value='1'><?php _e('Cookies', 'contact-form-7-paypal-add-on'); ?>
+				<input <?php if ($options['session'] == "2") { echo "checked='checked'"; } ?> type='radio' name='session' value='2'><?php _e('Sessions', 'contact-form-7-paypal-add-on'); ?>
+				</td></tr>
+				<tr><td class='cf7pp_width'></td><td><?php _e('Cookies are recommend unless the form has problems.', 'contact-form-7-paypal-add-on'); ?></td></tr>
 
 			</table>
 
@@ -432,7 +432,7 @@ function cf7pp_admin_table() {
 	
 	<div id="7" style="display:none;border: 1px solid #CCCCCC;<?php echo $active_tab == '7' ? 'display:block;' : ''; ?>">
 		<div style="background-color:#E4E4E4;padding:8px;font-size:15px;color:#464646;font-weight: 700;border-bottom: 1px solid #CCCCCC;">
-			&nbsp; <?php _e('Extensions', 'cf7pp'); ?>
+			&nbsp; <?php _e('Extensions', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		<div style="background-color:#fff;padding:8px;">
 			
@@ -474,34 +474,34 @@ function cf7pp_admin_table() {
 
 	<div style="border: 1px solid #CCCCCC;width:400px;">	
 		<div style="background-color:#E4E4E4;padding:8px;font-size:15px;color:#464646;font-weight: 700;border-bottom: 1px solid #CCCCCC;">
-		&nbsp; <?php _e('Pro Version Features', 'cf7pp'); ?>
+		&nbsp; <?php _e('Pro Version Features', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		
 		<div style="background-color:#fff;padding:8px;">
 		
 		<br />
-		<?php _e('We offer a Pro version of our plugins for those who want more features.', 'cf7pp'); ?>
+		<?php _e('We offer a Pro version of our plugins for those who want more features.', 'contact-form-7-paypal-add-on'); ?>
 		<br />
 		
 		<br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Only send email if PayPal / Stripe payment is successful', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('No 2% PayPal per transaction application fee', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('No 2% Stripe per transaction application fee', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Link any form item to price, quantity, or description', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Sell up to 5 items per form', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Charge tax and shipping', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Separate PayPal & Stripe account per form', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Skip redirecting based upon form elements', 'cf7pp'); ?><br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Accept recurring payments with our', 'cf7pp'); ?> <a target='_blank' href='https://wpplugin.org/downloads/contact-form-7-recurring-payments-pro/'><?php _e('Recurring Add-on', 'cf7pp'); ?></a><br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Amazing plugin support agents from USA', 'cf7pp'); ?><br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('No risk, 30 day return policy', 'cf7pp'); ?> <br />
-		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Many more features!', 'cf7pp'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Only send email if PayPal / Stripe payment is successful', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('No 2% PayPal per transaction application fee', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('No 2% Stripe per transaction application fee', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Link any form item to price, quantity, or description', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Sell up to 5 items per form', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Charge tax and shipping', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Separate PayPal & Stripe account per form', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Skip redirecting based upon form elements', 'contact-form-7-paypal-add-on'); ?><br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Accept recurring payments with our', 'contact-form-7-paypal-add-on'); ?> <a target='_blank' href='https://wpplugin.org/downloads/contact-form-7-recurring-payments-pro/'><?php _e('Recurring Add-on', 'contact-form-7-paypal-add-on'); ?></a><br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Amazing plugin support agents from USA', 'contact-form-7-paypal-add-on'); ?><br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('No risk, 30 day return policy', 'contact-form-7-paypal-add-on'); ?> <br />
+		<div class="dashicons dashicons-yes" style="margin-bottom: 6px;"></div> <?php _e('Many more features!', 'contact-form-7-paypal-add-on'); ?> <br />
 		
 		<br />
-		<b><center><?php _e('Over 4,200 happy Pro version customers', 'cf7pp'); ?></center></b>
+		<b><center><?php _e('Over 4,200 happy Pro version customers', 'contact-form-7-paypal-add-on'); ?></center></b>
 		
 		<br />
-		<center><a target='_blank' href="https://wpplugin.org/downloads/contact-form-7-paypal-add-on/" class='button-primary' style='font-size: 17px;line-height: 28px;height: 32px;'><?php _e('Get the Pro Version', 'cf7pp'); ?></a></center>
+		<center><a target='_blank' href="https://wpplugin.org/downloads/contact-form-7-paypal-add-on/" class='button-primary' style='font-size: 17px;line-height: 28px;height: 32px;'><?php _e('Get the Pro Version', 'contact-form-7-paypal-add-on'); ?></a></center>
 		<br />
 		</div>
 	</div>
@@ -535,7 +535,7 @@ function cf7pp_free_ppcp_status_markup() {
             <table>
                 <tr>
                     <td class="cf7pp-cell-left">
-                        <b><?php _e('Connection status:', 'cf7pp'); ?> </b>
+                        <b><?php _e('Connection status:', 'contact-form-7-paypal-add-on'); ?> </b>
                     </td>
                     <td>
                         <div class="notice inline cf7pp-ppcp-connect notice-<?php echo $notice_type; ?>">
@@ -544,12 +544,12 @@ function cf7pp_free_ppcp_status_markup() {
                                     <strong><?php echo $status['legal_name']; ?></strong>
                                     <br>
 								<?php } ?>
-								<?php echo !empty( $status['primary_email'] ) ? $status['primary_email'] . ' — ' : ''; ?><?php _e('Administrator (Owner)', 'cf7pp'); ?></p>
-								<p><?php _e('Pay as you go pricing: 2% per-transaction fee + PayPal fees.', 'cf7pp'); ?></p>
+								<?php echo !empty( $status['primary_email'] ) ? $status['primary_email'] . ' — ' : ''; ?><?php _e('Administrator (Owner)', 'contact-form-7-paypal-add-on'); ?></p>
+								<p><?php _e('Pay as you go pricing: 2% per-transaction fee + PayPal fees.', 'contact-form-7-paypal-add-on'); ?></p>
                         </div>
                         <div>
 							<?php $reconnect_mode = $status['env'] === 'live' ? 'sandbox' : 'live'; ?>
-                            <?php _e('Your PayPal account is connected in', 'cf7pp'); ?> <strong><?php echo $status['env']; ?></strong> <?php _e('mode.', 'cf7pp'); ?>
+                            <?php _e('Your PayPal account is connected in', 'contact-form-7-paypal-add-on'); ?> <strong><?php echo $status['env']; ?></strong> <?php _e('mode.', 'contact-form-7-paypal-add-on'); ?>
 							<?php
 							$query_args = [
 								'action' => 'cf7pp-ppcp-onboarding-start',
@@ -564,15 +564,15 @@ function cf7pp_free_ppcp_status_markup() {
                                 data-paypal-button="true"
                                 href="<?php echo add_query_arg( $query_args, admin_url( 'admin-ajax.php' ) ); ?>"
                                 target="PPFrame"
-                            ><?php _e('Connect in', 'cf7pp'); ?> <strong><?php echo $reconnect_mode; ?></strong> <?php _e('mode', 'cf7pp'); ?></a> <?php _e('or', 'cf7pp'); ?> <a href="#" id="cf7pp-ppcp-disconnect"><?php _e('disconnect this account', 'cf7pp'); ?></a>.
+                            ><?php _e('Connect in', 'contact-form-7-paypal-add-on'); ?> <strong><?php echo $reconnect_mode; ?></strong> <?php _e('mode', 'contact-form-7-paypal-add-on'); ?></a> <?php _e('or', 'contact-form-7-paypal-add-on'); ?> <a href="#" id="cf7pp-ppcp-disconnect"><?php _e('disconnect this account', 'contact-form-7-paypal-add-on'); ?></a>.
                         </div>
 
 						<?php if ( !empty( $status['errors'] ) ) { ?>
                             <p>
-                                <strong><?php _e('There were errors connecting your PayPal account. Resolve them in your account settings, by contacting support or by reconnecting your PayPal account.', 'cf7pp'); ?></strong>
+                                <strong><?php _e('There were errors connecting your PayPal account. Resolve them in your account settings, by contacting support or by reconnecting your PayPal account.', 'contact-form-7-paypal-add-on'); ?></strong>
                             </p>
                             <p>
-                                <strong><?php _e('See below for more details.', 'cf7pp'); ?></strong>
+                                <strong><?php _e('See below for more details.', 'contact-form-7-paypal-add-on'); ?></strong>
                             </p>
                             <ul class="cf7pp-ppcp-list cf7pp-ppcp-list-error">
 								<?php foreach ( $status['errors'] as $error ) { ?>
@@ -583,8 +583,8 @@ function cf7pp_free_ppcp_status_markup() {
 
 						<?php if ( $show_links ) { ?>
                             <ul class="cf7pp-ppcp-list">
-                                <li><a href="https://www.paypal.com/myaccount/settings/"><?php _e('PayPal account settings', 'cf7pp'); ?></a></li>
-                                <li><a href="https://www.paypal.com/us/smarthelp/contact-us"><?php _e('PayPal support', 'cf7pp'); ?></a></li>
+                                <li><a href="https://www.paypal.com/myaccount/settings/"><?php _e('PayPal account settings', 'contact-form-7-paypal-add-on'); ?></a></li>
+                                <li><a href="https://www.paypal.com/us/smarthelp/contact-us"><?php _e('PayPal support', 'contact-form-7-paypal-add-on'); ?></a></li>
                             </ul>
 						<?php } ?>
                     </td>
@@ -610,11 +610,11 @@ function cf7pp_free_ppcp_status_markup() {
             </tr>
             <tr>
                 <td colspan="2">
-                    <h3 class="cf7pp-ppcp-title"><?php _e('PayPal: The all-in-one checkout solution', 'cf7pp'); ?></h3>
+                    <h3 class="cf7pp-ppcp-title"><?php _e('PayPal: The all-in-one checkout solution', 'contact-form-7-paypal-add-on'); ?></h3>
                     <ul class="cf7pp-ppcp-list">
-                        <li><?php _e('Help drive conversion by offering customers a seamless checkout experience', 'cf7pp'); ?></li>
-                        <li><?php _e('Securely accepts all major credit/debit cards and local payment methods with the strength of the PayPal network', 'cf7pp'); ?></li>
-                        <li><?php _e('You only pay the standard PayPal fees + 2%.', 'cf7pp'); ?></li>
+                        <li><?php _e('Help drive conversion by offering customers a seamless checkout experience', 'contact-form-7-paypal-add-on'); ?></li>
+                        <li><?php _e('Securely accepts all major credit/debit cards and local payment methods with the strength of the PayPal network', 'contact-form-7-paypal-add-on'); ?></li>
+                        <li><?php _e('You only pay the standard PayPal fees + 2%.', 'contact-form-7-paypal-add-on'); ?></li>
                     </ul>
                 </td>
             </tr>
@@ -636,10 +636,10 @@ function cf7pp_free_ppcp_status_markup() {
                         data-paypal-button="true"
                         href="<?php echo add_query_arg( $query_args, admin_url( 'admin-ajax.php' ) ); ?>"
                         target="PPFrame"
-                    ><?php _e('Get started', 'cf7pp'); ?></a>
+                    ><?php _e('Get started', 'contact-form-7-paypal-add-on'); ?></a>
                 </td>
                 <td class="cf7pp-ppcp-align-right">
-                    <a href="https://www.paypal.com/us/webapps/mpp/merchant-fees#statement-2" class="cf7pp-ppcp-link" target="_blank"><?php _e('View our simple and transparent pricing', 'cf7pp'); ?></a>
+                    <a href="https://www.paypal.com/us/webapps/mpp/merchant-fees#statement-2" class="cf7pp-ppcp-link" target="_blank"><?php _e('View our simple and transparent pricing', 'contact-form-7-paypal-add-on'); ?></a>
                 </td>
             </tr>
 			<?php if ( !empty( $_GET['error'] ) && in_array( $_GET['error'], ['security', 'api'] ) ) { ?>
@@ -649,9 +649,9 @@ function cf7pp_free_ppcp_status_markup() {
                             <li>
 								<?php
 								if ( $_GET['error'] === 'security' ) {
-									_e( 'The request has not been authenticated. Please reload the page and try again.', 'cf7pp' );
+									_e( 'The request has not been authenticated. Please reload the page and try again.', 'contact-form-7-paypal-add-on' );
 								} else {
-									_e( 'The request ended with an error. Please reload the page and try again.', 'cf7pp' );
+									_e( 'The request ended with an error. Please reload the page and try again.', 'contact-form-7-paypal-add-on' );
 								}
 								?>
                             </li>

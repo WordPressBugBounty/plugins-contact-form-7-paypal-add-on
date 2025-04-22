@@ -95,20 +95,20 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 	}
 	
 	if (filter_var($success_url, FILTER_VALIDATE_URL) === FALSE) {
-		echo __("Website admin: Success or Return URL is not valid.", 'cf7pp');
+		echo __("Website admin: Success or Return URL is not valid.", 'contact-form-7-paypal-add-on');
 		exit;
 	}
 	
 	if (filter_var($cancel_url, FILTER_VALIDATE_URL) === FALSE) {
-		echo __("Website admin: Success or Return URL is not valid.", 'cf7pp');
+		echo __("Website admin: Success or Return URL is not valid.", 'contact-form-7-paypal-add-on');
 		exit;
 	}
 	
-	if (empty($name)) 		{ $name =  __("(No item name)", 'cf7pp'); }
+	if (empty($name)) 		{ $name =  __("(No item name)", 'contact-form-7-paypal-add-on'); }
 	
 	
 	if (empty($account_id) && (empty($stripe_key) || empty($stripe_sec))) {
-		echo __("Website Admin: Please connect your Stripe account on the settings page (Contact -> PayPal & Stripe Settings -> Stripe)", 'cf7pp');
+		echo __("Website Admin: Please connect your Stripe account on the settings page (Contact -> PayPal & Stripe Settings -> Stripe)", 'contact-form-7-paypal-add-on');
 		exit;
 	}
 	
@@ -146,7 +146,7 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 
 	// Stripe does not allow totals of 0.00, so show error if this happens
 	if ($amount == 0) {
-		echo __('Website Admin: Price cannot be set to 0.00.', 'cf7pp');
+		echo __('Website Admin: Price cannot be set to 0.00.', 'contact-form-7-paypal-add-on');
 		exit;
 	}
 
@@ -171,7 +171,7 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 		]);
 
 		if (empty($checkout_session->id)) {
-			echo __("An unexpected error occurred. Please try again.", 'cf7pp');
+			echo __("An unexpected error occurred. Please try again.", 'contact-form-7-paypal-add-on');
 			exit;
 		}
 	} else {
@@ -203,7 +203,7 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 		$checkout_session = json_decode($checkout_session['body']);
 
 		if (empty($checkout_session->session_id)) {
-			echo __("An unexpected error occurred. Please try again.", 'cf7pp');
+			echo __("An unexpected error occurred. Please try again.", 'contact-form-7-paypal-add-on');
 			exit;
 		}
 	}	

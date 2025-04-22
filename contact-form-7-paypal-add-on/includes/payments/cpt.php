@@ -9,18 +9,18 @@ add_action('init', 'cf7pp_payments_init');
 function cf7pp_payments_init(){
 	register_post_type('cf7pp_payments', array(
 		'labels'				=> array(
-			'name'               => _x('Payments', 'post type general name', 'cf7pp'),
-			'singular_name'      => _x('Payment', 'post type singular name', 'cf7pp'),
-			'add_new'            => _x('Add New', 'payment', 'cf7pp'),
-			'add_new_item'       => __('Add New Payment', 'cf7pp'),
-			'edit_item'          => __('Edit Payment', 'cf7pp'),
-			'new_item'           => __('New Payment', 'cf7pp'),
-			'view_item'          => __('View Payment', 'cf7pp'),
-			'search_items'       => __('Search Payments', 'cf7pp'),
-			'not_found'          => __('No payments found.', 'cf7pp'),
-			'not_found_in_trash' => __('No payments found in Trash.', 'cf7pp'),
-			'parent_item_colon'  => __('Parent Payments:', 'cf7pp'),
-			'menu_name'          => _x('Payments', 'admin menu', 'cf7pp'),
+			'name'               => _x('Payments', 'post type general name', 'contact-form-7-paypal-add-on'),
+			'singular_name'      => _x('Payment', 'post type singular name', 'contact-form-7-paypal-add-on'),
+			'add_new'            => _x('Add New', 'payment', 'contact-form-7-paypal-add-on'),
+			'add_new_item'       => __('Add New Payment', 'contact-form-7-paypal-add-on'),
+			'edit_item'          => __('Edit Payment', 'contact-form-7-paypal-add-on'),
+			'new_item'           => __('New Payment', 'contact-form-7-paypal-add-on'),
+			'view_item'          => __('View Payment', 'contact-form-7-paypal-add-on'),
+			'search_items'       => __('Search Payments', 'contact-form-7-paypal-add-on'),
+			'not_found'          => __('No payments found.', 'contact-form-7-paypal-add-on'),
+			'not_found_in_trash' => __('No payments found in Trash.', 'contact-form-7-paypal-add-on'),
+			'parent_item_colon'  => __('Parent Payments:', 'contact-form-7-paypal-add-on'),
+			'menu_name'          => _x('Payments', 'admin menu', 'contact-form-7-paypal-add-on'),
 		),
 		'public'				=> false,
 		'show_ui'				=> true,
@@ -43,7 +43,7 @@ function cf7pp_payments_print_id($post) {
 	if ($post->post_type === 'cf7pp_payments') {
 		printf(
 			'<h3>%s %s</h3>',
-			__('Payment:', 'cf7pp'),
+			__('Payment:', 'contact-form-7-paypal-add-on'),
 			$post->ID
 		);
     }
@@ -63,7 +63,7 @@ function cf7pp_payments_remove_meta_box() {
  * @since 1.8
  */
 function cf7pp_payments_add_metaboxes() {
-	add_meta_box('submitdiv', __('Payment actions', 'cf7pp'), 'cf7pp_payments_submit_metabox', 'cf7pp_payments', 'side');
+	add_meta_box('submitdiv', __('Payment actions', 'contact-form-7-paypal-add-on'), 'cf7pp_payments_submit_metabox', 'cf7pp_payments', 'side');
 }
 
 /**
@@ -82,12 +82,12 @@ function cf7pp_payments_submit_metabox($post) {
 		<div id="minor-publishing">
 			<div id="misc-publishing-actions">
 				<div class="misc-pub-section misc-pub-post-status">
-					<?php _e( 'Status:', 'cf7pp' ); ?>
+					<?php _e( 'Status:', 'contact-form-7-paypal-add-on' ); ?>
 					<span id="post-status-display"><?php echo cf7pp_get_payment_status_label($post->post_status); ?></span>
-					<a href="#post_status" class="edit-post-status hide-if-no-js" role="button"><span aria-hidden="true"><?php _e( 'Edit', 'cf7pp' ); ?></span> <span class="screen-reader-text"><?php _e( 'Edit status', 'cf7pp' ); ?></span></a>
+					<a href="#post_status" class="edit-post-status hide-if-no-js" role="button"><span aria-hidden="true"><?php _e( 'Edit', 'contact-form-7-paypal-add-on' ); ?></span> <span class="screen-reader-text"><?php _e( 'Edit status', 'contact-form-7-paypal-add-on' ); ?></span></a>
 					<div id="post-status-select" class="hide-if-js">
 						<input type="hidden" name="hidden_post_status" id="hidden_post_status" value="<?php echo esc_attr( ( 'auto-draft' === $post->post_status ) ? 'draft' : $post->post_status ); ?>" />
-						<label for="post_status" class="screen-reader-text"><?php _e( 'Set status', 'cf7pp' ); ?></label>
+						<label for="post_status" class="screen-reader-text"><?php _e( 'Set status', 'contact-form-7-paypal-add-on' ); ?></label>
 						<select name="post_status" id="post_status">
 							<?php foreach ($payment_statuses as $status => $value) {
 								printf(
@@ -98,16 +98,16 @@ function cf7pp_payments_submit_metabox($post) {
 								);
 							} ?>
 						</select>
-						<a href="#post_status" class="save-post-status hide-if-no-js button"><?php _e( 'OK', 'cf7pp' ); ?></a>
-						<a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel"><?php _e( 'Cancel', 'cf7pp' ); ?></a>
+						<a href="#post_status" class="save-post-status hide-if-no-js button"><?php _e( 'OK', 'contact-form-7-paypal-add-on' ); ?></a>
+						<a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel"><?php _e( 'Cancel', 'contact-form-7-paypal-add-on' ); ?></a>
 					</div>			
 				</div>
 
 				<?php
 				if ( 0 !== $post_id ) {
-					$date_string = '%1$s ' . __('at', 'cf7pp') . ' %2$s';
-					$date_format = _x( 'M j, Y', 'publish box date format', 'cf7pp' );
-					$time_format = _x( 'H:i', 'publish box time format', 'cf7pp' );
+					$date_string = '%1$s ' . __('at', 'contact-form-7-paypal-add-on') . ' %2$s';
+					$date_format = _x( 'M j, Y', 'publish box date format', 'contact-form-7-paypal-add-on' );
+					$time_format = _x( 'H:i', 'publish box time format', 'contact-form-7-paypal-add-on' );
 					$date = sprintf(
 						$date_string,
 						date_i18n( $date_format, strtotime( $post->post_date ) ),
@@ -117,14 +117,14 @@ function cf7pp_payments_submit_metabox($post) {
 				?>
 				<div class="misc-pub-section curtime misc-pub-curtime">
 					<span id="timestamp">
-						<?php printf(__('Made on: %s', 'cf7pp'), '<b>' . $date . '</b>'); ?>
+						<?php printf(__('Made on: %s', 'contact-form-7-paypal-add-on'), '<b>' . $date . '</b>'); ?>
 					</span>
 					<a href="#edit_timestamp" class="edit-timestamp hide-if-no-js" role="button">
-						<span aria-hidden="true"><?php _e( 'Edit', 'cf7pp' ); ?></span>
-						<span class="screen-reader-text"><?php _e( 'Edit date and time', 'cf7pp' ); ?></span>
+						<span aria-hidden="true"><?php _e( 'Edit', 'contact-form-7-paypal-add-on' ); ?></span>
+						<span class="screen-reader-text"><?php _e( 'Edit date and time', 'contact-form-7-paypal-add-on' ); ?></span>
 					</a>
 					<fieldset id="timestampdiv" class="hide-if-js">
-						<legend class="screen-reader-text"><?php _e( 'Date and time', 'cf7pp' ); ?></legend>
+						<legend class="screen-reader-text"><?php _e( 'Date and time', 'contact-form-7-paypal-add-on' ); ?></legend>
 						<?php touch_time( ( 'edit' === $action ), 1 ); ?>
 					</fieldset>
 				</div>
@@ -137,9 +137,9 @@ function cf7pp_payments_submit_metabox($post) {
 			<?php
 			if ( current_user_can( 'delete_post', $post_id ) ) {
 				if ( ! EMPTY_TRASH_DAYS ) {
-					$delete_text = __( 'Delete permanently', 'cf7pp' );
+					$delete_text = __( 'Delete permanently', 'contact-form-7-paypal-add-on' );
 				} else {
-					$delete_text = __( 'Move to Trash', 'cf7pp' );
+					$delete_text = __( 'Move to Trash', 'contact-form-7-paypal-add-on' );
 				}
 				?>
 				<a class="submitdelete deletion" href="<?php echo get_delete_post_link( $post_id ); ?>"><?php echo $delete_text; ?></a>
@@ -150,8 +150,8 @@ function cf7pp_payments_submit_metabox($post) {
 
 			<div id="publishing-action">
 				<span class="spinner"></span>
-				<input name="original_publish" type="hidden" id="original_publish" value="<?php esc_attr_e( 'Update', 'cf7pp' ); ?>" />
-				<?php submit_button( __( 'Update', 'cf7pp' ), 'primary large', 'save', false, array( 'id' => 'publish' ) ); ?>
+				<input name="original_publish" type="hidden" id="original_publish" value="<?php esc_attr_e( 'Update', 'contact-form-7-paypal-add-on' ); ?>" />
+				<?php submit_button( __( 'Update', 'contact-form-7-paypal-add-on' ), 'primary large', 'save', false, array( 'id' => 'publish' ) ); ?>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -179,20 +179,20 @@ function cf7pp_remove_payments_quick_edit($actions, $post) {
 function cf7pp_get_payment_statuses() {
 	$payment_statuses = array(
 		'cf7pp-pending'	=> array(
-			'label'				=> __('Pending', 'cf7pp'),
-			'label_count'		=> _n_noop('Pending %s', 'Pending %s', 'cf7pp')
+			'label'				=> __('Pending', 'contact-form-7-paypal-add-on'),
+			'label_count'		=> _n_noop('Pending %s', 'Pending %s', 'contact-form-7-paypal-add-on')
 		),
 		'cf7pp-completed'	=> array(
-			'label'				=> __('Completed', 'cf7pp'),
-			'label_count'		=> _n_noop('Completed %s', 'Completed %s', 'cf7pp')
+			'label'				=> __('Completed', 'contact-form-7-paypal-add-on'),
+			'label_count'		=> _n_noop('Completed %s', 'Completed %s', 'contact-form-7-paypal-add-on')
 		),
 		'cf7pp-failed'	=> array(
-			'label'				=> __('Failed', 'cf7pp'),
-			'label_count'		=> _n_noop('Failed %s', 'Failed %s', 'cf7pp')
+			'label'				=> __('Failed', 'contact-form-7-paypal-add-on'),
+			'label_count'		=> _n_noop('Failed %s', 'Failed %s', 'contact-form-7-paypal-add-on')
 		),
 		'cf7pp-abandoned'	=> array(
-			'label'				=> __('Abandoned', 'cf7pp'),
-			'label_count'		=> _n_noop('Abandoned %s', 'Abandoned %s', 'cf7pp')
+			'label'				=> __('Abandoned', 'contact-form-7-paypal-add-on'),
+			'label_count'		=> _n_noop('Abandoned %s', 'Abandoned %s', 'contact-form-7-paypal-add-on')
 		)
 	);
 
@@ -274,12 +274,12 @@ function cf7pp_custom_edit_payments_columns($columns) {
     unset($columns['title']);
     unset($columns['date']);
 
-    $columns['payment_id'] = __('Payment #', 'cf7pp');
-    $columns['details'] = __('Details', 'cf7pp');
-	$columns['date'] = __('Date', 'cf7pp');
-    $columns['amount'] = __('Amount', 'cf7pp');
-    $columns['transaction_type'] = __('Transaction Type', 'cf7pp');
-	$columns['payment_status'] = __('Payment status', 'cf7pp');
+    $columns['payment_id'] = __('Payment #', 'contact-form-7-paypal-add-on');
+    $columns['details'] = __('Details', 'contact-form-7-paypal-add-on');
+	$columns['date'] = __('Date', 'contact-form-7-paypal-add-on');
+    $columns['amount'] = __('Amount', 'contact-form-7-paypal-add-on');
+    $columns['transaction_type'] = __('Transaction Type', 'contact-form-7-paypal-add-on');
+	$columns['payment_status'] = __('Payment status', 'contact-form-7-paypal-add-on');
 
     return $columns;
 }

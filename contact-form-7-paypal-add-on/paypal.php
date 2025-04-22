@@ -7,9 +7,9 @@ Description: Integrates PayPal & Stripe with Contact Form 7
 Author: Scott Paterson
 Author URI: https://wpplugin.org/downloads/contact-form-7-paypal-add-on/
 License: GPL2
-Version: 2.4
+Version: 2.4.1
 Requires Plugins: contact-form-7
-Text Domain: cf7pp
+Text Domain: contact-form-7-paypal-add-on
 Domain Path: /languages
 */
 
@@ -45,7 +45,7 @@ if (function_exists('cf7pp_pro')) {
 	deactivate_plugins('contact-form-7-paypal-add-on-pro/paypal.php');
 
 } else {
-	define('CF7PP_VERSION_NUM', 	'2.4');
+	define('CF7PP_VERSION_NUM', 	'2.4.1');
 
 	define( 'CF7PP_STRIPE_CONNECT_ENDPOINT', 'https://wpplugin.org/stripe/connect.php' );
 	define( 'CF7PP_FREE_PPCP_API', 'https://wpplugin.org/ppcp-cf7pp/' );
@@ -65,8 +65,8 @@ if (function_exists('cf7pp_pro')) {
 			'redirect' => '1',
 			'request_method' => '1',
 			'session' => '1',
-			'success' => __('Payment Successful', 'cf7pp'),
-			'failed' => __('Payment Failed', 'cf7pp'),
+			'success' => __('Payment Successful', 'contact-form-7-paypal-add-on'),
+			'failed' => __('Payment Failed', 'contact-form-7-paypal-add-on'),
 			'stripe_return' => '',
 			'mode_stripe' => '2',
 			'acct_id_test' => '',
@@ -122,7 +122,7 @@ if (function_exists('cf7pp_pro')) {
 
 	// Load the plugin's text domain for translation
 	function cf7pp_load_textdomain() {
-	    load_plugin_textdomain( 'cf7pp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	    load_plugin_textdomain( 'contact-form-7-paypal-add-on', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 	add_action( 'plugins_loaded', 'cf7pp_load_textdomain' );
 
@@ -193,7 +193,7 @@ if (function_exists('cf7pp_pro')) {
 		function cf7pp_my_admin_notice() {
 			?>
 			<div class="error">
-				<p><b><?php _e( 'Contact Form 7 - PayPal & Stripe Add-on:', 'cf7pp' ); ?></b> <?php _e( 'Contact Form 7 is not installed and / or active! Please install', 'cf7pp' ); ?> <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/"><?php _e( 'Contact Form 7', 'cf7pp' ); ?></a>.</p>
+				<p><b><?php _e( 'Contact Form 7 - PayPal & Stripe Add-on:', 'contact-form-7-paypal-add-on' ); ?></b> <?php _e( 'Contact Form 7 is not installed and / or active! Please install', 'contact-form-7-paypal-add-on' ); ?> <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/"><?php _e( 'Contact Form 7', 'contact-form-7-paypal-add-on' ); ?></a>.</p>
 			</div>
 			<?php
 		}
@@ -208,24 +208,24 @@ if (function_exists('cf7pp_pro')) {
 			wp_localize_script('cf7pp-deactivation-survey', 'cf7ppDeactivationSurvey', array(
 				'pluginVersion' => CF7PP_VERSION_NUM,
 				'deactivationOptions' => array(
-					'upgraded_to_pro' => __('I upgraded to the Pro version', 'cf7pp'),
-					'no_longer_needed' => __('I no longer need the plugin', 'cf7pp'),
-					'found_better' => __('I found a better plugin', 'cf7pp'),
-					'not_working' => __('The plugin is not working', 'cf7pp'),
-					'fees_expensive' => __('The fees are too high', 'cf7pp'),
-					'temporary' => __('It\'s a temporary deactivation', 'cf7pp'),
-					'other' => __('Other', 'cf7pp')
+					'upgraded_to_pro' => __('I upgraded to the Pro version', 'contact-form-7-paypal-add-on'),
+					'no_longer_needed' => __('I no longer need the plugin', 'contact-form-7-paypal-add-on'),
+					'found_better' => __('I found a better plugin', 'contact-form-7-paypal-add-on'),
+					'not_working' => __('The plugin is not working', 'contact-form-7-paypal-add-on'),
+					'fees_expensive' => __('The fees are too high', 'contact-form-7-paypal-add-on'),
+					'temporary' => __('It\'s a temporary deactivation', 'contact-form-7-paypal-add-on'),
+					'other' => __('Other', 'contact-form-7-paypal-add-on')
 				),
 				'strings' => array(
-					'title' => __('Contact Form 7 PayPal & Stripe Add-on Deactivation', 'cf7pp'),
-					'description' => __('If you have a moment, please let us know why you are deactivating. All submissions are anonymous and we only use this feedback to improve this plugin.', 'cf7pp'),
-					'otherPlaceholder' => __('Please tell us more...', 'cf7pp'),
-					'skipButton' => __('Skip & Deactivate', 'cf7pp'),
-					'submitButton' => __('Submit & Deactivate', 'cf7pp'),
-					'cancelButton' => __('Cancel', 'cf7pp'),
-					'betterPluginQuestion' => __('What is the name of the plugin?', 'cf7pp'),
-					'notWorkingQuestion' => __('We\'re sorry to hear that. Can you describe the issue?', 'cf7pp'),
-					'errorRequired' => __('Error: Please complete the required field.', 'cf7pp')
+					'title' => __('Contact Form 7 PayPal & Stripe Add-on Deactivation', 'contact-form-7-paypal-add-on'),
+					'description' => __('If you have a moment, please let us know why you are deactivating. All submissions are anonymous and we only use this feedback to improve this plugin.', 'contact-form-7-paypal-add-on'),
+					'otherPlaceholder' => __('Please tell us more...', 'contact-form-7-paypal-add-on'),
+					'skipButton' => __('Skip & Deactivate', 'contact-form-7-paypal-add-on'),
+					'submitButton' => __('Submit & Deactivate', 'contact-form-7-paypal-add-on'),
+					'cancelButton' => __('Cancel', 'contact-form-7-paypal-add-on'),
+					'betterPluginQuestion' => __('What is the name of the plugin?', 'contact-form-7-paypal-add-on'),
+					'notWorkingQuestion' => __('We\'re sorry to hear that. Can you describe the issue?', 'contact-form-7-paypal-add-on'),
+					'errorRequired' => __('Error: Please complete the required field.', 'contact-form-7-paypal-add-on')
 				)
 			));
 		}
