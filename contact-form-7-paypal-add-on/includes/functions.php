@@ -14,7 +14,7 @@ function cf7pp_format_currency($price) {
 // display activation notice
 function cf7pp_my_plugin_admin_notices() {
 	if (!get_option('cf7pp_my_plugin_notice_shown')) {
-		echo "<div class='updated'><p><a href='admin.php?page=cf7pp_admin_table'>Click here to view the plugin settings</a>.</p></div>";
+		echo "<div class='updated'><p><a href='admin.php?page=cf7pp_admin_table'>Contact Form 7 - PayPal & Stripe Add-on is now active - Click here to view the plugin settings</a></p></div>";
 		update_option("cf7pp_my_plugin_notice_shown", "true");
 	}
 }

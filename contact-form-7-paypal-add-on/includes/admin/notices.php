@@ -133,7 +133,7 @@ function cf7pp_show_earnings_notice() {
  * Show admin notice for Stripe Connect.
  * @since 1.8
  */
-add_action('admin_notices', 'cf7pp_admin_stripe_connect_notice');
+//add_action('admin_notices', 'cf7pp_admin_stripe_connect_notice');
 function cf7pp_admin_stripe_connect_notice() {
     $options = cf7pp_free_options();
     
@@ -229,7 +229,7 @@ function cf7pp_admin_stripe_connect_error_notice() {
  * Show admin notice for PayPal Commerce Platform.
  * @since 2.0
  */
-add_action( 'admin_notices', 'cf7pp_ppcp_admin_notice' );
+//add_action( 'admin_notices', 'cf7pp_ppcp_admin_notice' );
 function cf7pp_ppcp_admin_notice() {
     $options = cf7pp_free_options();
     $env = intval( $options['mode'] ) === 2 ? 'live' : 'sandbox';

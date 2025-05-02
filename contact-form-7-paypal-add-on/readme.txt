@@ -6,7 +6,7 @@ Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 2.4.1
+Stable tag: 2.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,10 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.4.2 =
+* 5/2/25
+* Fix - When WooCommerce was active it would cause an issue where the page / post editing would not save correctly.
 
 = 2.4.1 =
 * 4/21/25

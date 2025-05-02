@@ -7,7 +7,7 @@ Description: Integrates PayPal & Stripe with Contact Form 7
 Author: Scott Paterson
 Author URI: https://wpplugin.org/downloads/contact-form-7-paypal-add-on/
 License: GPL2
-Version: 2.4.1
+Version: 2.4.2
 Requires Plugins: contact-form-7
 Text Domain: contact-form-7-paypal-add-on
 Domain Path: /languages
@@ -45,7 +45,7 @@ if (function_exists('cf7pp_pro')) {
 	deactivate_plugins('contact-form-7-paypal-add-on-pro/paypal.php');
 
 } else {
-	define('CF7PP_VERSION_NUM', 	'2.4.1');
+	define('CF7PP_VERSION_NUM', 	'2.4.2');
 
 	define( 'CF7PP_STRIPE_CONNECT_ENDPOINT', 'https://wpplugin.org/stripe/connect.php' );
 	define( 'CF7PP_FREE_PPCP_API', 'https://wpplugin.org/ppcp-cf7pp/' );
@@ -75,8 +75,8 @@ if (function_exists('cf7pp_pro')) {
 				'live' => [],
 				'sandbox' => []
 			],
-			'ppcp_notice_dismissed' => 0,
-			'stripe_connect_notice_dismissed' => 0
+			'ppcp_notice_dismissed' => 1,
+			'stripe_connect_notice_dismissed' => 1
 		];
 		$options = (array) get_option( 'cf7pp_options' );
 

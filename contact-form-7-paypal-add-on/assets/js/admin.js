@@ -22,7 +22,8 @@ jQuery(document).ready(function($) {
     // Store the current tab in the hidden field when the save button is clicked
     $('input[type="submit"]').on('click', function() {
         // Get the active tab
-        var activeTab = $('.nav-tab-active').attr('id').replace('id', '');
+        var $activeTab = $('.nav-tab-active');
+        var activeTab = $activeTab.length && $activeTab.attr('id') ? $activeTab.attr('id').replace('id', '') : '';
         // Update the hidden field
         $('#hidden_tab_value').val(activeTab);
     });
@@ -30,7 +31,8 @@ jQuery(document).ready(function($) {
     // Auto-save when PayPal or Stripe mode is changed
     $('input[name="mode"], input[name="mode_stripe"]').on('change', function() {
         // Get the active tab
-        var activeTab = $('.nav-tab-active').attr('id').replace('id', '');
+        var $activeTab = $('.nav-tab-active');
+        var activeTab = $activeTab.length && $activeTab.attr('id') ? $activeTab.attr('id').replace('id', '') : '';
         // Update the hidden field
         $('#hidden_tab_value').val(activeTab);
         // Submit the form
@@ -51,18 +53,22 @@ jQuery(document).ready(function($) {
 
         $('[name="mode"]').on('change', function(){
             const sandbox = parseInt($('[name="mode"]:checked').val()) === 1,
-                $onboardingStartBtn = $('#cf7pp-ppcp-onboarding-start-btn'),
-                onboardingUrl = $onboardingStartBtn.attr('href').split('?'),
-                onboardingParams = new URLSearchParams(onboardingUrl[1] || '');
+                $onboardingStartBtn = $('#cf7pp-ppcp-onboarding-start-btn');
+            
+            // Check if the onboarding button exists before accessing its attributes
+            if ($onboardingStartBtn.length && $onboardingStartBtn.attr('href')) {
+                const onboardingUrl = $onboardingStartBtn.attr('href').split('?'),
+                    onboardingParams = new URLSearchParams(onboardingUrl[1] || '');
 
-            if (sandbox) {
-                onboardingParams.set('sandbox', '1');
-            } else {
-                onboardingParams.delete('sandbox');
+                if (sandbox) {
+                    onboardingParams.set('sandbox', '1');
+                } else {
+                    onboardingParams.delete('sandbox');
+                }
+
+                onboardingUrl[1] = onboardingParams.toString();
+                $onboardingStartBtn.attr('href', onboardingUrl.join('?'));
             }
-
-            onboardingUrl[1] = onboardingParams.toString();
-            $onboardingStartBtn.attr('href', onboardingUrl.join('?'));
         });
 
         $(document).on('click', '#cf7pp-ppcp-disconnect', function(e){
