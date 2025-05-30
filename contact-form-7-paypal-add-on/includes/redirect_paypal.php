@@ -23,10 +23,10 @@ function cf7pp_paypal_redirect($post_id, $payment_id) {
 	} else {
 		// live or test mode
 		if ($mode === 1) {
-			$account = $options['sandboxaccount'];
+			$account = isset($options['sandboxaccount']) ? $options['sandboxaccount'] : '';
 			$path = "sandbox.paypal";
 		} elseif ($mode === 2)  {
-			$account = $options['liveaccount'];
+			$account = isset($options['liveaccount']) ? $options['liveaccount'] : '';
 			$path = "paypal";
 		}
 

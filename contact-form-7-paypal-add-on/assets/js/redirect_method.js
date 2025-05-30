@@ -31,6 +31,7 @@ jQuery(document).ready(function($) {
         var cf7pp_form_counter = 0;
         jQuery('.wpcf7-form').bind('DOMSubtreeModified', function(e) {
             if (cf7pp_form_counter == 0) {
+                cf7pp_form_counter = 1; // Set counter immediately to prevent multiple intervals
                 var $form = jQuery(this);
                 var interval = setInterval(function(){
                     if ($form.hasClass('sent')) {
@@ -44,7 +45,6 @@ jQuery(document).ready(function($) {
                         var cf7pp_id_long = $form.parent().attr('id');
 
                         cf7pp_redirect(cf7pp_id, cf7pp_id_long);
-                        cf7pp_form_counter = 1;
                     }
                 }, 500);
             }
@@ -67,12 +67,17 @@ jQuery(document).ready(function($) {
 			'action':	'cf7pp_get_form_post',
 		};
 		
+		// Use REST API if request_method is 2, otherwise use AJAX
+		var requestUrl = (ajax_object_cf7pp.request_method == '2') 
+			? ajax_object_cf7pp.rest_url + 'cf7pp_get_form_post'
+			: ajax_object_cf7pp.ajax_url;
+		
 		jQuery.ajax({
 			type: "GET",
 			data: cf7pp_data,
 			dataType: "json",
 			async: false,
-			url: ajax_object_cf7pp.ajax_url,
+			url: requestUrl,
 			xhrFields: {
 				withCredentials: true
 			},
@@ -125,12 +130,17 @@ jQuery(document).ready(function($) {
 			'action':	'cf7pp_get_form_stripe_success',
 		};
 		
+		// Use REST API if request_method is 2, otherwise use AJAX
+		var requestUrl = (ajax_object_cf7pp.request_method == '2') 
+			? ajax_object_cf7pp.rest_url + 'cf7pp_get_form_stripe_success'
+			: ajax_object_cf7pp.ajax_url;
+		
 		jQuery.ajax({
-			type: "POST",
+			type: (ajax_object_cf7pp.request_method == '2') ? "GET" : "POST",
 			data: cf7pp_data,
 			dataType: "json",
 			async: false,
-			url: ajax_object_cf7pp.ajax_url,
+			url: requestUrl,
 			xhrFields: {
 				withCredentials: true
 			},

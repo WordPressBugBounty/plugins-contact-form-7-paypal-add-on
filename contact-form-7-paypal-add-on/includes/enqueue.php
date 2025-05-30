@@ -62,20 +62,19 @@ function cf7pp_public_enqueue() {
     $options = cf7pp_free_options();
     $request_method = isset($options['request_method']) ? $options['request_method'] : 1; // Default to 1 if not set
 
-    // Set AJAX URL based on request method
-    $ajax_url = ($request_method == 2) ? site_url('/wp-json/cf7pp/v1/') : admin_url('admin-ajax.php');
+	// redirect method js
+	wp_enqueue_script('cf7pp-redirect_method',plugins_url('/assets/js/redirect_method.js',__DIR__),array('jquery'),CF7PP_VERSION_NUM);
+	wp_localize_script('cf7pp-redirect_method', 'ajax_object_cf7pp',
+		array (
+			'ajax_url' 			=> admin_url('admin-ajax.php'),
+			'rest_url'          => rest_url('cf7pp/v1/'),
+			'request_method'    => $request_method,
+			'forms' 			=> cf7pp_forms_enabled(),
+			'path_paypal'		=> $path_paypal,
+			'path_stripe'		=> $path_stripe,
+			'method'			=> $options['redirect'],
+		)
+	);
 
-    // Determine which JS file to enqueue
-    $js_file = ($request_method == 2) ? '/assets/js/redirect_method_rest_api.js' : '/assets/js/redirect_method.js';
-
-    // Enqueue the appropriate JavaScript file
-    wp_enqueue_script('cf7pp-redirect_method', plugins_url($js_file, __DIR__), array('jquery'), CF7PP_VERSION_NUM);
-    wp_localize_script('cf7pp-redirect_method', 'ajax_object_cf7pp', array(
-        'ajax_url' => $ajax_url,
-        'forms' => cf7pp_forms_enabled(),
-        'path_paypal' => $path_paypal,
-        'path_stripe' => $path_stripe,
-        'method' => $options['redirect'],
-    ));
 }
 add_action('wp_enqueue_scripts', 'cf7pp_public_enqueue', 10);

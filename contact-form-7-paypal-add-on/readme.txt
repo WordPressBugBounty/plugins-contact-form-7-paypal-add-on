@@ -6,7 +6,7 @@ Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 2.4.2
+Stable tag: 2.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,13 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.4.3 =
+* 5/29/25
+* Fix - Fixed an issue with request method 2 (Rest API) not working with using the gateway code feature.
+* Fix - Fixed an issue where the language text domain was loading too early.
+* Fix - Simplified the redirect_method.js code.
+* Fix - Fixed an issue with request method 2 sending extra network requests on redirect.
 
 = 2.4.2 =
 * 5/2/25
