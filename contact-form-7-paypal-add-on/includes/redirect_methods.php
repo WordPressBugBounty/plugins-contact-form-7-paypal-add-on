@@ -159,6 +159,11 @@ function cf7pp_before_send_mail() {
 		$enable = 			get_post_meta( $post_id, "_cf7pp_enable", true);
 		$enable_stripe = 	get_post_meta( $post_id, "_cf7pp_enable_stripe", true);
 		
+		// Exit early if neither payment gateway is enabled
+		if( $enable != '1' && $enable_stripe != '1' ) {
+			return;
+		}
+		
 		$stripe_email = 	strtolower(get_post_meta($post_id, "_cf7pp_stripe_email", true));
 		
 		if (!empty($stripe_email)) {
