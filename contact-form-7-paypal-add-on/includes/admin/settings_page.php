@@ -154,16 +154,19 @@ function cf7pp_admin_table() {
 			&nbsp; <?php _e('Getting Started', 'contact-form-7-paypal-add-on'); ?>
 		</div>
 		<div style="background-color:#fff;padding:8px;">
-		
-			<h3><?php _e('Important - If your form has trouble redirecting - try', 'contact-form-7-paypal-add-on'); ?> <a href='admin.php?page=cf7pp_admin_table&tab=6'><?php _e('changing these settings', 'contact-form-7-paypal-add-on'); ?></a>. <?php _e('This will fix most issues easily.', 'contact-form-7-paypal-add-on'); ?></h3>
+			
+			<h3><?php _e('Redirect issues?', 'contact-form-7-paypal-add-on'); ?></h3>
+			<p><?php _e('If your form has trouble redirecting to PayPal or Stripe, please try changing the', 'contact-form-7-paypal-add-on'); ?> <a href='admin.php?page=cf7pp_admin_table&tab=6'><?php _e('Redirect Method, Request Method, and Temporary Storage Method settings on this page', 'contact-form-7-paypal-add-on'); ?></a>. <?php _e('This will fix most redirect issues easily.', 'contact-form-7-paypal-add-on'); ?></p>
 			
 			<hr>
 			
-			<?php _e('This plugin allows you to accept payments through your Contact Form 7 forms.', 'contact-form-7-paypal-add-on'); ?>
+			<h3><?php _e('Thank you for using Contact Form 7 - PayPal & Stripe!', 'contact-form-7-paypal-add-on'); ?></h3>
+			
+			<?php _e('This plugin allows you to easily accept payments through your Contact Form 7 forms.', 'contact-form-7-paypal-add-on'); ?>
 			
 			<br /><br />
 			
-			<?php _e('On this page, you can setup your general PayPal & Stripe settings which will be used for all of your', 'contact-form-7-paypal-add-on'); ?> <a href='admin.php?page=wpcf7'><?php _e('Contact Form 7 forms', 'contact-form-7-paypal-add-on'); ?></a>.
+			<?php _e('On this page, you can set up your general PayPal & Stripe settings which will be used for all of your', 'contact-form-7-paypal-add-on'); ?> <a href='admin.php?page=wpcf7'><?php _e('Contact Form 7 forms', 'contact-form-7-paypal-add-on'); ?></a>.
 			
 			<br /><br />
 			

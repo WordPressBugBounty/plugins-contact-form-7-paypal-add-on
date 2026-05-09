@@ -6,7 +6,7 @@ Author URI: https://wpplugin.org
 Requires at least: 3.0
 Tested up to: 6.9
 Requires PHP: 5.5
-Stable tag: 2.4.6
+Stable tag: 2.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,10 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.4.7 =
+* 5/9/26
+* Change - Changed the Getting Started admin page to better describe what settings to change if the form is having redirect trouble.
 
 = 2.4.6 =
 * 1/19/26
