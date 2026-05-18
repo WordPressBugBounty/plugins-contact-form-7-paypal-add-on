@@ -415,6 +415,26 @@ function cf7pp_payments_filter_query($query) {
 }
 
 /**
+ * Include custom payment statuses in the main query
+ * @since 2.4.8
+ */
+add_action('pre_get_posts', 'cf7pp_include_payment_statuses_in_query', 999);
+function cf7pp_include_payment_statuses_in_query($query) {
+	global $pagenow, $typenow;
+	
+	// Only apply to cf7pp_payments post type on the admin edit screen
+	if (!is_admin() || $pagenow != 'edit.php' || $typenow != 'cf7pp_payments') {
+		return;
+	}
+	
+	// Apply to both main query and count queries
+	// If no specific post_status is set, include all custom payment statuses
+	if (!isset($_GET['post_status'])) {
+		$query->set('post_status', array('cf7pp-pending', 'cf7pp-completed', 'cf7pp-failed', 'cf7pp-abandoned'));
+	}
+}
+
+/**
  * Restore payment status when untrash post
  * @since 1.8
  */

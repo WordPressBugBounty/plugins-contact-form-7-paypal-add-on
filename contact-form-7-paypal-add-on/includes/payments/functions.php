@@ -32,6 +32,19 @@ function cf7pp_complete_payment($payment_id, $status, $transaction_id = '', $pay
 	$payment_id = (int) $payment_id;
 	if ( empty($payment_id) ) return false;
 
+	// Security: Verify the post is a cf7pp_payments post type
+	$post = get_post($payment_id);
+	if ( !$post || $post->post_type !== 'cf7pp_payments' ) {
+		error_log('cf7pp_complete_payment: Invalid post type for payment ID ' . $payment_id);
+		return false;
+	}
+
+	// Security: Only update payments that are in pending status
+	if ( $post->post_status !== 'cf7pp-pending' ) {
+		error_log('cf7pp_complete_payment: Payment ID ' . $payment_id . ' is not in pending status (current: ' . $post->post_status . ')');
+		return false;
+	}
+
 	$transaction_id = sanitize_text_field($transaction_id);
 	if ( !empty( $transaction_id ) ) {
 		update_post_meta( $payment_id, 'transaction_id', $transaction_id );

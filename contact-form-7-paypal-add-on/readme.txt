@@ -4,9 +4,9 @@ Donate link: https://wpplugin.org/donate/
 Tags: paypal, stripe, payments, credit card, ecommerce
 Author URI: https://wpplugin.org
 Requires at least: 3.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 5.5
-Stable tag: 2.4.7
+Stable tag: 2.4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,11 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.4.8 =
+* 5/18/26
+* Security - Improved payment validation to ensure payment records can only be updated through legitimate payment gateway webhooks.
+* Fix - Fixed issue where payments were not displaying in the admin payments list despite showing the correct count.
 
 = 2.4.7 =
 * 5/9/26
