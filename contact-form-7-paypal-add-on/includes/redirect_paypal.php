@@ -19,8 +19,12 @@ function cf7pp_paypal_redirect($post_id, $payment_id) {
 
 	$ppcp_status = cf7pp_free_ppcp_status();
 	if ( !empty( $ppcp_status['client_id'] ) && empty( $ppcp_status['errors'] ) ) {
+		// Update gateway meta to reflect PayPal Commerce Platform
+		update_post_meta( $payment_id, 'gateway', 'paypal' );
 		cf7pp_free_ppcp_order_create( $ppcp_status, $name, $price, $id, $currency, $payment_id, $options['return'], $options['cancel'] );
 	} else {
+		// Update gateway meta to reflect PayPal Standard
+		update_post_meta( $payment_id, 'gateway', 'paypal_standard' );
 		// live or test mode
 		if ($mode === 1) {
 			$account = isset($options['sandboxaccount']) ? $options['sandboxaccount'] : '';

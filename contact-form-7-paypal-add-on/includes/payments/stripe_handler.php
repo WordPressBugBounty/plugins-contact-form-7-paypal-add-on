@@ -184,6 +184,28 @@ function cf7pp_stripe_webhook_handler() {
 			$payment_id = isset($event->data->object->client_reference_id) ? (int) $event->data->object->client_reference_id : 0;
 			$status = $event->data->object->payment_status == 'paid' ? 'completed' : 'failed';
 			$transaction_id = $event->data->object->payment_intent;
+			
+			// Security: Verify the amount paid matches the stored payment record's amount.
+			// The client_reference_id is set from a user-controlled URL parameter at checkout
+			// creation, so an attacker could complete a small checkout while pointing it at a
+			// different high-value pending payment record. The webhook itself is authentic and
+			// signed, but the linkage value inside it can be poisoned by the attacker. Comparing
+			// the actual amount paid to the stored payment amount blocks this mismatch.
+			if ($status == 'completed' && $payment_id > 0) {
+				$stored_amount = (float) get_post_meta($payment_id, 'amount', true);
+				$paid_amount = isset($event->data->object->amount_total) ? (int) $event->data->object->amount_total : 0;
+				$paid_currency = isset($event->data->object->currency) ? strtoupper($event->data->object->currency) : '';
+				
+				// Convert stored amount to the smallest currency unit (cents) for comparison.
+				// JPY does not use decimals so the amount is already in the smallest unit.
+				$expected_amount = $paid_currency == 'JPY' ? (int) $stored_amount : (int) round($stored_amount * 100);
+				
+				if ($paid_amount < $expected_amount) {
+					error_log('cf7pp_stripe_webhook_handler: Amount mismatch for payment ID ' . $payment_id . '. Expected: ' . $expected_amount . ', Got: ' . $paid_amount . ' ' . $paid_currency);
+					$status = 'failed';
+				}
+			}
+			
          	cf7pp_complete_payment($payment_id, $status, $transaction_id);
             break;
 

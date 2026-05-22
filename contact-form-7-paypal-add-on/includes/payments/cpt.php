@@ -62,8 +62,39 @@ function cf7pp_payments_remove_meta_box() {
  * Adds custom submit metabox.
  * @since 1.8
  */
-function cf7pp_payments_add_metaboxes() {
+function cf7pp_payments_add_metaboxes($post) {
 	add_meta_box('submitdiv', __('Payment actions', 'contact-form-7-paypal-add-on'), 'cf7pp_payments_submit_metabox', 'cf7pp_payments', 'side');
+	
+	// Only show the IPN debug metabox for PayPal Standard payments
+	$gateway = strtolower(get_post_meta($post->ID, 'gateway', true));
+	if ($gateway === 'paypal_standard') {
+		add_meta_box('cf7pp_ipn_debug', __('IPN Debug Info', 'contact-form-7-paypal-add-on'), 'cf7pp_payments_ipn_debug_metabox', 'cf7pp_payments', 'normal');
+	}
+}
+
+/**
+ * Make the IPN debug metabox collapsed (closed) by default.
+ */
+add_filter('postbox_classes_cf7pp_payments_cf7pp_ipn_debug', 'cf7pp_ipn_debug_metabox_closed_by_default');
+function cf7pp_ipn_debug_metabox_closed_by_default($classes) {
+	if (!in_array('closed', $classes)) {
+		$classes[] = 'closed';
+	}
+	return $classes;
+}
+
+/**
+ * Display captured PayPal IPN debug info on the payment edit screen.
+ */
+function cf7pp_payments_ipn_debug_metabox($post) {
+	$debug = get_post_meta($post->ID, '_cf7pp_ipn_debug', true);
+	if (empty($debug)) {
+		echo '<p>' . __('No IPN debug info captured for this payment.', 'contact-form-7-paypal-add-on') . '</p>';
+		return;
+	}
+	echo '<pre style="background:#f5f5f5;padding:10px;overflow-x:auto;font-size:12px;">';
+	echo esc_html(print_r($debug, true));
+	echo '</pre>';
 }
 
 /**
@@ -307,7 +338,14 @@ function cf7pp_custom_edit_payments_columns_data( $column, $post_id ) {
 			break;
 		case 'transaction_type':
 			$gateway = get_post_meta($post_id, 'gateway', true);
-			echo strtolower($gateway) == 'paypal' ? 'PayPal' : ucfirst($gateway);
+			$gateway_lower = strtolower($gateway);
+			if ($gateway_lower == 'paypal_standard') {
+				echo 'PayPal Standard';
+			} elseif ($gateway_lower == 'paypal') {
+				echo 'PayPal';
+			} else {
+				echo ucfirst($gateway);
+			}
 			break;
 		case 'payment_status':
 			$status = isset($_GET['post_status']) && $_GET['post_status'] == 'trash' ? get_post_meta($post_id, '_wp_trash_meta_status', true) : get_post_status($post_id);
@@ -353,9 +391,11 @@ function filter_cf7pp_payments_by_payment_status($post_type, $which) {
 		'<select name="cf7pp_gateway" id="cf7pp_gateway" class="postform">
 			<option value="">Show all Transaction types</option>
 			<option value="paypal"%s>PayPal</option>
+			<option value="paypal_standard"%s>PayPal Standard</option>
 			<option value="stripe"%s>Stripe</option>
 		</select>',
 		$selected_gateway == 'paypal' ? ' selected="selected"' : '',
+		$selected_gateway == 'paypal_standard' ? ' selected="selected"' : '',
 		$selected_gateway == 'stripe' ? ' selected="selected"' : ''
 	);
 
