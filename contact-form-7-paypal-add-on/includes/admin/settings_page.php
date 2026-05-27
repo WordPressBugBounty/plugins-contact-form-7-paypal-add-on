@@ -222,7 +222,7 @@ function cf7pp_admin_table() {
 					<option <?php if ($options['language'] == "12") { echo "SELECTED"; } ?> value="12"><?php _e('Russian', 'contact-form-7-paypal-add-on'); ?></option>
 					<option <?php if ($options['language'] == "13") { echo "SELECTED"; } ?> value="13"><?php _e('Spanish', 'contact-form-7-paypal-add-on'); ?></option>
 					<option <?php if ($options['language'] == "14") { echo "SELECTED"; } ?> value="14"><?php _e('Swedish', 'contact-form-7-paypal-add-on'); ?></option>
-					<option <?php if ($options['language'] == "15") { echo "SELECTED"; } ?> value="15"><?php _e('Simplified Chinese -China only', 'contact-form-7-paypal-add-on'); ?></option>
+					<option <?php if ($options['language'] == "15") { echo "SELECTED"; } ?> value="15"><?php _e('Simplified Chinese - China only', 'contact-form-7-paypal-add-on'); ?></option>
 					<option <?php if ($options['language'] == "16") { echo "SELECTED"; } ?> value="16"><?php _e('Traditional Chinese - Hong Kong only', 'contact-form-7-paypal-add-on'); ?></option>
 					<option <?php if ($options['language'] == "17") { echo "SELECTED"; } ?> value="17"><?php _e('Traditional Chinese - Taiwan only', 'contact-form-7-paypal-add-on'); ?></option>
 					<option <?php if ($options['language'] == "18") { echo "SELECTED"; } ?> value="18"><?php _e('Turkish', 'contact-form-7-paypal-add-on'); ?></option>

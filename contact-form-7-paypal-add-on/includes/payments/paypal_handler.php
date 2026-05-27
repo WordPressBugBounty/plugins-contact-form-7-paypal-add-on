@@ -69,6 +69,10 @@ function cf7pp_paypal_ipn_auth() {
 
 /**
  * PayPal IPN handler.
+ *
+ * Note: This handles PayPal Standard IPN only. PayPal Commerce Platform (PPCP)
+ * uses a separate flow in ppcp_frontend.php and does not go through this handler.
+ *
  * @since 1.8
  */
 function cf7pp_paypal_ipn_handler() {
@@ -124,36 +128,75 @@ function cf7pp_paypal_ipn_handler() {
 			
 			$debug_info['configured_account_used'] = $configured_account;
 			
-			if (!empty($configured_account)) {
-				if (strpos($configured_account, '@') !== false) {
-					// Configured account is an email - check against receiver_email (case-insensitive)
-					$receiver = isset($data['receiver_email']) ? trim($data['receiver_email']) : '';
-					$debug_info['compared_against'] = 'receiver_email';
-					$debug_info['comparison_expected'] = $configured_account;
-					$debug_info['comparison_received'] = $receiver;
-					if (strcasecmp($configured_account, $receiver) !== 0) {
-						$debug_info['comparison_result'] = 'MISMATCH';
-						error_log('cf7pp_paypal_ipn_handler: receiver_email mismatch. Expected: ' . $configured_account . ', Got: ' . $receiver);
-						$status = 'failed';
-					} else {
-						$debug_info['comparison_result'] = 'MATCH';
-					}
-				} else {
-					// Configured account is a Merchant ID - check against receiver_id
-					$receiver = isset($data['receiver_id']) ? trim($data['receiver_id']) : '';
-					$debug_info['compared_against'] = 'receiver_id';
-					$debug_info['comparison_expected'] = $configured_account;
-					$debug_info['comparison_received'] = $receiver;
-					if ($configured_account !== $receiver) {
-						$debug_info['comparison_result'] = 'MISMATCH';
-						error_log('cf7pp_paypal_ipn_handler: receiver_id mismatch. Expected: ' . $configured_account . ', Got: ' . $receiver);
-						$status = 'failed';
-					} else {
-						$debug_info['comparison_result'] = 'MATCH';
-					}
+			// No PayPal account configured - we cannot verify the recipient, so fail closed.
+			if (empty($configured_account)) {
+				$debug_info['compared_against'] = 'NO_ACCOUNT_CONFIGURED_FAIL_CLOSED';
+				$debug_info['final_status'] = 'failed';
+				error_log('cf7pp_paypal_ipn_handler: no PayPal account configured; rejecting IPN for order ' . (isset($data['invoice']) ? (int) $data['invoice'] : 0));
+				http_response_code(200);
+				return;
+			}
+			
+			if (strpos($configured_account, '@') !== false) {
+				// Configured account is an email - check against receiver_email (case-insensitive)
+				$receiver = isset($data['receiver_email']) ? trim($data['receiver_email']) : '';
+				$debug_info['compared_against'] = 'receiver_email';
+				$debug_info['comparison_expected'] = $configured_account;
+				$debug_info['comparison_received'] = $receiver;
+				if (strcasecmp($configured_account, $receiver) !== 0) {
+					$debug_info['comparison_result'] = 'MISMATCH';
+					$debug_info['final_status'] = 'failed';
+					error_log('cf7pp_paypal_ipn_handler: receiver_email mismatch. Expected: ' . $configured_account . ', Got: ' . $receiver);
+					http_response_code(200);
+					return;
 				}
+				$debug_info['comparison_result'] = 'MATCH';
 			} else {
-				$debug_info['compared_against'] = 'NO_ACCOUNT_CONFIGURED_SKIPPED_CHECK';
+				// Configured account is a Merchant ID - check against receiver_id
+				$receiver = isset($data['receiver_id']) ? trim($data['receiver_id']) : '';
+				$debug_info['compared_against'] = 'receiver_id';
+				$debug_info['comparison_expected'] = $configured_account;
+				$debug_info['comparison_received'] = $receiver;
+				if ($configured_account !== $receiver) {
+					$debug_info['comparison_result'] = 'MISMATCH';
+					$debug_info['final_status'] = 'failed';
+					error_log('cf7pp_paypal_ipn_handler: receiver_id mismatch. Expected: ' . $configured_account . ', Got: ' . $receiver);
+					http_response_code(200);
+					return;
+				}
+				$debug_info['comparison_result'] = 'MATCH';
+			}
+		}
+		
+		// Security: Verify the amount and currency in the IPN match the stored payment record.
+		// The receiver check alone does not stop an attacker who makes a genuine low-value payment
+		// to the correct PayPal account while pointing "invoice" at a different high-value order.
+		// Compare the actual amount paid (mc_gross) and currency (mc_currency) against the values
+		// stored on the payment record at checkout creation time.
+		if ($status == 'completed' && !empty($data['invoice'])) {
+			$order_id        = (int) $data['invoice'];
+			$stored_amount   = (float) get_post_meta($order_id, 'amount', true);
+			$paid_amount     = isset($data['mc_gross']) ? (float) $data['mc_gross'] : -1;
+			$paid_currency   = isset($data['mc_currency']) ? strtoupper(trim($data['mc_currency'])) : '';
+			$stored_currency = strtoupper(trim((string) get_post_meta($order_id, 'currency', true)));
+			
+			$debug_info['amount_check_stored_amount']   = $stored_amount;
+			$debug_info['amount_check_paid_amount']     = $paid_amount;
+			$debug_info['amount_check_stored_currency'] = $stored_currency;
+			$debug_info['amount_check_paid_currency']   = $paid_currency;
+			
+			// Allow a small float epsilon for rounding; reject if underpaid or currency mismatches.
+			$amount_underpaid    = $paid_amount < ($stored_amount - 0.01);
+			$currency_mismatch   = !empty($stored_currency) && $paid_currency !== $stored_currency;
+			
+			if ($amount_underpaid || $currency_mismatch) {
+				$debug_info['amount_check_result'] = $amount_underpaid ? 'UNDERPAID' : 'CURRENCY_MISMATCH';
+				error_log('cf7pp_paypal_ipn_handler: amount/currency mismatch for order ' . $order_id
+					. '. Expected ' . $stored_amount . ' ' . $stored_currency
+					. ', got ' . $paid_amount . ' ' . $paid_currency);
+				$status = 'failed';
+			} else {
+				$debug_info['amount_check_result'] = 'MATCH';
 			}
 		}
 		

@@ -7,6 +7,13 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
  * @return payment_id in wp_posts table
  */
 function cf7pp_insert_payment($gateway, $mode, $amount, $form_id, $status='cf7pp-pending') {
+	// Capture the currency that was active when this payment was created so the
+	// IPN/webhook handlers can later validate against the exact currency used.
+	$options = cf7pp_free_options();
+	$currency = function_exists('cf7pp_free_currency_code_to_iso')
+		? cf7pp_free_currency_code_to_iso(isset($options['currency']) ? $options['currency'] : '')
+		: '';
+
 	$payment_id = wp_insert_post( array(
 		'post_title' => __( 'Order made on ', 'contact-form-7-paypal-add-on') . date('H:i:s M d, Y'),
 		'post_status'   => $status,
@@ -16,6 +23,7 @@ function cf7pp_insert_payment($gateway, $mode, $amount, $form_id, $status='cf7pp
 			'mode'				=> $mode,
 			'transaction_id'	=> '',
 			'amount'			=> $amount,
+			'currency'			=> $currency,
 			'cf7pp_form_id'     => $form_id
 		)
 	) );
