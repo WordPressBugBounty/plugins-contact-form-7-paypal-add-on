@@ -3,10 +3,10 @@ Contributors: scottpaterson,wp-plugin
 Donate link: https://wpplugin.org/donate/
 Tags: paypal, stripe, payments, credit card, ecommerce
 Author URI: https://wpplugin.org
-Requires at least: 3.0
+Requires at least: 4.7
 Tested up to: 7.0
 Requires PHP: 5.5
-Stable tag: 2.4.10
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,12 @@ Yes, this is a feature of our Pro plugin [https://wpplugin.org/downloads/contact
 
 
 == Changelog ==
+
+= 2.5 =
+* 7/1/26
+* Security - Fixed an open redirect in the Stripe checkout flow where the user-supplied return URL (cf7pp_return) could point to an external site. Return URLs are now validated against the site host via wp_validate_redirect().
+* Change - Changed WordPress minimum supported version from 3.0 to 4.7
+* Fix - Other small fixes.
 
 = 2.4.10 =
 * 5/27/26

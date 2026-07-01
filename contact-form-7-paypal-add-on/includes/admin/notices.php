@@ -49,7 +49,7 @@ function cf7pp_admin_earnings_notice(){
     if (empty($msg)) return;
 
     // Desired redirect URL
-    $redirect_url = 'https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/?filter=5#new-post';
+    $redirect_url = 'https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/';
 
     // Current page URL to append query arguments
     $current_url = remove_query_arg( array( 'cf7pp_show_earnings_notice', 'page' ) );
@@ -120,7 +120,7 @@ function cf7pp_show_earnings_notice() {
             // Dismiss the notice
             update_option('cf7pp_show_earnings_notice', '-1');
             // Redirect to the desired URL
-            wp_safe_redirect('https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/?filter=5#new-post');
+            wp_safe_redirect('https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/');
             exit();
     }
 
@@ -148,7 +148,7 @@ function cf7pp_admin_stripe_connect_notice() {
     if (!empty($options[$acct_id_key]) || !empty($options['stripe_connect_notice_dismissed']) ||
         ( isset( $_GET['page'] ) && sanitize_text_field($_GET['page']) == 'cf7pp_admin_table' && isset( $_GET['tab'] ) && sanitize_text_field($_GET['tab']) == 5 ) ) return;
 
-    $dismiss_url = esc_url(add_query_arg('cf7pp_admin_stripe_connect_notice_dismiss', 1, admin_url()));
+    $dismiss_url = add_query_arg('cf7pp_admin_stripe_connect_notice_dismiss', 1, admin_url());
 
     printf(
         '<div class="notice notice-error is-dismissible cf7pp-stripe-connect-notice" data-dismiss-url="%s">
@@ -156,7 +156,7 @@ function cf7pp_admin_stripe_connect_notice() {
             <p><a href="%s" class="stripe-connect-btn"><span>Connect with Stripe</span></a></p>
             <br />%s
         </div>',
-        $dismiss_url,
+        esc_url($dismiss_url),
         wp_kses(
             '<b>' . __('Important', 'contact-form-7-paypal-add-on') . '</b> - ' . 
             __('\'Contact Form 7 - PayPal & Stripe Add-on\' now uses Stripe Connect.', 'contact-form-7-paypal-add-on') . '<br /><br />' .
@@ -251,7 +251,7 @@ function cf7pp_ppcp_admin_notice() {
             '<b><u>' . __('If you use PayPal, please update to PayPal Commerce Platform.', 'contact-form-7-paypal-add-on') . '</u></b>',
             cf7pp_allowed_html()
         ),
-        cf7pp_paypal_commerce_onboarding_url(),
+        cf7pp_paypal_commerce_onboarding_url(), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup is assembled with esc_url()/esc_html__() inside cf7pp_paypal_commerce_onboarding_url().
         esc_html__('WPPlugin LLC is an official PayPal Partner. Pay as you go pricing: 2% per-transaction fee + PayPal fees.', 'contact-form-7-paypal-add-on')
     );
 }

@@ -43,8 +43,8 @@ function cf7pp_payments_print_id($post) {
 	if ($post->post_type === 'cf7pp_payments') {
 		printf(
 			'<h3>%s %s</h3>',
-			__('Payment:', 'contact-form-7-paypal-add-on'),
-			$post->ID
+			esc_html__('Payment:', 'contact-form-7-paypal-add-on'),
+			(int) $post->ID
 		);
     }
 }
@@ -89,7 +89,7 @@ function cf7pp_ipn_debug_metabox_closed_by_default($classes) {
 function cf7pp_payments_ipn_debug_metabox($post) {
 	$debug = get_post_meta($post->ID, '_cf7pp_ipn_debug', true);
 	if (empty($debug)) {
-		echo '<p>' . __('No IPN debug info captured for this payment.', 'contact-form-7-paypal-add-on') . '</p>';
+		echo '<p>' . esc_html__('No IPN debug info captured for this payment.', 'contact-form-7-paypal-add-on') . '</p>';
 		return;
 	}
 	echo '<pre style="background:#f5f5f5;padding:10px;overflow-x:auto;font-size:12px;">';
@@ -113,24 +113,24 @@ function cf7pp_payments_submit_metabox($post) {
 		<div id="minor-publishing">
 			<div id="misc-publishing-actions">
 				<div class="misc-pub-section misc-pub-post-status">
-					<?php _e( 'Status:', 'contact-form-7-paypal-add-on' ); ?>
-					<span id="post-status-display"><?php echo cf7pp_get_payment_status_label($post->post_status); ?></span>
-					<a href="#post_status" class="edit-post-status hide-if-no-js" role="button"><span aria-hidden="true"><?php _e( 'Edit', 'contact-form-7-paypal-add-on' ); ?></span> <span class="screen-reader-text"><?php _e( 'Edit status', 'contact-form-7-paypal-add-on' ); ?></span></a>
+					<?php esc_html_e( 'Status:', 'contact-form-7-paypal-add-on' ); ?>
+					<span id="post-status-display"><?php echo esc_html( cf7pp_get_payment_status_label($post->post_status) ); ?></span>
+					<a href="#post_status" class="edit-post-status hide-if-no-js" role="button"><span aria-hidden="true"><?php esc_html_e( 'Edit', 'contact-form-7-paypal-add-on' ); ?></span> <span class="screen-reader-text"><?php esc_html_e( 'Edit status', 'contact-form-7-paypal-add-on' ); ?></span></a>
 					<div id="post-status-select" class="hide-if-js">
 						<input type="hidden" name="hidden_post_status" id="hidden_post_status" value="<?php echo esc_attr( ( 'auto-draft' === $post->post_status ) ? 'draft' : $post->post_status ); ?>" />
-						<label for="post_status" class="screen-reader-text"><?php _e( 'Set status', 'contact-form-7-paypal-add-on' ); ?></label>
+						<label for="post_status" class="screen-reader-text"><?php esc_html_e( 'Set status', 'contact-form-7-paypal-add-on' ); ?></label>
 						<select name="post_status" id="post_status">
 							<?php foreach ($payment_statuses as $status => $value) {
 								printf(
 									'<option%s value="%s">%s</option>',
-									selected($post->post_status, $status),
-									$status,
-									$value['label']
+									selected($post->post_status, $status, false),
+									esc_attr($status),
+									esc_html($value['label'])
 								);
 							} ?>
 						</select>
-						<a href="#post_status" class="save-post-status hide-if-no-js button"><?php _e( 'OK', 'contact-form-7-paypal-add-on' ); ?></a>
-						<a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel"><?php _e( 'Cancel', 'contact-form-7-paypal-add-on' ); ?></a>
+						<a href="#post_status" class="save-post-status hide-if-no-js button"><?php esc_html_e( 'OK', 'contact-form-7-paypal-add-on' ); ?></a>
+						<a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel"><?php esc_html_e( 'Cancel', 'contact-form-7-paypal-add-on' ); ?></a>
 					</div>			
 				</div>
 
@@ -148,14 +148,16 @@ function cf7pp_payments_submit_metabox($post) {
 				?>
 				<div class="misc-pub-section curtime misc-pub-curtime">
 					<span id="timestamp">
-						<?php printf(__('Made on: %s', 'contact-form-7-paypal-add-on'), '<b>' . $date . '</b>'); ?>
+						<?php
+						/* translators: %s: date and time the payment was made */
+						printf( esc_html__('Made on: %s', 'contact-form-7-paypal-add-on'), '<b>' . esc_html( $date ) . '</b>' ); ?>
 					</span>
 					<a href="#edit_timestamp" class="edit-timestamp hide-if-no-js" role="button">
-						<span aria-hidden="true"><?php _e( 'Edit', 'contact-form-7-paypal-add-on' ); ?></span>
-						<span class="screen-reader-text"><?php _e( 'Edit date and time', 'contact-form-7-paypal-add-on' ); ?></span>
+						<span aria-hidden="true"><?php esc_html_e( 'Edit', 'contact-form-7-paypal-add-on' ); ?></span>
+						<span class="screen-reader-text"><?php esc_html_e( 'Edit date and time', 'contact-form-7-paypal-add-on' ); ?></span>
 					</a>
 					<fieldset id="timestampdiv" class="hide-if-js">
-						<legend class="screen-reader-text"><?php _e( 'Date and time', 'contact-form-7-paypal-add-on' ); ?></legend>
+						<legend class="screen-reader-text"><?php esc_html_e( 'Date and time', 'contact-form-7-paypal-add-on' ); ?></legend>
 						<?php touch_time( ( 'edit' === $action ), 1 ); ?>
 					</fieldset>
 				</div>
@@ -173,7 +175,7 @@ function cf7pp_payments_submit_metabox($post) {
 					$delete_text = __( 'Move to Trash', 'contact-form-7-paypal-add-on' );
 				}
 				?>
-				<a class="submitdelete deletion" href="<?php echo get_delete_post_link( $post_id ); ?>"><?php echo $delete_text; ?></a>
+				<a class="submitdelete deletion" href="<?php echo esc_url( get_delete_post_link( $post_id ) ); ?>"><?php echo esc_html( $delete_text ); ?></a>
 				<?php
 			}
 			?>
@@ -211,18 +213,22 @@ function cf7pp_get_payment_statuses() {
 	$payment_statuses = array(
 		'cf7pp-pending'	=> array(
 			'label'				=> __('Pending', 'contact-form-7-paypal-add-on'),
+			/* translators: %s: number of payments with this status */
 			'label_count'		=> _n_noop('Pending %s', 'Pending %s', 'contact-form-7-paypal-add-on')
 		),
 		'cf7pp-completed'	=> array(
 			'label'				=> __('Completed', 'contact-form-7-paypal-add-on'),
+			/* translators: %s: number of payments with this status */
 			'label_count'		=> _n_noop('Completed %s', 'Completed %s', 'contact-form-7-paypal-add-on')
 		),
 		'cf7pp-failed'	=> array(
 			'label'				=> __('Failed', 'contact-form-7-paypal-add-on'),
+			/* translators: %s: number of payments with this status */
 			'label_count'		=> _n_noop('Failed %s', 'Failed %s', 'contact-form-7-paypal-add-on')
 		),
 		'cf7pp-abandoned'	=> array(
 			'label'				=> __('Abandoned', 'contact-form-7-paypal-add-on'),
+			/* translators: %s: number of payments with this status */
 			'label_count'		=> _n_noop('Abandoned %s', 'Abandoned %s', 'contact-form-7-paypal-add-on')
 		)
 	);
@@ -285,12 +291,12 @@ function cf7pp_custom_post_statuses_to_quick_edit() {
     	$payment_statuses = cf7pp_get_payment_statuses();
     	$options = '<option value="-1">— No Change —</option>';
     	foreach ($payment_statuses as $payment_status => $values) {
-    		$options .= '<option value="' . $payment_status . '">' . $values['label'] . '</option>';
+    		$options .= '<option value="' . esc_attr($payment_status) . '">' . esc_html($values['label']) . '</option>';
     	}
 
         echo "<script>
 		    	jQuery(document).ready( function($) {
-		        	$('select[name=\"_status\"]').html('" . $options . "');
+		        	$('select[name=\"_status\"]').html('" . esc_js($options) . "');
 		    	});
     		</script>";
     }
@@ -323,18 +329,18 @@ add_action( 'manage_cf7pp_payments_posts_custom_column' , 'cf7pp_custom_edit_pay
 function cf7pp_custom_edit_payments_columns_data( $column, $post_id ) {
 	switch ($column) {
 		case 'payment_id':
-			echo $post_id;
+			echo (int) $post_id;
 			break;
 		case 'details':
-			echo '<a href="' . get_edit_post_link($post_id) . '"><strong>View Order Details</strong></a>';
+			echo '<a href="' . esc_url( get_edit_post_link($post_id) ) . '"><strong>View Order Details</strong></a>';
 
-			echo '<div class="hidden" id="inline_' . $post_id . '">
-					<div class="post_title">' . get_post_meta($post_id, 'transaction_id', true) . '</div>
-					<div class="_status">' . get_post_status($post_id) . '</div>
+			echo '<div class="hidden" id="inline_' . esc_attr( $post_id ) . '">
+					<div class="post_title">' . esc_html( get_post_meta($post_id, 'transaction_id', true) ) . '</div>
+					<div class="_status">' . esc_html( get_post_status($post_id) ) . '</div>
 				</div>';
 			break;
 		case 'amount':
-			echo get_post_meta($post_id, 'amount', true);
+			echo esc_html( get_post_meta($post_id, 'amount', true) );
 			break;
 		case 'transaction_type':
 			$gateway = get_post_meta($post_id, 'gateway', true);
@@ -344,12 +350,12 @@ function cf7pp_custom_edit_payments_columns_data( $column, $post_id ) {
 			} elseif ($gateway_lower == 'paypal') {
 				echo 'PayPal';
 			} else {
-				echo ucfirst($gateway);
+				echo esc_html( ucfirst($gateway) );
 			}
 			break;
 		case 'payment_status':
 			$status = isset($_GET['post_status']) && $_GET['post_status'] == 'trash' ? get_post_meta($post_id, '_wp_trash_meta_status', true) : get_post_status($post_id);
-			echo cf7pp_get_payment_status_label($status);
+			echo esc_html( cf7pp_get_payment_status_label($status) );
 			break;
 	}
 }
@@ -404,7 +410,7 @@ function filter_cf7pp_payments_by_payment_status($post_type, $which) {
 	printf(
 		'<select name="%s" id="post_status" class="postform">
 			<option value="">Show all Payment status</option>',
-		$status_field
+		esc_attr($status_field)
 	);
 
 	$selected_status = isset($_GET[$status_field]) ? sanitize_text_field($_GET[$status_field]) : '';
@@ -412,9 +418,9 @@ function filter_cf7pp_payments_by_payment_status($post_type, $which) {
 	foreach ($payment_statuses as $payment_status => $values) {
 		printf(
 			'<option value="%1$s" %2$s>%3$s</option>',
-			$payment_status,
+			esc_attr($payment_status),
 			$selected_status == $payment_status ? ' selected="selected"' : '',
-			$values['label']
+			esc_html($values['label'])
 		);
 	}
 

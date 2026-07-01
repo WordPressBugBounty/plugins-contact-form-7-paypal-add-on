@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 require __DIR__ . '/lib/Util/ApiVersion.php';
 
 // Stripe singleton

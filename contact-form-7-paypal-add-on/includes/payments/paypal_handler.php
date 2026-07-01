@@ -11,7 +11,7 @@ add_action('template_redirect','cf7pp_ipn_test');
 function cf7pp_ipn_test() {
 
 	if (isset($_REQUEST['cf7pp_test'])) {
-		echo __("Contact Form 7 - PayPal Add-on - Test Successful", 'contact-form-7-paypal-add-on');
+		echo esc_html__("Contact Form 7 - PayPal Add-on - Test Successful", 'contact-form-7-paypal-add-on');
 		exit;
 	}
 }

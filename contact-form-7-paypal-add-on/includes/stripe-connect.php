@@ -62,17 +62,17 @@ function cf7pp_stripe_connection_status_html() {
 			<div>
 				Your Stripe account is connected in <strong>%s</strong> mode. <a href="%s">Connect in <strong>%s</strong> mode</a>, or <a href="%s">disconnect this account</a>.
 			</div>',
-			$connected['display_name'],
-			$connected['email'],
-			$connected['mode'],
-			cf7pp_stripe_connect_url($reconnect_mode),
-			$reconnect_mode,
-			cf7pp_stripe_disconnect_url($connected['account_id'], $connected['token'])
+			esc_html( $connected['display_name'] ),
+			esc_html( $connected['email'] ),
+			esc_html( $connected['mode'] ),
+			esc_url( cf7pp_stripe_connect_url($reconnect_mode) ),
+			esc_html( $reconnect_mode ),
+			esc_url( cf7pp_stripe_disconnect_url($connected['account_id'], $connected['token']) )
 		);
 	} else {
 		printf(
 			'<a href="%s"" class="stripe-connect-btn"><span>Connect with Stripe</span></a><br /><br />Connect with Stripe for pay as you go pricing: 2&#37; per-transaction fee + Stripe fees. Have questions about connecting with Stripe? Please see the <a target="_blank" href="https://wpplugin.org/documentation/stripe-connect/">documentation</a>. ',
-			cf7pp_stripe_connect_url()
+			esc_url( cf7pp_stripe_connect_url() )
 		);
 	}
 }

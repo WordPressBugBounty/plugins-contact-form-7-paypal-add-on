@@ -2,6 +2,8 @@
 
 namespace Stripe\HttpClient;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 use Stripe\Exception;
 use Stripe\Stripe;
 use Stripe\Util;

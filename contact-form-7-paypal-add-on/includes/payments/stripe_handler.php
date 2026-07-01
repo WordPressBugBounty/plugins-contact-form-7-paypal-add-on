@@ -96,7 +96,7 @@ function cf7pp_maybe_create_stripe_webhook($webhook_data, $sk) {
 				'secret'	=> $webhook->secret
 			);
 		} catch (Exception $e) {
-			echo $e;
+			echo esc_html( $e->getMessage() );
 			error_log($e->getMessage());
 		}
 	}

@@ -7,7 +7,7 @@ Description: Integrates PayPal & Stripe with Contact Form 7
 Author: Scott Paterson
 Author URI: https://wpplugin.org/downloads/contact-form-7-paypal-add-on/
 License: GPL2
-Version: 2.4.10
+Version: 2.5
 Requires Plugins: contact-form-7
 Text Domain: contact-form-7-paypal-add-on
 Domain Path: /languages
@@ -30,6 +30,8 @@ Domain Path: /languages
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 
 
 // plugin variable: cf7pp
@@ -45,7 +47,7 @@ if (function_exists('cf7pp_pro')) {
 	deactivate_plugins('contact-form-7-paypal-add-on-pro/paypal.php');
 
 } else {
-	define('CF7PP_VERSION_NUM', 	'2.4.10');
+	define('CF7PP_VERSION_NUM', 	'2.5');
 
 	define( 'CF7PP_STRIPE_CONNECT_ENDPOINT', 'https://wpplugin.org/stripe/connect.php' );
 	define( 'CF7PP_FREE_PPCP_API', 'https://wpplugin.org/ppcp-cf7pp/' );
@@ -193,7 +195,7 @@ if (function_exists('cf7pp_pro')) {
 		function cf7pp_my_admin_notice() {
 			?>
 			<div class="error">
-				<p><b><?php _e( 'Contact Form 7 - PayPal & Stripe Add-on:', 'contact-form-7-paypal-add-on' ); ?></b> <?php _e( 'Contact Form 7 is not installed and / or active! Please install', 'contact-form-7-paypal-add-on' ); ?> <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/"><?php _e( 'Contact Form 7', 'contact-form-7-paypal-add-on' ); ?></a>.</p>
+				<p><b><?php esc_html_e( 'Contact Form 7 - PayPal & Stripe Add-on:', 'contact-form-7-paypal-add-on' ); ?></b> <?php esc_html_e( 'Contact Form 7 is not installed and / or active! Please install', 'contact-form-7-paypal-add-on' ); ?> <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/"><?php esc_html_e( 'Contact Form 7', 'contact-form-7-paypal-add-on' ); ?></a>.</p>
 			</div>
 			<?php
 		}

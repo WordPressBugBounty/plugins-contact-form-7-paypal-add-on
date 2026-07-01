@@ -3,11 +3,11 @@ if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function cf7pp_free_ppcp_order_create( $ppcp_status, $name, $price, $id, $currency, $payment_id, $return_url, $cancel_url ) {
 	if ( empty( $ppcp_status['seller_id'] ) ) {
-		die( __( 'An error occurred.', 'contact-form-7-paypal-add-on' ) );
+		die( esc_html__( 'An error occurred.', 'contact-form-7-paypal-add-on' ) );
 	}
 
 	if ( empty( $price ) ) {
-		die( __( 'Price can\'t be empty.', 'contact-form-7-paypal-add-on' ) );
+		die( esc_html__( 'Price can\'t be empty.', 'contact-form-7-paypal-add-on' ) );
 	}
 
 	$return_url_args = [
@@ -52,7 +52,7 @@ function cf7pp_free_ppcp_order_create( $ppcp_status, $name, $price, $id, $curren
 	$response = json_decode( $body, true );
 
 	if ( empty( $response['success'] ) || empty( $response['payer_action_url'] ) ) {
-		die( !empty( $response['message'] ) ? $response['message'] : __( "Can't create an order.", 'contact-form-7-paypal-add-on' ) );
+		die( !empty( $response['message'] ) ? esc_html( $response['message'] ) : esc_html__( "Can't create an order.", 'contact-form-7-paypal-add-on' ) );
 	}
 
 	update_post_meta( $payment_id, '_cf7pp_ppcp_order_id', $response['order_id'] );
@@ -67,7 +67,7 @@ function cf7pp_free_ppcp_order_finalize() {
 		global $wpdb;
 
 		if ( !wp_verify_nonce( $_GET['nonce'], 'cf7pp-free-frontend-request' ) ) {
-			die( __( 'The request has not been authenticated. Please reload the page and try again.', 'contact-form-7-paypal-add-on' ) );
+			die( esc_html__( 'The request has not been authenticated. Please reload the page and try again.', 'contact-form-7-paypal-add-on' ) );
 		}
 
 		$paypal_order_id = sanitize_text_field( $_GET['token'] );

@@ -32,7 +32,7 @@ function cf7pp_admin_rate_us( $footer_text ) {
 			__('Thank you for using software from', 'contact-form-7-paypal-add-on') . ' <a href="%1$s" target="_blank">' . __('WP Plugin', 'contact-form-7-paypal-add-on') . '</a>! ' . 
 			__('Please', 'contact-form-7-paypal-add-on') . ' <a href="%2$s" target="_blank">' . __('rate us on WordPress.org', 'contact-form-7-paypal-add-on') . '</a>',
 			'https://wpplugin.org',
-			'https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/?filter=5'
+			'https://wordpress.org/support/plugin/contact-form-7-paypal-add-on/reviews/'
 		);
 		
 		return str_replace( '</span>', '', $footer_text ) . ' | ' . $rate_text . '</span>';

@@ -72,6 +72,12 @@ function cf7pp_redirect_method() {
 		
 		if (isset($_GET['cf7pp_return'])) {
 			$return_url 	= sanitize_text_field($_GET['cf7pp_return']);
+
+			// Security: the return URL is unauthenticated, user-supplied input that is later
+			// used as the Stripe success_url/cancel_url. Restrict it to the site's own host
+			// (or hosts whitelisted via the "allowed_redirect_hosts" filter) so it cannot be
+			// abused as an open redirect / phishing vector. Falls back to the home URL.
+			$return_url 	= wp_validate_redirect($return_url, home_url());
 		} else {
 			$return_url = '';
 		}

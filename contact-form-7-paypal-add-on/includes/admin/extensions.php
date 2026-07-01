@@ -14,9 +14,9 @@ function cf7pp_extensions_page()	{
 	?>
 	<div class="wrap about-wrap cf7pp-about-wrapp">
 		<h3>
-			<?php _e( 'You may be interested in our other popular WordPress plugins:', 'contact-form-7-paypal-add-on' ); ?>
+			<?php esc_html_e( 'You may be interested in our other popular WordPress plugins:', 'contact-form-7-paypal-add-on' ); ?>
 		</h3>
-			<?php _e('Make your site do more today.', 'contact-form-7-paypal-add-on'); ?>
+			<?php esc_html_e('Make your site do more today.', 'contact-form-7-paypal-add-on'); ?>
 		
 		<div class="cf7pp-extension-wrapper grid3">
 			<?php foreach ( $extensions as $key => $extension ) :
@@ -43,15 +43,15 @@ function cf7pp_extensions_page()	{
                 <article class="col">
                     <div class="cf7pp-extension-item">
                         <div class="cf7pp-extension-item-img">
-                            <a href="<?php echo $link; ?>" target="_blank"><img src="<?php echo $extension->info->thumbnail; ?>" /></a>
+                            <a href="<?php echo esc_url( $link ); ?>" target="_blank"><img src="<?php echo esc_url( $extension->info->thumbnail ); ?>" /></a>
                         </div>
                         <div class="cf7pp-extension-item-desc">
-                            <p class="cf7pp-extension-item-heading"><?php echo $extension->info->title; ?></p>
+                            <p class="cf7pp-extension-item-heading"><?php echo esc_html( $extension->info->title ); ?></p>
                             <div class="cf7pp-extension-item-excerpt">
-                            	<p><?php echo $the_excerpt; ?></p>
+                            	<p><?php echo wp_kses_post( $the_excerpt ); ?></p>
                             </div>
                             <div class="cf7pp-extension-buy-now">
-                                    <a href="<?php echo $link; ?>" class="button-primary" target="_blank"><?php echo __( 'Learn More', 'contact-form-7-paypal-add-on' ); ?></a>
+                                    <a href="<?php echo esc_url( $link ); ?>" class="button-primary" target="_blank"><?php echo esc_html__( 'Learn More', 'contact-form-7-paypal-add-on' ); ?></a>
                             </div>
                         </div>
                     </div>

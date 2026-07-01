@@ -15,7 +15,7 @@ function cf7pp_insert_payment($gateway, $mode, $amount, $form_id, $status='cf7pp
 		: '';
 
 	$payment_id = wp_insert_post( array(
-		'post_title' => __( 'Order made on ', 'contact-form-7-paypal-add-on') . date('H:i:s M d, Y'),
+		'post_title' => __( 'Order made on ', 'contact-form-7-paypal-add-on') . date_i18n('H:i:s M d, Y'),
 		'post_status'   => $status,
 		'post_type'     => 'cf7pp_payments',
 		'meta_input'    => array(
@@ -85,16 +85,19 @@ function cf7pp_get_earnings_amount($mode = 'live') {
 	$mode = in_array($mode, ['sandbox', 'live']) ? $mode : 'live';
 
 	$earnings = $wpdb->get_results(
-		"SELECT SUM(pm2.meta_value) AS amount
-		 FROM {$wpdb->posts} AS p
-		 JOIN {$wpdb->postmeta} AS pm1 ON (p.ID = pm1.post_id)
-		 JOIN {$wpdb->postmeta} AS pm2 ON (p.ID = pm2.post_id)
-		 WHERE p.post_type ='cf7pp_payments'
-		   AND p.post_status ='cf7pp-completed'
-		   AND pm1.meta_key = 'mode'
-		   AND pm1.meta_value = '{$mode}'
-		   AND pm2.meta_key = 'amount'
-		"
+		$wpdb->prepare(
+			"SELECT SUM(pm2.meta_value) AS amount
+			 FROM {$wpdb->posts} AS p
+			 JOIN {$wpdb->postmeta} AS pm1 ON (p.ID = pm1.post_id)
+			 JOIN {$wpdb->postmeta} AS pm2 ON (p.ID = pm2.post_id)
+			 WHERE p.post_type ='cf7pp_payments'
+			   AND p.post_status ='cf7pp-completed'
+			   AND pm1.meta_key = 'mode'
+			   AND pm1.meta_value = %s
+			   AND pm2.meta_key = 'amount'
+			",
+			$mode
+		)
 	);
 
 	return (float) $earnings[0]->amount;
@@ -200,7 +203,7 @@ function cf7pp_show_cf7pp_payments_localhost_notice () {
 			function cf7pp_show_cf7pp_payments_localhost_admin_notice() {
 				?>
 				<div class="notice notice-info">
-				<p><?php _e( 'Your website appears to be a testing website / a localhost environment - Please note that PayPal & Stripe "payment status" will not change to "completed" unless your site is public on the internet. ', 'contact-form-7-paypal-add-on' ); ?></p>
+				<p><?php esc_html_e( 'Your website appears to be a testing website / a localhost environment - Please note that PayPal & Stripe "payment status" will not change to "completed" unless your site is public on the internet. ', 'contact-form-7-paypal-add-on' ); ?></p>
 				</div>
 				<?php
 			}

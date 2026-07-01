@@ -50,28 +50,41 @@ function cf7pp_admin_after_additional_settings( $cf7 ) {
 	$admin_table_output .= "<td><input name='cf7pp_enable_stripe' value='1' type='checkbox' $checked_stripe></td></tr>";
 
 	$admin_table_output .= "<tr><td>" . __("Gateway Code:", 'contact-form-7-paypal-add-on') . " </td>";
-	$admin_table_output .= "<td><input type='text' name='cf7pp_gateway' value='$gateway'> </td><td> (" . __("Required to use both Gateways at the same time. Documentation", 'contact-form-7-paypal-add-on') . " <a target='_blank' href='https://wpplugin.org/documentation/paypal-stripe-gateway-code/'>" . __("here", 'contact-form-7-paypal-add-on') . "</a>. " . __("Example: menu-231", 'contact-form-7-paypal-add-on') . ")</td></tr><tr><td>";
+	$admin_table_output .= "<td><input type='text' name='cf7pp_gateway' value='" . esc_attr($gateway) . "'> </td><td> (" . __("Required to use both Gateways at the same time. Documentation", 'contact-form-7-paypal-add-on') . " <a target='_blank' href='https://wpplugin.org/documentation/paypal-stripe-gateway-code/'>" . __("here", 'contact-form-7-paypal-add-on') . "</a>. " . __("Example: menu-231", 'contact-form-7-paypal-add-on') . ")</td></tr><tr><td>";
 
 	$admin_table_output .= "<tr><td>" . __("Email Code:", 'contact-form-7-paypal-add-on') . " </td>";
-	$admin_table_output .= "<td><input type='text' name='cf7pp_stripe_email' value='$stripe_email'> </td><td> (" . __("Optional. Pass email to Stripe. Example: text-105", 'contact-form-7-paypal-add-on') . ")</td></tr><tr><td colspan='3'><br />";
+	$admin_table_output .= "<td><input type='text' name='cf7pp_stripe_email' value='" . esc_attr($stripe_email) . "'> </td><td> (" . __("Optional. Pass email to Stripe. Example: text-105", 'contact-form-7-paypal-add-on') . ")</td></tr><tr><td colspan='3'><br />";
 
 
 	$admin_table_output .= "<hr></td></tr>";
 
 	$admin_table_output .= "<tr><td>" . __("Item Description:", 'contact-form-7-paypal-add-on') . " </td>";
-	$admin_table_output .= "<td><input type='text' name='cf7pp_name' value='$name'> </td><td> (" . __("Optional", 'contact-form-7-paypal-add-on') . ")</td></tr>";
+	$admin_table_output .= "<td><input type='text' name='cf7pp_name' value='" . esc_attr($name) . "'> </td><td> (" . __("Optional", 'contact-form-7-paypal-add-on') . ")</td></tr>";
 
 	$admin_table_output .= "<tr><td>" . __("Item Price:", 'contact-form-7-paypal-add-on') . " </td>";
-	$admin_table_output .= "<td><input type='text' name='cf7pp_price' value='$price'> </td><td> (" . __("Format: for $2.99, enter 2.99", 'contact-form-7-paypal-add-on') . ")</td></tr>";
+	$admin_table_output .= "<td><input type='text' name='cf7pp_price' value='" . esc_attr($price) . "'> </td><td> (" . __("Format: for $2.99, enter 2.99", 'contact-form-7-paypal-add-on') . ")</td></tr>";
 
 	$admin_table_output .= "<tr><td>" . __("Item ID / SKU:", 'contact-form-7-paypal-add-on') . " </td>";
-	$admin_table_output .= "<td><input type='text' name='cf7pp_id' value='$id'> </td><td> (" . __("Optional", 'contact-form-7-paypal-add-on') . ")</td></tr>";
+	$admin_table_output .= "<td><input type='text' name='cf7pp_id' value='" . esc_attr($id) . "'> </td><td> (" . __("Optional", 'contact-form-7-paypal-add-on') . ")</td></tr>";
 	
 	$admin_table_output .= "<input type='hidden' name='cf7pp_post' value='" . esc_attr($post_id) . "'>";
 
 	$admin_table_output .= "</td></tr></table>";
 
-	echo $admin_table_output;
+	$cf7pp_allowed_html = array(
+		'h2'    => array(),
+		'div'   => array( 'class' => array() ),
+		'table' => array(),
+		'tr'    => array(),
+		'td'    => array( 'width' => array(), 'colspan' => array() ),
+		'label' => array(),
+		'input' => array( 'name' => array(), 'value' => array(), 'type' => array(), 'checked' => array() ),
+		'a'     => array( 'target' => array(), 'href' => array() ),
+		'hr'    => array(),
+		'br'    => array(),
+	);
+
+	echo wp_kses( $admin_table_output, $cf7pp_allowed_html );
 
 }
 

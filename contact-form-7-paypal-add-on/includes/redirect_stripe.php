@@ -6,6 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 	
 	$options = cf7pp_free_options();
+
+	// Security (defense in depth): $return_url originates from unauthenticated,
+	// user-supplied input ($_GET['cf7pp_return']) and is used below as the Stripe
+	// success_url/cancel_url. Re-validate it against the site host so this function
+	// cannot be abused as an open redirect even if called from elsewhere.
+	if (!empty($return_url)) {
+		$return_url = wp_validate_redirect($return_url, home_url());
+	}
 	
 	
 	// get variables
@@ -95,12 +103,12 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 	}
 	
 	if (filter_var($success_url, FILTER_VALIDATE_URL) === FALSE) {
-		echo __("Website admin: Success or Return URL is not valid.", 'contact-form-7-paypal-add-on');
+		esc_html_e("Website admin: Success or Return URL is not valid.", 'contact-form-7-paypal-add-on');
 		exit;
 	}
 	
 	if (filter_var($cancel_url, FILTER_VALIDATE_URL) === FALSE) {
-		echo __("Website admin: Success or Return URL is not valid.", 'contact-form-7-paypal-add-on');
+		esc_html_e("Website admin: Success or Return URL is not valid.", 'contact-form-7-paypal-add-on');
 		exit;
 	}
 	
@@ -108,7 +116,7 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 	
 	
 	if (empty($account_id) && (empty($stripe_key) || empty($stripe_sec))) {
-		echo __("Website Admin: Please connect your Stripe account on the settings page (Contact -> PayPal & Stripe Settings -> Stripe)", 'contact-form-7-paypal-add-on');
+		esc_html_e("Website Admin: Please connect your Stripe account on the settings page (Contact -> PayPal & Stripe Settings -> Stripe)", 'contact-form-7-paypal-add-on');
 		exit;
 	}
 	
@@ -146,7 +154,7 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 
 	// Stripe does not allow totals of 0.00, so show error if this happens
 	if ($amount == 0) {
-		echo __('Website Admin: Price cannot be set to 0.00.', 'contact-form-7-paypal-add-on');
+		esc_html_e('Website Admin: Price cannot be set to 0.00.', 'contact-form-7-paypal-add-on');
 		exit;
 	}
 
@@ -171,7 +179,7 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 		]);
 
 		if (empty($checkout_session->id)) {
-			echo __("An unexpected error occurred. Please try again.", 'contact-form-7-paypal-add-on');
+			esc_html_e("An unexpected error occurred. Please try again.", 'contact-form-7-paypal-add-on');
 			exit;
 		}
 	} else {
@@ -203,7 +211,7 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 		$checkout_session = json_decode($checkout_session['body']);
 
 		if (empty($checkout_session->session_id)) {
-			echo __("An unexpected error occurred. Please try again.", 'contact-form-7-paypal-add-on');
+			esc_html_e("An unexpected error occurred. Please try again.", 'contact-form-7-paypal-add-on');
 			exit;
 		}
 	}	
@@ -212,19 +220,20 @@ function cf7pp_stripe_redirect($post_id,$fid,$return_url,$payment_id) {
 	<!DOCTYPE html>
 	<html>
 		<head>
+			<?php // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- Standalone redirect page rendered outside the wp_head/wp_footer pipeline; Stripe.js must be loaded inline here. ?>
 			<script src="https://js.stripe.com/v3/"></script>
 		</head>
 		<body>
 			<script type="text/javascript">
 				<?php if (!empty($stripe_key)) { ?>
-				var stripe = Stripe('<?php echo $stripe_key; ?>');			
+				var stripe = Stripe('<?php echo esc_js($stripe_key); ?>');			
 				window.onload = function() {
-					stripe.redirectToCheckout({sessionId: '<?php echo $checkout_session->id ?>'});
+					stripe.redirectToCheckout({sessionId: '<?php echo esc_js($checkout_session->id); ?>'});
 				};
 				<?php } else { ?>
-				var stripe = Stripe('<?php echo $checkout_session->stripe_key; ?>', {stripeAccount: '<?php echo $account_id; ?>'});			
+				var stripe = Stripe('<?php echo esc_js($checkout_session->stripe_key); ?>', {stripeAccount: '<?php echo esc_js($account_id); ?>'});			
 				window.onload = function() {
-					stripe.redirectToCheckout({sessionId: '<?php echo $checkout_session->session_id ?>'});
+					stripe.redirectToCheckout({sessionId: '<?php echo esc_js($checkout_session->session_id); ?>'});
 				};
 			<?php } ?>
 			</script>
